@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
  
  <title>My Blog</title>
- <link href="http://bboniao.github.io/" rel="self"/>
- <link href="http://bboniao.github.io"/>
- <updated>2014-03-07T13:42:36+08:00</updated>
- <id>http://bboniao.github.io</id>
+ <link href="http://bboniao.com/" rel="self"/>
+ <link href="http://bboniao.com"/>
+ <updated>2014-03-07T16:07:41+08:00</updated>
+ <id>http://bboniao.com</id>
  <author>
    <name>bboniao</name>
    <email>bboniao@gmail.com</email>
@@ -14,18 +14,28 @@
  
  <entry>
    <title>常用工具包收集</title>
-   <link href="http://bboniao.github.io/tools/2014/03/07/tools"/>
+   <link href="http://bboniao.com/tools/2014/03/07/tools"/>
    <updated>2014-03-07T00:00:00+08:00</updated>
-   <id>http://bboniao.github.io/tools/2014/03/07/tools</id>
-   <content type="html">
+   <id>http://bboniao.com/tools/2014/03/07/tools</id>
+   <content type="html">&lt;p&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/gcviewer-1.34-SNAPSHOT/gcviewer-1.34-SNAPSHOT.jar&quot;&gt;GC Log分析工具,支持G1.&lt;/a&gt;
+&lt;a href=&quot;https://github.com/chewiebug/GCViewer&quot;&gt;code地址&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/tdv1.1/tdv1.1.jar&quot;&gt;Thread Dump Viewer.&lt;/a&gt;
+&lt;a href=&quot;http://sourceforge.net/projects/tdv/&quot;&gt;code地址&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/tda2.2/tda.jar&quot;&gt;Thread Dump Analyzer.&lt;/a&gt;
+&lt;a href=&quot;http://sourceforge.net/projects/tdv/&quot;&gt;code地址&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/gchisto/gchisto.jar&quot;&gt;GC Histogram Tool,不支持G1.&lt;/a&gt;
+&lt;a href=&quot;https://svn.java.net/svn/tda~svn&quot;&gt;code地址&lt;/a&gt;&lt;/p&gt;
 </content>
  </entry>
  
  <entry>
    <title>G1(Garbage First)的使用</title>
-   <link href="http://bboniao.github.io/jvm/2014/03/07/g1garbage-first"/>
+   <link href="http://bboniao.com/jvm/2014/03/07/g1garbage-first"/>
    <updated>2014-03-07T00:00:00+08:00</updated>
-   <id>http://bboniao.github.io/jvm/2014/03/07/g1garbage-first</id>
+   <id>http://bboniao.com/jvm/2014/03/07/g1garbage-first</id>
    <content type="html">
 </content>
  </entry>

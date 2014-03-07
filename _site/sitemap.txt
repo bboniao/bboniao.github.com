@@ -1,12 +1,12 @@
 
-http://bboniao.github.io/archive.html
-http://bboniao.github.io/atom.xml
-http://bboniao.github.io/categories.html
-http://bboniao.github.io/index.html
-http://bboniao.github.io/pages.html
-http://bboniao.github.io/rss.xml
-http://bboniao.github.io/sitemap.txt
-http://bboniao.github.io/tags.html
+http://bboniao.com/archive.html
+http://bboniao.com/atom.xml
+http://bboniao.com/categories.html
+http://bboniao.com/index.html
+http://bboniao.com/pages.html
+http://bboniao.com/rss.xml
+http://bboniao.com/sitemap.txt
+http://bboniao.com/tags.html
 
-http://bboniao.github.io/tools/2014/03/07/tools
-http://bboniao.github.io/jvm/2014/03/07/g1garbage-first
+http://bboniao.com/tools/2014/03/07/tools
+http://bboniao.com/jvm/2014/03/07/g1garbage-first

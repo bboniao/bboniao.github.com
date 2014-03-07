@@ -3,19 +3,29 @@
 <channel>
         <title>My Blog</title>
         <description>My Blog - bboniao</description>
-        <link>http://bboniao.github.io</link>
-        <link>http://bboniao.github.io</link>
-        <lastBuildDate>2014-03-07T13:42:36+08:00</lastBuildDate>
-        <pubDate>2014-03-07T13:42:36+08:00</pubDate>
+        <link>http://bboniao.com</link>
+        <link>http://bboniao.com</link>
+        <lastBuildDate>2014-03-07T16:07:41+08:00</lastBuildDate>
+        <pubDate>2014-03-07T16:07:41+08:00</pubDate>
         <ttl>1800</ttl>
 
 
         <item>
                 <title>常用工具包收集</title>
-                <description>
+                <description>&lt;p&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/gcviewer-1.34-SNAPSHOT/gcviewer-1.34-SNAPSHOT.jar&quot;&gt;GC Log分析工具,支持G1.&lt;/a&gt;
+&lt;a href=&quot;https://github.com/chewiebug/GCViewer&quot;&gt;code地址&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/tdv1.1/tdv1.1.jar&quot;&gt;Thread Dump Viewer.&lt;/a&gt;
+&lt;a href=&quot;http://sourceforge.net/projects/tdv/&quot;&gt;code地址&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/tda2.2/tda.jar&quot;&gt;Thread Dump Analyzer.&lt;/a&gt;
+&lt;a href=&quot;http://sourceforge.net/projects/tdv/&quot;&gt;code地址&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/gchisto/gchisto.jar&quot;&gt;GC Histogram Tool,不支持G1.&lt;/a&gt;
+&lt;a href=&quot;https://svn.java.net/svn/tda~svn&quot;&gt;code地址&lt;/a&gt;&lt;/p&gt;
 </description>
-                <link>http://bboniao.github.io/tools/2014/03/07/tools</link>
-                <guid>http://bboniao.github.io/tools/2014/03/07/tools</guid>
+                <link>http://bboniao.com/tools/2014/03/07/tools</link>
+                <guid>http://bboniao.com/tools/2014/03/07/tools</guid>
                 <pubDate>2014-03-07T00:00:00+08:00</pubDate>
         </item>
 
@@ -23,8 +33,8 @@
                 <title>G1(Garbage First)的使用</title>
                 <description>
 </description>
-                <link>http://bboniao.github.io/jvm/2014/03/07/g1garbage-first</link>
-                <guid>http://bboniao.github.io/jvm/2014/03/07/g1garbage-first</guid>
+                <link>http://bboniao.com/jvm/2014/03/07/g1garbage-first</link>
+                <guid>http://bboniao.com/jvm/2014/03/07/g1garbage-first</guid>
                 <pubDate>2014-03-07T00:00:00+08:00</pubDate>
         </item>
 
