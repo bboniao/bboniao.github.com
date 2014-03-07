@@ -5,8 +5,8 @@
         <description>My Blog - bboniao</description>
         <link>http://bboniao.com</link>
         <link>http://bboniao.com</link>
-        <lastBuildDate>2014-03-07T17:55:24+08:00</lastBuildDate>
-        <pubDate>2014-03-07T17:55:24+08:00</pubDate>
+        <lastBuildDate>2014-03-07T21:39:16+08:00</lastBuildDate>
+        <pubDate>2014-03-07T21:39:16+08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -33,12 +33,19 @@
                 <title>G1(Garbage First)的使用</title>
                 <description>&lt;h3&gt;为什么采用G1&lt;/h3&gt;
 
-&lt;p&gt;Hbase开启SLAB之后还是会产生很多碎片,导致Full GC.原因是BlockCache产生很多碎片&lt;/p&gt;
+&lt;p&gt;Hbase开启SLAB之后还是会产生很多碎片,导致Full GC.原因是BlockCache产生很多碎片,CMS对碎片无能为力.采用G1吞吐量与CMS相当&lt;/p&gt;
 
 &lt;h3&gt;我的参数配置&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code&gt;-Xmx24g -Xms24g -XX:PermSize=96m -XX:MaxPermSize=96m -XX:+UseG1GC -XX:SurvivorRatio=6 -XX:MaxGCPauseMillis=400 -XX:G1ReservePercent=15  -XX:InitiatingHeapOccupancyPercent=40 -XX:ConcGCThreads=8
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;新生代和region大小没有指定,G1可以更好的自动分配资源.&lt;/li&gt;
+&lt;li&gt;提高MaxGCPauseMillis,实时性要求没有太严格,可以提高吞吐量&lt;/li&gt;
+&lt;li&gt;提高G1ReservePercent,降低InitiatingHeapOccupancyPercent,提高ConcGCThreads因为遇到内存不足而产生了Full GC&lt;/li&gt;
+&lt;/ol&gt;
+
 
 &lt;h3&gt;G1常用参数&lt;/h3&gt;
 
@@ -107,7 +114,7 @@
 
 &lt;h3&gt;内存用尽造成Full GC&lt;/h3&gt;
 
-&lt;p&gt;查找&lt;code&gt;to-space exhausted&lt;/code&gt;和&lt;code&gt;to-space overflow&lt;/code&gt;,标示因内存不够产生Full GC&lt;/p&gt;
+&lt;p&gt;查找&lt;code&gt;to-space exhausted&lt;/code&gt;和&lt;code&gt;to-space overflow&lt;/code&gt;,表示因内存不够产生Full GC&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;-XX:G1ReservePercent 增加预存内存量&lt;/li&gt;

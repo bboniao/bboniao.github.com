@@ -9,10 +9,14 @@ tags: g1 gc
 
 ###为什么采用G1
 
-Hbase开启SLAB之后还是会产生很多碎片,导致Full GC.原因是BlockCache产生很多碎片
+Hbase开启SLAB之后还是会产生很多碎片,导致Full GC.原因是BlockCache产生很多碎片,CMS对碎片无能为力.采用G1吞吐量与CMS相当
 
 ###我的参数配置
     -Xmx24g -Xms24g -XX:PermSize=96m -XX:MaxPermSize=96m -XX:+UseG1GC -XX:SurvivorRatio=6 -XX:MaxGCPauseMillis=400 -XX:G1ReservePercent=15  -XX:InitiatingHeapOccupancyPercent=40 -XX:ConcGCThreads=8
+
+1. 新生代和region大小没有指定,G1可以更好的自动分配资源.
+2. 提高MaxGCPauseMillis,实时性要求没有太严格,可以提高吞吐量
+3. 提高G1ReservePercent,降低InitiatingHeapOccupancyPercent,提高ConcGCThreads因为遇到内存不足而产生了Full GC
 
 ###G1常用参数
 
