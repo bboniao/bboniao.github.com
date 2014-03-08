@@ -82,25 +82,37 @@ JB :
   # Set 'provider' to false to turn commenting off globally.
   #
   comments :
-    provider : duoshuo
-    duoshuo :
-      short_name : bboniao
+    provider : custom
+    disqus :
+      short_name :
     livefyre :
-      site_id : 123
+      site_id :
     intensedebate :
-      account : 123abc
+      account :
     facebook :
-      appid : 123
-      num_posts: 5
+      appid :
+      num_posts:
       width: 580
       colorscheme: light
+    duoshuo :
+      name : bboniao
+      comments :
+        num: 10
+        avatar : 0
+        time: 0
+        title : 0
+        admin : 0
+        length : 12
+      visitors :
+        num : 12
+        size : 45
    
   # Settings for analytics helper
   # Set 'provider' to the analytics provider you want to use.
   # Set 'provider' to false to turn analytics off globally.
   #        
   analytics :
-    provider : google 
+    provider : custom
     google : 
         tracking_id : 'UA-48676993-1'
     getclicky :

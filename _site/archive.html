@@ -10,8 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- HTML5 shim, for IE6-8 support of HTML elements -->
 
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/themes/havee/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/havee/css/font-awesome.min.css" rel="stylesheet">
     <link href="/assets/themes/havee/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
     <link href="/assets/themes/havee/css/pygments.css" rel="stylesheet" type="text/css" media="all">
     <link href="/assets/themes/havee/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" media="all" />
@@ -115,7 +115,6 @@
 
 
 
-          <li><a href="/vimwiki" target="_blank" title="Vimwiki">Vimwiki</a><li>
           <li>
             <form id="search-form" class="form-inline visible-lg" role="form">
               <input type="text" class="form-control input-sm" placeholder="Search" id="query">
@@ -240,27 +239,18 @@
             <section>
         <h4>Recently Comments</h4>
         <div class="category">
-          <ul class="ds-recent-comments" data-num-items="" data-show-avatars="" data-show-time="" data-show-title="" data-show-admin="" data-excerpt-length=""></ul>
+          <ul class="ds-recent-comments" data-num-items="10" data-show-avatars="0" data-show-time="0" data-show-title="0" data-show-admin="0" data-excerpt-length="12"></ul>
         </div>
       </section>
 
 
             <section>
         <h4>Recently Visitors</h4>
-          <ul class="ds-recent-visitors" data-num-items="" data-avatar-size="" style="margin-top:10px;"></ul>
+          <ul class="ds-recent-visitors" data-num-items="12" data-avatar-size="45" style="margin-top:10px;"></ul>
       </section>
 
 
-            
-      <section>
-        <h4>Blogroll</h4>
-        <div class="category">
-          <ul>
-            
-          </ul>
-        </div>
-      </section>
-      
+
 
   </div>
 
@@ -278,20 +268,20 @@
     <a href="#top" title="Back Top" class="visible-lg visible-md"></a>
   </div>
 
-    <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+    <script src="/assets/themes/havee/js/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="/assets/themes/havee/js/jquery.min.js"><\/script>')</script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="/assets/themes/havee/js/bootstrap.min.js"></script>
     <script>window.jQuery || document.write('<script src="/assets/themes/havee/js/bootstrap.min.js"><\/script>')</script>
     <script type="text/javascript" src="/assets/themes/havee/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
     <script type="text/javascript" src="/assets/themes/havee/js/webcore.js"></script>
 
         <!--多说js加载开始，一个页面只需要加载一次 -->
     <script type="text/javascript">
-      var duoshuoQuery = {short_name:""};
+      var duoshuoQuery = {short_name:"bboniao"};
       (function() {
         var ds = document.createElement('script');
         ds.type = 'text/javascript';ds.async = true;
-        ds.src = 'http://static.duoshuo.com/embed.js';
+        ds.src = '/assets/themes/havee/js/embed.js';
         ds.charset = 'UTF-8';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
       })();

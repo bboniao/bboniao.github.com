@@ -10,8 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- HTML5 shim, for IE6-8 support of HTML elements -->
 
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/themes/havee/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/havee/css/font-awesome.min.css" rel="stylesheet">
     <link href="/assets/themes/havee/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
     <link href="/assets/themes/havee/css/pygments.css" rel="stylesheet" type="text/css" media="all">
     <link href="/assets/themes/havee/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" media="all" />
@@ -115,7 +115,6 @@
 
 
 
-          <li><a href="/vimwiki" target="_blank" title="Vimwiki">Vimwiki</a><li>
           <li>
             <form id="search-form" class="form-inline visible-lg" role="form">
               <input type="text" class="form-control input-sm" placeholder="Search" id="query">
@@ -272,6 +271,12 @@
     
 
 
+  
+<div id="comments">
+  <div class="ds-thread" data-title="G1(Garbage First)的使用 - My Blog"></div>
+</div>
+
+
 
 
   </div>
@@ -325,14 +330,7 @@
     </section>
     
 
-          <section>
-        <h4>License</h4>
-        <ul>
-          <li>
-            <a href="http://www.creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank"><img alt="License" src="http://bboniao.com/assets/images/CC.png" title="署名-非商业性使用-相同方式共享 3.0 中国大陆"></a>
-          </li>
-        </ul>
-      </section>
+    
   </div>
 
 </div>
@@ -349,20 +347,20 @@
     <a href="#top" title="Back Top" class="visible-lg visible-md"></a>
   </div>
 
-    <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+    <script src="/assets/themes/havee/js/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="/assets/themes/havee/js/jquery.min.js"><\/script>')</script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="/assets/themes/havee/js/bootstrap.min.js"></script>
     <script>window.jQuery || document.write('<script src="/assets/themes/havee/js/bootstrap.min.js"><\/script>')</script>
     <script type="text/javascript" src="/assets/themes/havee/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
     <script type="text/javascript" src="/assets/themes/havee/js/webcore.js"></script>
 
         <!--多说js加载开始，一个页面只需要加载一次 -->
     <script type="text/javascript">
-      var duoshuoQuery = {short_name:""};
+      var duoshuoQuery = {short_name:"bboniao"};
       (function() {
         var ds = document.createElement('script');
         ds.type = 'text/javascript';ds.async = true;
-        ds.src = 'http://static.duoshuo.com/embed.js';
+        ds.src = '/assets/themes/havee/js/embed.js';
         ds.charset = 'UTF-8';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
       })();
@@ -370,8 +368,17 @@
     <!--多说js加载结束，一个页面只需要加载一次 -->
     
     <!-- Baidu Button BEGIN -->
-    <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_youdao" data-cmd="youdao" title="分享到有道云笔记"></a></div>
-    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{},"image":{"viewList":["tsina","qzone","tqq","renren","weixin","douban","youdao"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","tqq","renren","weixin","douban","youdao"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+    <script type="text/javascript" id="bdshell_js"></script>
+        <script>document.write(unescape('%3Cscript%20type%3D%22text/javascript%22%20id%3D%22bdshare_js%22%20data%3D%22type%3Dtools%26amp%3Buid%3D1539895%22%3E%3C/script%3E'));</script>
+        <script type="text/javascript">
+          var bds_config = {
+            'wbUid':1194861643,
+            'review':'normal',
+            'snsKey':{
+            }
+          };
+          document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+        </script>
     <!-- Baidu Button END -->
 
 
