@@ -3,45 +3,64 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>常用工具包收集</title>
+    <title>常用工具包收集 - My Blog</title>
     <meta name="description" content="">
+    <meta name="keywords" content="">
     <meta name="author" content="bboniao">
-
-    <!-- Enable responsive viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- HTML5 shim, for IE6-8 support of HTML elements -->
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/themes/havee/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/havee/css/pygments.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/havee/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" media="all" />
 
-    <!-- Le styles -->
-    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
-    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
-
-    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="canonical" href="http://bboniao.com/tools/2014/03/07/tools" />
+    <!-- fav and touch icons -->
   <!-- Update these with your own images
-    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="shortcut icon" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
   -->
 
     <!-- atom & rss feed -->
-    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
-    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="My Blog ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="My Blog RSS Feed">
+
+    
 
   </head>
 
   <body>
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="container-narrow">
-          <a class="brand" href="/">My Blog</a>
-          <ul class="nav">
-            
-            
-            
+    <!--[if lte IE 8]>
+      <div class="alert alert-warning">
+        <p>Your Internet Explorer is not supported. Please upgrade your Internet Explorer to version 9+, or use latest <a href="http://www.google.com/chrome/" target="_blank" class="alert-link">Google chrome</a>、<a href="http://www.mozilla.org/firefox/" target="_blank" class="alert-link">Mozilla Firefox</a>.</p>
+        <p>If you are using IE 9 or later, make sure you <a href="http://windows.microsoft.com/en-us/internet-explorer/use-compatibility-view#ie=ie-8" target="_blank" class="alert-link">turn off "Compatibility view"</a>.</p>
+      </div>
+    <![endif]-->
+
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/" title="My Blog">My Blog</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+          
+          
+          
 
 
   
@@ -96,26 +115,46 @@
 
 
 
-          </ul>
-        </div>
+          <li><a href="/vimwiki" target="_blank" title="Vimwiki">Vimwiki</a><li>
+          <li>
+            <form id="search-form" class="form-inline visible-lg" role="form">
+              <input type="text" class="form-control input-sm" placeholder="Search" id="query">
+            </form>
+          </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right visible-lg visible-md">
+          <li><a href="/rss.xml" target="_blank" title="RSS"><span class="fa fa-rss fa-lg"></span></a></li>
+          
+            <li><a href="https://github.com/bboniao" target="_blank" title="Github"><span class="fa fa-github fa-lg"></span></a></li>
+          
+          
+          
+            <li><a href="https://twitter.com/bboniao" target="_blank" title="twitter"><span class="fa fa-twitter fa-lg"></span></a></li>
+          
+          
+          
+        </ul>
+      </div><!-- /.navbar-collapse -->
       </div>
-    </div>
+    </nav>
 
-    <div class="container-narrow">
-
+    <div class="container">
       <div class="content">
         
-<div class="page-header">
-  <h1>常用工具包收集 </h1>
-</div>
+<div class="row">
 
-<div class="row-fluid post-full">
-  <div class="span12">
-    <div class="date">
-      <span>07 March 2014</span>
+  <div class="col-md-9 main-contenter">
+    <div id="search-loader" style="display:none;text-align:center">
+      <img src="/assets/themes/havee/images/loading.gif">
     </div>
-    <div class="content">
-      <p><a href="https://github.com/bboniao/bboniao.github.com/releases/download/gcviewer-1.34-SNAPSHOT/gcviewer-1.34-SNAPSHOT.jar">GC Log分析工具,支持G1.</a>
+    <div class="page-header">
+      <h2>
+        常用工具包收集 
+        
+      </h2>
+    </div>
+    <article><p><a href="https://github.com/bboniao/bboniao.github.com/releases/download/gcviewer-1.34-SNAPSHOT/gcviewer-1.34-SNAPSHOT.jar">GC Log分析工具,支持G1.</a>
 <a href="https://github.com/chewiebug/GCViewer">code地址</a></p>
 
 <p><a href="https://github.com/bboniao/bboniao.github.com/releases/download/tdv1.1/tdv1.1.jar">Thread Dump Viewer.</a>
@@ -126,14 +165,50 @@
 
 <p><a href="https://github.com/bboniao/bboniao.github.com/releases/download/gchisto/gchisto.jar">GC Histogram Tool,不支持G1.</a>
 <a href="https://svn.java.net/svn/tda~svn">code地址</a></p>
-
+</article>
+    <hr>
+    <div class="row status">
+      <div class="col-md-6">
+        <div class="btn-group">
+          
+            <a class="btn btn-default btn-sm" href="/jvm/2014/03/07/g1garbage-first" title="G1(Garbage First)的使用">&laquo; Prev</a>
+          
+            <a class="btn btn-default btn-sm" href="/archive.html">Archive</a>
+          
+            <a class="btn btn-default btn-sm disabled">Next &raquo;</a>
+          
+        </div>
+      </div>
+      <div class="col-md-6 visible-lg visible-md">
+        <div id="bdshare" class="bdshare_t bds_tools_24 get-codes-bdshare btn-group pull-right">
+          <a class="bds_tsina"></a>
+          <a class="bds_tqq"></a>
+          <a class="bds_t163"></a>
+          <a class="bds_renren"></a>
+          <span class="bds_more"></span>
+        </div>
+      </div>
     </div>
+    
 
-  
-    <ul class="tag_box inline">
-      <li><i class="icon-folder-open"></i></li>
-      
-      
+
+
+
+  </div>
+
+  <div class="col-md-3 visible-lg visible-md">
+    <section>
+      <h4>Published</h4>
+      <ul>
+        <li>07 March 2014</li>
+      </ul>
+    </section>
+    
+    <section>
+      <h4>Categories</h4>
+      <ul>
+        
+        
 
 
   
@@ -145,14 +220,15 @@
   
 
 
-    </ul>
+      </ul>
+    </section>
     
-
-  
-    <ul class="tag_box inline">
-      <li><i class="icon-tags"></i></li>
-      
-      
+    
+    <section>
+      <h4>Tags</h4>
+      <ul class="tag_box">
+        
+        
 
 
   
@@ -163,43 +239,62 @@
 
 
 
-    </ul>
-    
-
-    <hr>
-    <div class="pagination">
-      <ul>
-      
-        <li class="prev"><a href="/jvm/2014/03/07/g1garbage-first" title="G1(Garbage First)的使用">&larr; Previous</a></li>
-      
-        <li><a href="/archive.html">Archive</a></li>
-      
-        <li class="next disabled"><a>Next &rarr;</a>
-      
       </ul>
-    </div>
-    <hr>
+    </section>
     
 
-
-
-
+          <section>
+        <h4>License</h4>
+        <ul>
+          <li>
+            <a href="http://www.creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank"><img alt="License" src="http://bboniao.com/assets/images/CC.png" title="署名-非商业性使用-相同方式共享 3.0 中国大陆"></a>
+          </li>
+        </ul>
+      </section>
   </div>
+
 </div>
 
 
       </div>
-      <hr>
-      <footer>
-        <p>&copy; 2014 bboniao
-          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
-          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
-        </p>
+
+      <footer class="text-left">
+			<p>&copy; 2014 <a href="/" target="_blank">bboniao</a>. with Help from <a href="http://jekyllbootstrap.com/" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a> and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a></p>
       </footer>
+    </div> <!-- /container -->
 
-    </div>
+  <div id="back-top">
+    <a href="#top" title="Back Top" class="visible-lg visible-md"></a>
+  </div>
 
+    <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes/havee/js/jquery.min.js"><\/script>')</script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes/havee/js/bootstrap.min.js"><\/script>')</script>
+    <script type="text/javascript" src="/assets/themes/havee/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <script type="text/javascript" src="/assets/themes/havee/js/webcore.js"></script>
+
+        <!--多说js加载开始，一个页面只需要加载一次 -->
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:""};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = 'http://static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script>
+    <!--多说js加载结束，一个页面只需要加载一次 -->
     
+    <!-- Baidu Button BEGIN -->
+    <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_youdao" data-cmd="youdao" title="分享到有道云笔记"></a></div>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{},"image":{"viewList":["tsina","qzone","tqq","renren","weixin","douban","youdao"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","tqq","renren","weixin","douban","youdao"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+    <!-- Baidu Button END -->
+
+
+
+
   </body>
 </html>
 
