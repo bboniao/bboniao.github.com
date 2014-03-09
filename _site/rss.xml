@@ -5,10 +5,40 @@
         <description>My Blog - bboniao</description>
         <link>http://bboniao.com</link>
         <link>http://bboniao.com</link>
-        <lastBuildDate>2014-03-08T20:51:22+08:00</lastBuildDate>
-        <pubDate>2014-03-08T20:51:22+08:00</pubDate>
+        <lastBuildDate>2014-03-09T10:52:02+08:00</lastBuildDate>
+        <pubDate>2014-03-09T10:52:02+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>jekyll使用七牛的CDN</title>
+                <description>&lt;h3&gt;注册七牛&lt;/h3&gt;
+
+&lt;p&gt;进入&lt;a href=&quot;https://portal.qiniu.com/&quot;&gt;七牛的用户界面&lt;/a&gt;,创建一个空间,访问控制选择公开,然后点击一键加速网站,填写你的网站地址&lt;/p&gt;
+
+&lt;h3&gt;修改_config.xml&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;safe: false
+cdn_url : http://bboniao.qiniudn.com
+JB :
+ASSET_PATH : false
+IMAGE_PATH : false
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3&gt;修改_includes/JB/setup,&lt;/h3&gt;
+
+&lt;p&gt;这样的好处本地不会使用cdn,而发布到githup上使用&lt;code&gt;site.cdn_url&lt;/code&gt;上的资源&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/qiniu-cdn-jekyll-code.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h3&gt;说明&lt;/h3&gt;
+
+&lt;p&gt;/assets和/images下的资源会缓存到cdn,使用的时候用{{ ASSET_PATH }}和{{ IMAGE_PATH }}来代替.更改缓存的内容时,需要到七牛后台界面的空间设置--高级设置--去刷新&lt;/p&gt;
+</description>
+                <link>http://bboniao.com/jekyll/2014/03/09/jekyllcdn</link>
+                <guid>http://bboniao.com/jekyll/2014/03/09/jekyllcdn</guid>
+                <pubDate>2014-03-09T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>常用工具包收集</title>

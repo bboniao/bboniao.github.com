@@ -3,8 +3,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Eveyday is Happy! - My Blog</title>
-    
+    <title>jekyll使用七牛的CDN - My Blog</title>
+    <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="bboniao">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +17,7 @@
     <link href="/assets/themes/havee/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" media="all" />
 
     <link rel="shortcut icon" href="/favicon.png">
-    <link rel="canonical" href="http://bboniao.com/" />
+    <link rel="canonical" href="http://bboniao.com/jekyll/2014/03/09/jekyllcdn" />
     <!-- fav and touch icons -->
   <!-- Update these with your own images
     <link rel="shortcut icon" href="images/favicon.png">
@@ -147,46 +147,87 @@
     <div id="search-loader" style="display:none;text-align:center">
       <img src="/assets/themes/havee/images/loading.gif">
     </div>
-    <div class="page-header-wrapper">
-      <div class="page-header">
-        <h2>Eveyday is Happy!  <small>Home Page</small></h2>
+    <div class="page-header">
+      <h2>
+        jekyll使用七牛的CDN 
+        
+      </h2>
+    </div>
+    <article><h3>注册七牛</h3>
+
+<p>进入<a href="https://portal.qiniu.com/">七牛的用户界面</a>,创建一个空间,访问控制选择公开,然后点击一键加速网站,填写你的网站地址</p>
+
+<h3>修改_config.xml</h3>
+
+<pre><code>safe: false
+cdn_url : http://bboniao.qiniudn.com
+JB :
+ASSET_PATH : false
+IMAGE_PATH : false
+</code></pre>
+
+<h3>修改_includes/JB/setup,</h3>
+
+<p>这样的好处本地不会使用cdn,而发布到githup上使用<code>site.cdn_url</code>上的资源</p>
+
+<p><img src="/images/qiniu-cdn-jekyll-code.png" alt="image" /></p>
+
+<h3>说明</h3>
+
+<p>/assets和/images下的资源会缓存到cdn,使用的时候用{{ ASSET_PATH }}和{{ IMAGE_PATH }}来代替.更改缓存的内容时,需要到七牛后台界面的空间设置--高级设置--去刷新</p>
+</article>
+    <hr>
+    <div class="row status">
+      <div class="col-md-6">
+        <div class="btn-group">
+          
+            <a class="btn btn-default btn-sm" href="/tools/2014/03/07/tools" title="常用工具包收集">&laquo; Prev</a>
+          
+            <a class="btn btn-default btn-sm" href="/archive.html">Archive</a>
+          
+            <a class="btn btn-default btn-sm disabled">Next &raquo;</a>
+          
+        </div>
+      </div>
+      <div class="col-md-6 visible-lg visible-md">
+        <div id="bdshare" class="bdshare_t bds_tools_24 get-codes-bdshare btn-group pull-right">
+          <a class="bds_tsina"></a>
+          <a class="bds_tqq"></a>
+          <a class="bds_t163"></a>
+          <a class="bds_renren"></a>
+          <span class="bds_more"></span>
+        </div>
       </div>
     </div>
-    <article>
+    
 
-<ul class="posts">
+
   
-    <li><span>09 Mar 2014</span> &raquo; <a href="/jekyll/2014/03/09/jekyllcdn">jekyll使用七牛的CDN</a></li>
-  
-    <li><span>07 Mar 2014</span> &raquo; <a href="/tools/2014/03/07/tools">常用工具包收集</a></li>
-  
-    <li><span>07 Mar 2014</span> &raquo; <a href="/jvm/2014/03/07/g1garbage-first">G1(Garbage First)的使用</a></li>
-  
-</ul>
+<div id="comments">
+  <div class="ds-thread" data-title="jekyll使用七牛的CDN - My Blog"></div>
+</div>
 
 
 
-</article>
+
   </div>
 
   <div class="col-md-3 visible-lg visible-md">
-                <section>
-        <h4>Categories</h4>
-        <div class="tag_box">
-          <ul>
-          
-          
+    <section>
+      <h4>Published</h4>
+      <ul>
+        <li>09 March 2014</li>
+      </ul>
+    </section>
+    
+    <section>
+      <h4>Categories</h4>
+      <ul>
+        
+        
 
 
   
-     
-    	<li><a href="/categories.html#jvm-ref">
-    		jvm <span>1</span>
-    	</a></li>
-     
-    	<li><a href="/categories.html#tools-ref">
-    		tools <span>1</span>
-    	</a></li>
      
     	<li><a href="/categories.html#jekyll-ref">
     		jekyll <span>1</span>
@@ -194,44 +235,31 @@
     
   
 
- 
-          </ul>
-        </div>
-      </section>
+
+      </ul>
+    </section>
+    
+    
+    <section>
+      <h4>Tags</h4>
+      <ul class="tag_box">
+        
+        
 
 
-            <section>
-       <h4>Recently Posts</h4>
-       <div class="category">
-         <ul>
-           
-           <li><a href="/jekyll/2014/03/09/jekyllcdn">jekyll使用七牛的CDN</a></li>
-           
-           <li><a href="/tools/2014/03/07/tools">常用工具包收集</a></li>
-           
-           <li><a href="/jvm/2014/03/07/g1garbage-first">G1(Garbage First)的使用</a></li>
-           
-         </ul>
-       </div>
-      </section>
-
-
-            <section>
-        <h4>Recently Comments</h4>
-        <div class="category">
-          <ul class="ds-recent-comments" data-num-items="10" data-show-avatars="0" data-show-time="0" data-show-title="0" data-show-admin="0" data-excerpt-length="12"></ul>
-        </div>
-      </section>
-
-
-            <section>
-        <h4>Recently Visitors</h4>
-          <ul class="ds-recent-visitors" data-num-items="12" data-avatar-size="45" style="margin-top:10px;"></ul>
-      </section>
+  
+     
+    	<li><a href="/tags.html#cdn-ref">cdn <span>1</span></a></li>
+    
+  
 
 
 
+      </ul>
+    </section>
+    
 
+    
   </div>
 
 </div>
@@ -268,6 +296,20 @@
     </script>
     <!--多说js加载结束，一个页面只需要加载一次 -->
     
+    <!-- Baidu Button BEGIN -->
+    <script type="text/javascript" id="bdshell_js"></script>
+        <script>document.write(unescape('%3Cscript%20type%3D%22text/javascript%22%20id%3D%22bdshare_js%22%20data%3D%22type%3Dtools%26amp%3Buid%3D1539895%22%3E%3C/script%3E'));</script>
+        <script type="text/javascript">
+          var bds_config = {
+            'wbUid':1194861643,
+            'review':'normal',
+            'snsKey':{
+            }
+          };
+          document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+        </script>
+    <!-- Baidu Button END -->
+
 
 
 
