@@ -5,8 +5,8 @@
         <description>My Blog - bboniao</description>
         <link>http://bboniao.com</link>
         <link>http://bboniao.com</link>
-        <lastBuildDate>2014-03-09T10:52:02+08:00</lastBuildDate>
-        <pubDate>2014-03-09T10:52:02+08:00</pubDate>
+        <lastBuildDate>2014-03-10T15:14:55+08:00</lastBuildDate>
+        <pubDate>2014-03-10T15:14:55+08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -24,6 +24,9 @@ JB :
 ASSET_PATH : false
 IMAGE_PATH : false
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;!-- more --&gt;
+
 
 &lt;h3&gt;修改_includes/JB/setup,&lt;/h3&gt;
 
@@ -47,6 +50,9 @@ IMAGE_PATH : false
 
 &lt;p&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/tdv1.1/tdv1.1.jar&quot;&gt;Thread Dump Viewer.&lt;/a&gt;
 &lt;a href=&quot;http://sourceforge.net/projects/tdv/&quot;&gt;code地址&lt;/a&gt;&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
 
 &lt;p&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/tda2.2/tda.jar&quot;&gt;Thread Dump Analyzer.&lt;/a&gt;
 &lt;a href=&quot;http://sourceforge.net/projects/tdv/&quot;&gt;code地址&lt;/a&gt;&lt;/p&gt;
@@ -75,6 +81,9 @@ IMAGE_PATH : false
 &lt;li&gt;提高MaxGCPauseMillis,实时性要求没有太严格,可以提高吞吐量&lt;/li&gt;
 &lt;li&gt;提高G1ReservePercent,降低InitiatingHeapOccupancyPercent,提高ConcGCThreads因为遇到内存不足而产生了Full GC&lt;/li&gt;
 &lt;/ol&gt;
+
+
+&lt;!-- more --&gt;
 
 
 &lt;h3&gt;G1常用参数&lt;/h3&gt;

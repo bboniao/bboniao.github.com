@@ -18,6 +18,7 @@ Hbase开启SLAB之后还是会产生很多碎片,导致Full GC.原因是BlockCac
 2. 提高MaxGCPauseMillis,实时性要求没有太严格,可以提高吞吐量
 3. 提高G1ReservePercent,降低InitiatingHeapOccupancyPercent,提高ConcGCThreads因为遇到内存不足而产生了Full GC
 
+<!-- more -->
 ###G1常用参数
 
 参数|描述

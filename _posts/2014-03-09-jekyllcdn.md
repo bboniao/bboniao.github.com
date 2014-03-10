@@ -19,6 +19,7 @@ tags: cdn
     ASSET_PATH : false
     IMAGE_PATH : false
 
+<!-- more -->
 ###修改_includes/JB/setup,
 
 这样的好处本地不会使用cdn,而发布到githup上使用`site.cdn_url`上的资源
