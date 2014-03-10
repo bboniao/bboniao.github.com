@@ -5,8 +5,8 @@
         <description>My Blog - bboniao</description>
         <link>http://bboniao.com</link>
         <link>http://bboniao.com</link>
-        <lastBuildDate>2014-03-10T15:14:55+08:00</lastBuildDate>
-        <pubDate>2014-03-10T15:14:55+08:00</pubDate>
+        <lastBuildDate>2014-03-10T16:57:33+08:00</lastBuildDate>
+        <pubDate>2014-03-10T16:57:33+08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -17,29 +17,26 @@
 &lt;p&gt;进入&lt;a href=&quot;https://portal.qiniu.com/&quot;&gt;七牛的用户界面&lt;/a&gt;,创建一个空间,访问控制选择公开,然后点击一键加速网站,填写你的网站地址&lt;/p&gt;
 
 &lt;h3&gt;修改_config.xml&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;safe: false
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;safe: false
 cdn_url : http://bboniao.qiniudn.com
 JB :
 ASSET_PATH : false
 IMAGE_PATH : false
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;!-- more --&gt;
-
 
 &lt;h3&gt;修改_includes/JB/setup,&lt;/h3&gt;
 
 &lt;p&gt;这样的好处本地不会使用cdn,而发布到githup上使用&lt;code&gt;site.cdn_url&lt;/code&gt;上的资源&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/qiniu-cdn-jekyll-code.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/qiniu-cdn-jekyll-code.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
 
 &lt;h3&gt;说明&lt;/h3&gt;
 
-&lt;p&gt;/assets和/images下的资源会缓存到cdn,使用的时候用{{ ASSET_PATH }}和{{ IMAGE_PATH }}来代替.更改缓存的内容时,需要到七牛后台界面的空间设置--高级设置--去刷新&lt;/p&gt;
+&lt;p&gt;/assets和/images下的资源会缓存到cdn,使用的时候用{{ ASSET&lt;em&gt;PATH }}和{{ IMAGE&lt;/em&gt;PATH }}来代替.更改缓存的内容时,需要到七牛后台界面的空间设置--高级设置--去刷新&lt;/p&gt;
 </description>
-                <link>http://bboniao.com/jekyll/2014/03/09/jekyllcdn</link>
-                <guid>http://bboniao.com/jekyll/2014/03/09/jekyllcdn</guid>
+                <link>http://bboniao.com/jekyll/2014-03/jekyllcdn.html</link>
+                <guid>http://bboniao.com/jekyll/2014-03/jekyllcdn</guid>
                 <pubDate>2014-03-09T00:00:00+08:00</pubDate>
         </item>
 
@@ -53,15 +50,14 @@ IMAGE_PATH : false
 
 &lt;!-- more --&gt;
 
-
 &lt;p&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/tda2.2/tda.jar&quot;&gt;Thread Dump Analyzer.&lt;/a&gt;
 &lt;a href=&quot;http://sourceforge.net/projects/tdv/&quot;&gt;code地址&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/gchisto/gchisto.jar&quot;&gt;GC Histogram Tool,不支持G1.&lt;/a&gt;
-&lt;a href=&quot;https://svn.java.net/svn/tda~svn&quot;&gt;code地址&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&quot;https://svn.java.net/svn/tda%7Esvn&quot;&gt;code地址&lt;/a&gt;&lt;/p&gt;
 </description>
-                <link>http://bboniao.com/tools/2014/03/07/tools</link>
-                <guid>http://bboniao.com/tools/2014/03/07/tools</guid>
+                <link>http://bboniao.com/tools/2014-03/tools.html</link>
+                <guid>http://bboniao.com/tools/2014-03/tools</guid>
                 <pubDate>2014-03-07T00:00:00+08:00</pubDate>
         </item>
 
@@ -72,73 +68,65 @@ IMAGE_PATH : false
 &lt;p&gt;Hbase开启SLAB之后还是会产生很多碎片,导致Full GC.原因是BlockCache产生很多碎片,CMS对碎片无能为力.采用G1吞吐量与CMS相当&lt;/p&gt;
 
 &lt;h3&gt;我的参数配置&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code&gt;-Xmx24g -Xms24g -XX:PermSize=96m -XX:MaxPermSize=96m -XX:+UseG1GC -XX:SurvivorRatio=6 -XX:MaxGCPauseMillis=400 -XX:G1ReservePercent=15  -XX:InitiatingHeapOccupancyPercent=40 -XX:ConcGCThreads=8
-&lt;/code&gt;&lt;/pre&gt;
-
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;-Xmx24g -Xms24g -XX:PermSize=96m -XX:MaxPermSize=96m -XX:+UseG1GC -XX:SurvivorRatio=6 -XX:MaxGCPauseMillis=400 -XX:G1ReservePercent=15  -XX:InitiatingHeapOccupancyPercent=40 -XX:ConcGCThreads=8
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ol&gt;
 &lt;li&gt;新生代和region大小没有指定,G1可以更好的自动分配资源.&lt;/li&gt;
 &lt;li&gt;提高MaxGCPauseMillis,实时性要求没有太严格,可以提高吞吐量&lt;/li&gt;
 &lt;li&gt;提高G1ReservePercent,降低InitiatingHeapOccupancyPercent,提高ConcGCThreads因为遇到内存不足而产生了Full GC&lt;/li&gt;
 &lt;/ol&gt;
 
-
 &lt;!-- more --&gt;
-
 
 &lt;h3&gt;G1常用参数&lt;/h3&gt;
 
-&lt;table&gt;
-&lt;thead&gt;
+&lt;table&gt;&lt;thead&gt;
 &lt;tr&gt;
-&lt;th style=&quot;text-align:left;&quot;&gt;参数&lt;/th&gt;
-&lt;th style=&quot;text-align:left;&quot;&gt;描述&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;参数&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;描述&lt;/th&gt;
 &lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
+&lt;/thead&gt;&lt;tbody&gt;
 &lt;tr&gt;
-&lt;td style=&quot;text-align:left;&quot;&gt;-XX:+UseG1GC&lt;/td&gt;
-&lt;td style=&quot;text-align:left;&quot;&gt;开启G1&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;-XX:+UseG1GC&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;开启G1&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&quot;text-align:left;&quot;&gt;-XX:MaxGCPauseMillis=n&lt;/td&gt;
-&lt;td style=&quot;text-align:left;&quot;&gt;设置GC暂停的最大时间,这只是目标,尽量达到,默认值是 200 毫秒,&lt;code&gt;过小影响吞吐量&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;-XX:MaxGCPauseMillis=n&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;设置GC暂停的最大时间,这只是目标,尽量达到,默认值是 200 毫秒,&lt;code&gt;过小影响吞吐量&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&quot;text-align:left;&quot;&gt;-XX:InitiatingHeapOccupancyPercent=n&lt;/td&gt;
-&lt;td style=&quot;text-align:left;&quot;&gt;整个堆(而不是某个年代)使用量达到此值,便会触发并发GC周期.值为0则是连续触发,默认值为45&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;-XX:InitiatingHeapOccupancyPercent=n&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;整个堆(而不是某个年代)使用量达到此值,便会触发并发GC周期.值为0则是连续触发,默认值为45&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&quot;text-align:left;&quot;&gt;-XX:NewRatio=n&lt;/td&gt;
-&lt;td style=&quot;text-align:left;&quot;&gt;老年代与新生代的比值,默认值为2&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;-XX:NewRatio=n&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;老年代与新生代的比值,默认值为2&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&quot;text-align:left;&quot;&gt;-XX:SurvivorRatio=n&lt;/td&gt;
-&lt;td style=&quot;text-align:left;&quot;&gt;伊甸园代与生存代的比率,默认值为8&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;-XX:SurvivorRatio=n&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;伊甸园代与生存代的比率,默认值为8&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&quot;text-align:left;&quot;&gt;-XX:MaxTenuringThreshold=n&lt;/td&gt;
-&lt;td style=&quot;text-align:left;&quot;&gt;生存代存活的最大门限,默认值为15&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;-XX:MaxTenuringThreshold=n&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;生存代存活的最大门限,默认值为15&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&quot;text-align:left;&quot;&gt;-XX:ParallelGCThreads=n&lt;/td&gt;
-&lt;td style=&quot;text-align:left;&quot;&gt;设置垃圾回收器并行阶段的线程数,默认值与JVM运行的平台有关,&lt;code&gt;将 n 的值设置为逻辑处理器的数量&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;-XX:ParallelGCThreads=n&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;设置垃圾回收器并行阶段的线程数,默认值与JVM运行的平台有关,&lt;code&gt;将 n 的值设置为逻辑处理器的数量&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&quot;text-align:left;&quot;&gt;-XX:ConcGCThreads=n&lt;/td&gt;
-&lt;td style=&quot;text-align:left;&quot;&gt;设置并发垃圾回收器使用的线程数,默认值与JVM运行的平台有关&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;-XX:ConcGCThreads=n&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;设置并发垃圾回收器使用的线程数,默认值与JVM运行的平台有关&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&quot;text-align:left;&quot;&gt;-XX:G1ReservePercent=n&lt;/td&gt;
-&lt;td style=&quot;text-align:left;&quot;&gt;设置剩余的内存量,减少跃迁失败的可能,默认值为10&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;-XX:G1ReservePercent=n&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;设置剩余的内存量,减少跃迁失败的可能,默认值为10&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&quot;text-align:left;&quot;&gt;-XX:G1HeapRegionSize=n&lt;/td&gt;
-&lt;td style=&quot;text-align:left;&quot;&gt;设置G1平分java堆而产生区域的大小,默认值可以提供最大的工效性.最小值为1M,最大为32M,最多划分1024个,&lt;code&gt;建议使用默认值&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;-XX:G1HeapRegionSize=n&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;设置G1平分java堆而产生区域的大小,默认值可以提供最大的工效性.最小值为1M,最大为32M,最多划分1024个,&lt;code&gt;建议使用默认值&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
+&lt;/tbody&gt;&lt;/table&gt;
 
 &lt;h3&gt;标记周期的各个阶段&lt;/h3&gt;
 
@@ -150,7 +138,6 @@ IMAGE_PATH : false
 &lt;li&gt;&lt;strong&gt;清理阶段：&lt;/strong&gt;在这个最后阶段，G1 GC 执行统计和 RSet 净化的 &lt;code&gt;STW&lt;/code&gt; 操作。在统计期间，G1 GC 会识别完全空闲的区域和可供进行混合垃圾回收的区域。清理阶段在将空白区域重置并返回到空闲列表时为部分并发。&lt;/li&gt;
 &lt;/ol&gt;
 
-
 &lt;h3&gt;内存用尽造成Full GC&lt;/h3&gt;
 
 &lt;p&gt;查找&lt;code&gt;to-space exhausted&lt;/code&gt;和&lt;code&gt;to-space overflow&lt;/code&gt;,表示因内存不够产生Full GC&lt;/p&gt;
@@ -158,12 +145,11 @@ IMAGE_PATH : false
 &lt;ol&gt;
 &lt;li&gt;-XX:G1ReservePercent 增加预存内存量&lt;/li&gt;
 &lt;li&gt;-XX:InitiatingHeapOccupancyPercent 减少此值,提前启动标记周期&lt;/li&gt;
-&lt;li&gt;-XX:ConcGCThreads 增加并行标记线程的数目&lt;/li&gt;
+&lt;li&gt; -XX:ConcGCThreads 增加并行标记线程的数目&lt;/li&gt;
 &lt;/ol&gt;
-
 </description>
-                <link>http://bboniao.com/jvm/2014/03/07/g1garbage-first</link>
-                <guid>http://bboniao.com/jvm/2014/03/07/g1garbage-first</guid>
+                <link>http://bboniao.com/jvm/2014-03/g1garbage-first.html</link>
+                <guid>http://bboniao.com/jvm/2014-03/g1garbage-first</guid>
                 <pubDate>2014-03-07T00:00:00+08:00</pubDate>
         </item>
 

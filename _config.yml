@@ -1,10 +1,14 @@
 # This is the default format. 
 # For more see: http://jekyllrb.com/docs/permalinks/
-permalink: /:categories/:year/:month/:day/:title 
-markdown: rdiscount
+permalink: /:categories/:year-:month/:title.html
+
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 pygments: true
 paginate: 5
+
+markdown: redcarpet
+redcarpet:
+    extensions: ["fenced_code_blocks", "tables", "highlight", "strikethrough"]
 
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
@@ -15,7 +19,7 @@ author :
   name : bboniao
   email : bboniao@gmail.com
   github : bboniao
-  twitter : bboniao
+  weibo : bboniao
   feedburner : bboniao
 
 # The production_url is only used when full-domain names are needed
@@ -27,7 +31,7 @@ author :
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
 production_url : http://bboniao.com
-safe: false
+
 cdn_url : http://bboniao.qiniudn.com
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash

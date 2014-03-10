@@ -8,6 +8,6 @@ http://bboniao.com/rss.xml
 http://bboniao.com/sitemap.txt
 http://bboniao.com/tags.html
 
-http://bboniao.com/jekyll/2014/03/09/jekyllcdn
-http://bboniao.com/tools/2014/03/07/tools
-http://bboniao.com/jvm/2014/03/07/g1garbage-first
+http://bboniao.com/jekyll/2014-03/jekyllcdn.html
+http://bboniao.com/tools/2014-03/tools.html
+http://bboniao.com/jvm/2014-03/g1garbage-first.html
