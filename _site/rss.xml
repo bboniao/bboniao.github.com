@@ -5,10 +5,58 @@
         <description>My Blog - bboniao</description>
         <link>http://bboniao.com</link>
         <link>http://bboniao.com</link>
-        <lastBuildDate>2014-03-10T19:35:21+08:00</lastBuildDate>
-        <pubDate>2014-03-10T19:35:21+08:00</pubDate>
+        <lastBuildDate>2014-03-10T19:46:56+08:00</lastBuildDate>
+        <pubDate>2014-03-10T19:46:56+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>test5</title>
+                <description></description>
+                <link>http://bboniao.com/test/2014-03/test5.html</link>
+                <guid>http://bboniao.com/test/2014-03/test5</guid>
+                <pubDate>2014-03-10T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>test4</title>
+                <description></description>
+                <link>http://bboniao.com/test/2014-03/test4.html</link>
+                <guid>http://bboniao.com/test/2014-03/test4</guid>
+                <pubDate>2014-03-10T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>test3</title>
+                <description></description>
+                <link>http://bboniao.com/test/2014-03/test3.html</link>
+                <guid>http://bboniao.com/test/2014-03/test3</guid>
+                <pubDate>2014-03-10T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>test2</title>
+                <description></description>
+                <link>http://bboniao.com/test/2014-03/test2.html</link>
+                <guid>http://bboniao.com/test/2014-03/test2</guid>
+                <pubDate>2014-03-10T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>test1</title>
+                <description></description>
+                <link>http://bboniao.com/test/2014-03/test1.html</link>
+                <guid>http://bboniao.com/test/2014-03/test1</guid>
+                <pubDate>2014-03-10T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>test</title>
+                <description></description>
+                <link>http://bboniao.com/test/2014-03/test.html</link>
+                <guid>http://bboniao.com/test/2014-03/test</guid>
+                <pubDate>2014-03-10T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>jekyll使用七牛的CDN</title>
