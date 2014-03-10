@@ -5,8 +5,8 @@
         <description>My Blog - bboniao</description>
         <link>http://bboniao.com</link>
         <link>http://bboniao.com</link>
-        <lastBuildDate>2014-03-10T16:57:33+08:00</lastBuildDate>
-        <pubDate>2014-03-10T16:57:33+08:00</pubDate>
+        <lastBuildDate>2014-03-10T19:35:21+08:00</lastBuildDate>
+        <pubDate>2014-03-10T19:35:21+08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -33,7 +33,7 @@ IMAGE_PATH : false
 
 &lt;h3&gt;说明&lt;/h3&gt;
 
-&lt;p&gt;/assets和/images下的资源会缓存到cdn,使用的时候用{{ ASSET&lt;em&gt;PATH }}和{{ IMAGE&lt;/em&gt;PATH }}来代替.更改缓存的内容时,需要到七牛后台界面的空间设置--高级设置--去刷新&lt;/p&gt;
+&lt;p&gt;/assets和/images下的资源会缓存到cdn,使用的时候用 {{ ASSET&lt;em&gt;PATH }} 和 {{ IMAGE&lt;/em&gt;PATH }} 来代替.更改缓存的内容时,需要到七牛后台界面的空间设置--高级设置--去刷新&lt;/p&gt;
 </description>
                 <link>http://bboniao.com/jekyll/2014-03/jekyllcdn.html</link>
                 <guid>http://bboniao.com/jekyll/2014-03/jekyllcdn</guid>

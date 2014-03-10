@@ -4,7 +4,7 @@
  <title>My Blog</title>
  <link href="http://bboniao.com/" rel="self"/>
  <link href="http://bboniao.com"/>
- <updated>2014-03-10T16:57:33+08:00</updated>
+ <updated>2014-03-10T19:35:21+08:00</updated>
  <id>http://bboniao.com</id>
  <author>
    <name>bboniao</name>
@@ -38,7 +38,7 @@ IMAGE_PATH : false
 
 &lt;h3&gt;说明&lt;/h3&gt;
 
-&lt;p&gt;/assets和/images下的资源会缓存到cdn,使用的时候用{{ ASSET&lt;em&gt;PATH }}和{{ IMAGE&lt;/em&gt;PATH }}来代替.更改缓存的内容时,需要到七牛后台界面的空间设置--高级设置--去刷新&lt;/p&gt;
+&lt;p&gt;/assets和/images下的资源会缓存到cdn,使用的时候用 {{ ASSET&lt;em&gt;PATH }} 和 {{ IMAGE&lt;/em&gt;PATH }} 来代替.更改缓存的内容时,需要到七牛后台界面的空间设置--高级设置--去刷新&lt;/p&gt;
 </content>
  </entry>
  
