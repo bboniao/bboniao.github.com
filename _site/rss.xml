@@ -5,57 +5,36 @@
         <description>My Blog - bboniao</description>
         <link>http://bboniao.com</link>
         <link>http://bboniao.com</link>
-        <lastBuildDate>2014-03-10T19:46:56+08:00</lastBuildDate>
-        <pubDate>2014-03-10T19:46:56+08:00</pubDate>
+        <lastBuildDate>2014-03-11T21:41:32+08:00</lastBuildDate>
+        <pubDate>2014-03-11T21:41:32+08:00</pubDate>
         <ttl>1800</ttl>
 
 
         <item>
-                <title>test5</title>
-                <description></description>
-                <link>http://bboniao.com/test/2014-03/test5.html</link>
-                <guid>http://bboniao.com/test/2014-03/test5</guid>
-                <pubDate>2014-03-10T00:00:00+08:00</pubDate>
-        </item>
+                <title>Java Mission Control</title>
+                <description>&lt;h3&gt;Mac上使用&lt;/h3&gt;
 
-        <item>
-                <title>test4</title>
-                <description></description>
-                <link>http://bboniao.com/test/2014-03/test4.html</link>
-                <guid>http://bboniao.com/test/2014-03/test4</guid>
-                <pubDate>2014-03-10T00:00:00+08:00</pubDate>
-        </item>
+&lt;p&gt;下载&lt;code&gt;jdk7u40&lt;/code&gt;以后的版本,执行&lt;code&gt;sudo jmc&lt;/code&gt;,使用管理员启动jmc.&lt;/p&gt;
 
-        <item>
-                <title>test3</title>
-                <description></description>
-                <link>http://bboniao.com/test/2014-03/test3.html</link>
-                <guid>http://bboniao.com/test/2014-03/test3</guid>
-                <pubDate>2014-03-10T00:00:00+08:00</pubDate>
-        </item>
+&lt;h3&gt;启动Java Flight Recorder (JFR)&lt;/h3&gt;
 
-        <item>
-                <title>test2</title>
-                <description></description>
-                <link>http://bboniao.com/test/2014-03/test2.html</link>
-                <guid>http://bboniao.com/test/2014-03/test2</guid>
-                <pubDate>2014-03-10T00:00:00+08:00</pubDate>
-        </item>
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;启动参数:&lt;/p&gt;
 
-        <item>
-                <title>test1</title>
-                <description></description>
-                <link>http://bboniao.com/test/2014-03/test1.html</link>
-                <guid>http://bboniao.com/test/2014-03/test1</guid>
-                <pubDate>2014-03-10T00:00:00+08:00</pubDate>
-        </item>
+&lt;p&gt;-Dcom.sun.management.jmxremote.port=7091 -Dcom.sun.management.jmxremote.rmi.port=7091 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false  -XX:+UnlockCommercialFeatures -XX:+FlightRecorder&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
-        <item>
-                <title>test</title>
-                <description></description>
-                <link>http://bboniao.com/test/2014-03/test.html</link>
-                <guid>http://bboniao.com/test/2014-03/test</guid>
-                <pubDate>2014-03-10T00:00:00+08:00</pubDate>
+&lt;!-- more --&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;额外启动端口:&lt;/p&gt;
+
+&lt;p&gt;jcmd 5596 ManagementAgent.start jmxremote.ssl=false jmxremote.port=7091 jmxremote.rmi.port=7091 jmxremote.authenticate=false jmxremote.autodiscovery=true &lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+                <link>http://bboniao.com/jvm/2014-03/java-mission-control.html</link>
+                <guid>http://bboniao.com/jvm/2014-03/java-mission-control</guid>
+                <pubDate>2014-03-11T00:00:00+08:00</pubDate>
         </item>
 
         <item>
@@ -115,8 +94,10 @@ IMAGE_PATH : false
 
 &lt;p&gt;Hbase开启SLAB之后还是会产生很多碎片,导致Full GC.原因是BlockCache产生很多碎片,CMS对碎片无能为力.采用G1吞吐量与CMS相当&lt;/p&gt;
 
-&lt;h3&gt;我的参数配置&lt;/h3&gt;
+&lt;h3&gt;我的参数配置(g1和cms)&lt;/h3&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;-Xmx24g -Xms24g -XX:PermSize=96m -XX:MaxPermSize=96m -XX:+UseG1GC -XX:SurvivorRatio=6 -XX:MaxGCPauseMillis=400 -XX:G1ReservePercent=15  -XX:InitiatingHeapOccupancyPercent=40 -XX:ConcGCThreads=8
+
+-Xmx24g -Xms24g -Xmn5g -XX:PermSize=96m -XX:MaxPermSize=96m -XX:SurvivorRatio=2 -XX:+UseConcMarkSweepGC -XX:CMSInitiatingOccupancyFraction=68 -XX:+UseCMSCompactAtFullCollection -XX:CMSFullGCsBeforeCompaction=0 -XX:+CMSConcurrentMTEnabled -XX:PretenureSizeThreshold=2097151 -XX:MaxTenuringThreshold=6 -XX:-OmitStackTraceInFastThrow -XX:+CMSScavengeBeforeRemark
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ol&gt;
 &lt;li&gt;新生代和region大小没有指定,G1可以更好的自动分配资源.&lt;/li&gt;

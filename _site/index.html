@@ -117,10 +117,6 @@ var _hmt = _hmt || [];
       
     
   
-    
-      
-    
-  
 
 
 
@@ -165,80 +161,116 @@ var _hmt = _hmt || [];
 
 
 <div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/test/2014-03/test5.html">test5</a></h2>
+  <h2 class="h2 entry-title"><a href="/jvm/2014-03/java-mission-control.html">Java Mission Control</a></h2>
   
-    
+    <h3>Mac上使用</h3>
+
+<p>下载<code>jdk7u40</code>以后的版本,执行<code>sudo jmc</code>,使用管理员启动jmc.</p>
+
+<h3>启动Java Flight Recorder (JFR)</h3>
+
+<ol>
+<li><p>启动参数:</p>
+
+<p>-Dcom.sun.management.jmxremote.port=7091 -Dcom.sun.management.jmxremote.rmi.port=7091 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false  -XX:+UnlockCommercialFeatures -XX:+FlightRecorder</p></li>
+</ol>
+
+
   
 
   <div class="status">
     <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 10 Mar 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/test/2014-03/test5.html#comments"> Comments</a>
+      <span class="glyphicon glyphicon-time"></span> 11 Mar 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/jvm/2014-03/java-mission-control.html#comments"> Comments</a>
     </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/jvm/2014-03/java-mission-control.html"><span class="readmore">Read More &raquo; </span></a>
     
     <div class="clearfix"></div>
   </div>
 </div>
 
 <div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/test/2014-03/test4.html">test4</a></h2>
+  <h2 class="h2 entry-title"><a href="/jekyll/2014-03/jekyllcdn.html">jekyll使用七牛的CDN</a></h2>
   
-    
+    <h3>注册七牛</h3>
+
+<p>进入<a href="https://portal.qiniu.com/">七牛的用户界面</a>,创建一个空间,访问控制选择公开,然后点击一键加速网站,填写你的网站地址</p>
+
+<h3>修改_config.xml</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">safe: false
+cdn_url : http://bboniao.qiniudn.com
+JB :
+ASSET_PATH : false
+IMAGE_PATH : false
+</code></pre></div>
+
   
 
   <div class="status">
     <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 10 Mar 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/test/2014-03/test4.html#comments"> Comments</a>
+      <span class="glyphicon glyphicon-time"></span> 09 Mar 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/jekyll/2014-03/jekyllcdn.html#comments"> Comments</a>
     </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/jekyll/2014-03/jekyllcdn.html"><span class="readmore">Read More &raquo; </span></a>
     
     <div class="clearfix"></div>
   </div>
 </div>
 
 <div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/test/2014-03/test3.html">test3</a></h2>
+  <h2 class="h2 entry-title"><a href="/tools/2014-03/tools.html">常用工具包收集</a></h2>
   
-    
+    <p><a href="https://github.com/bboniao/bboniao.github.com/releases/download/gcviewer-1.34-SNAPSHOT/gcviewer-1.34-SNAPSHOT.jar">GC Log分析工具,支持G1.</a>
+<a href="https://github.com/chewiebug/GCViewer">code地址</a></p>
+
+<p><a href="https://github.com/bboniao/bboniao.github.com/releases/download/tdv1.1/tdv1.1.jar">Thread Dump Viewer.</a>
+<a href="http://sourceforge.net/projects/tdv/">code地址</a></p>
+
+
   
 
   <div class="status">
     <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 10 Mar 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/test/2014-03/test3.html#comments"> Comments</a>
+      <span class="glyphicon glyphicon-time"></span> 07 Mar 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/tools/2014-03/tools.html#comments"> Comments</a>
     </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/tools/2014-03/tools.html"><span class="readmore">Read More &raquo; </span></a>
     
     <div class="clearfix"></div>
   </div>
 </div>
 
 <div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/test/2014-03/test2.html">test2</a></h2>
+  <h2 class="h2 entry-title"><a href="/jvm/2014-03/g1garbage-first.html">G1(Garbage First)的使用</a></h2>
   
-    
+    <h3>为什么采用G1</h3>
+
+<p>Hbase开启SLAB之后还是会产生很多碎片,导致Full GC.原因是BlockCache产生很多碎片,CMS对碎片无能为力.采用G1吞吐量与CMS相当</p>
+
+<h3>我的参数配置(g1和cms)</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">-Xmx24g -Xms24g -XX:PermSize=96m -XX:MaxPermSize=96m -XX:+UseG1GC -XX:SurvivorRatio=6 -XX:MaxGCPauseMillis=400 -XX:G1ReservePercent=15  -XX:InitiatingHeapOccupancyPercent=40 -XX:ConcGCThreads=8
+
+-Xmx24g -Xms24g -Xmn5g -XX:PermSize=96m -XX:MaxPermSize=96m -XX:SurvivorRatio=2 -XX:+UseConcMarkSweepGC -XX:CMSInitiatingOccupancyFraction=68 -XX:+UseCMSCompactAtFullCollection -XX:CMSFullGCsBeforeCompaction=0 -XX:+CMSConcurrentMTEnabled -XX:PretenureSizeThreshold=2097151 -XX:MaxTenuringThreshold=6 -XX:-OmitStackTraceInFastThrow -XX:+CMSScavengeBeforeRemark
+</code></pre></div>
+<ol>
+<li>新生代和region大小没有指定,G1可以更好的自动分配资源.</li>
+<li>提高MaxGCPauseMillis,实时性要求没有太严格,可以提高吞吐量</li>
+<li>提高G1ReservePercent,降低InitiatingHeapOccupancyPercent,提高ConcGCThreads因为遇到内存不足而产生了Full GC</li>
+</ol>
+
+
   
 
   <div class="status">
     <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 10 Mar 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/test/2014-03/test2.html#comments"> Comments</a>
+      <span class="glyphicon glyphicon-time"></span> 07 Mar 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/jvm/2014-03/g1garbage-first.html#comments"> Comments</a>
     </div>
     
-    <div class="clearfix"></div>
-  </div>
-</div>
-
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/test/2014-03/test1.html">test1</a></h2>
-  
-    
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 10 Mar 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/test/2014-03/test1.html#comments"> Comments</a>
-    </div>
+    <a class="btn btn-default btn-sm pull-right" href="/jvm/2014-03/g1garbage-first.html"><span class="readmore">Read More &raquo; </span></a>
     
     <div class="clearfix"></div>
   </div>
@@ -251,10 +283,10 @@ var _hmt = _hmt || [];
     <span><a class="btn btn-default btn-sm disabled" href="/">Home</a></span>
     <span><a class="btn btn-default btn-sm disabled">&laquo; Prev</a></span>
   
-  <span><a class="btn btn-default btn-sm disabled">Page: 1 of 2</a></span>
+  <span><a class="btn btn-default btn-sm disabled">Page: 1 of 1</a></span>
   
-    <a class="btn btn-default btn-sm" href="/page2/">Next &raquo;</a>
-    <a class="btn btn-default btn-sm" href="/page2/">Last</a>
+    <span><a class="btn btn-default btn-sm disabled">Next &raquo;</a></span>
+    <span><a class="btn btn-default btn-sm disabled">Last</a></span>
   
 </div>
 
@@ -275,7 +307,7 @@ var _hmt = _hmt || [];
   
      
     	<li><a href="/categories.html#jvm-ref">
-    		jvm <span>1</span>
+    		jvm <span>2</span>
     	</a></li>
      
     	<li><a href="/categories.html#tools-ref">
@@ -284,10 +316,6 @@ var _hmt = _hmt || [];
      
     	<li><a href="/categories.html#jekyll-ref">
     		jekyll <span>1</span>
-    	</a></li>
-     
-    	<li><a href="/categories.html#test-ref">
-    		test <span>6</span>
     	</a></li>
     
   
@@ -303,17 +331,7 @@ var _hmt = _hmt || [];
        <div class="category">
          <ul>
            
-           <li><a href="/test/2014-03/test5.html">test5</a></li>
-           
-           <li><a href="/test/2014-03/test4.html">test4</a></li>
-           
-           <li><a href="/test/2014-03/test3.html">test3</a></li>
-           
-           <li><a href="/test/2014-03/test2.html">test2</a></li>
-           
-           <li><a href="/test/2014-03/test1.html">test1</a></li>
-           
-           <li><a href="/test/2014-03/test.html">test</a></li>
+           <li><a href="/jvm/2014-03/java-mission-control.html">Java Mission Control</a></li>
            
            <li><a href="/jekyll/2014-03/jekyllcdn.html">jekyll使用七牛的CDN</a></li>
            
