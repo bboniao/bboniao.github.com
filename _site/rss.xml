@@ -5,20 +5,76 @@
         <description>My Blog - bboniao</description>
         <link>http://bboniao.com</link>
         <link>http://bboniao.com</link>
-        <lastBuildDate>2014-03-12T15:40:32+08:00</lastBuildDate>
-        <pubDate>2014-03-12T15:40:32+08:00</pubDate>
+        <lastBuildDate>2014-03-13T21:22:46+08:00</lastBuildDate>
+        <pubDate>2014-03-13T21:22:46+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>Linux小技巧</title>
+                <description>&lt;h3&gt;查找wio过高进程&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;/etc/init.d/syslog stop&lt;/li&gt;
+&lt;li&gt;echo 1 &amp;gt; /proc/sys/vm/block_dump&lt;/li&gt;
+&lt;li&gt;dmesg | egrep &amp;quot;READ|WRITE|dirtied&amp;quot; | egrep -o &amp;#39;([a-zA-Z]*)&amp;#39; | sort | uniq -c | sort -rn | head&lt;/li&gt;
+&lt;li&gt;echo 0 &amp;gt; /proc/sys/vm/block_dump&lt;/li&gt;
+&lt;li&gt;/etc/init.d/syslog start&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h3&gt;Linux分析jvm的cpu性能瓶颈&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;使用ps aux找到jvm的pid&lt;/li&gt;
+&lt;li&gt;执行top -H -p &amp;lt;pid&amp;gt;，可显示出该进程下的所有线程。找到占用cpu最多的子线程pid，并将其转换为16进制&lt;/li&gt;
+&lt;li&gt;jstack 子&lt;pid&gt; 查找&amp;quot;nid=16进制子pid&amp;quot;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+                <link>http://bboniao.com/linux/2014-03/linux-trip.html</link>
+                <guid>http://bboniao.com/linux/2014-03/linux-trip</guid>
+                <pubDate>2014-03-13T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>JVM常用的参数说明</title>
+                <description>&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;参数&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;-Djava.io.tmpdir&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;指定目录,可以避免jps找不到pid&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;-XX:+PrintFlagsFinal&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;打印jvm参数的默认值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;-XX:+PrintCommandLineFlags&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;打印与默认值不同的参数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;!-- more --&gt;
+</description>
+                <link>http://bboniao.com/jvm/2014-03/jvm-parameter.html</link>
+                <guid>http://bboniao.com/jvm/2014-03/jvm-parameter</guid>
+                <pubDate>2014-03-13T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>Java Mission Control</title>
                 <description>&lt;h3&gt;Mac上使用&lt;/h3&gt;
 
 &lt;ol&gt;
-&lt;li&gt;下载&lt;code&gt;jdk7u40&lt;/code&gt;以后的版本,执行&lt;code&gt;sudo jmc&lt;/code&gt;,使用管理员启动jmc.&lt;/li&gt;
+&lt;li&gt;下载&lt;code&gt;jdk7u40&lt;/code&gt;以后的版本,执行jmc.mac os上暂时用不了,但可以用方法2&lt;/li&gt;
 &lt;li&gt;使用eclipse:
 &lt;a href=&quot;http://archive.eclipse.org/eclipse/downloads/drops/R-3.8-201206081200/download.php?dropFile=eclipse-platform-3.8-macosx-cocoa-x86_64.tar.gz&quot;&gt;eclipse3.8&lt;/a&gt;
-&lt;a href=&quot;https://download.oracle.com/technology/products/missioncontrol/updatesites/experimental/5.2.0/eclipse/&quot;&gt;插件路径&lt;/a&gt;&lt;/li&gt;
+使用其他平台jdk的jmc更新完插件,拷贝JAVA_HOME/lib/missioncontrol/plugins下的jar包到eclipse/plugins即可&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h3&gt;启动Java Flight Recorder (JFR)&lt;/h3&gt;
@@ -80,13 +136,15 @@ IMAGE_PATH : false
 &lt;p&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/tdv1.1/tdv1.1.jar&quot;&gt;Thread Dump Viewer.&lt;/a&gt;
 &lt;a href=&quot;http://sourceforge.net/projects/tdv/&quot;&gt;code地址&lt;/a&gt;&lt;/p&gt;
 
-&lt;!-- more --&gt;
-
 &lt;p&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/tda2.2/tda.jar&quot;&gt;Thread Dump Analyzer.&lt;/a&gt;
 &lt;a href=&quot;http://sourceforge.net/projects/tdv/&quot;&gt;code地址&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/gchisto/gchisto.jar&quot;&gt;GC Histogram Tool,不支持G1.&lt;/a&gt;
 &lt;a href=&quot;https://svn.java.net/svn/tda%7Esvn&quot;&gt;code地址&lt;/a&gt;&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/cmdline-jmxclient-0.10.3/cmdline-jmxclient-0.10.3.jar&quot;&gt;shell 调用jmx接口&lt;/a&gt;&lt;/p&gt;
 </description>
                 <link>http://bboniao.com/tools/2014-03/tools.html</link>
                 <guid>http://bboniao.com/tools/2014-03/tools</guid>

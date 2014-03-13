@@ -117,6 +117,10 @@ var _hmt = _hmt || [];
       
     
   
+    
+      
+    
+  
 
 
 
@@ -161,15 +165,81 @@ var _hmt = _hmt || [];
 
 
 <div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/linux/2014-03/linux-trip.html">Linux小技巧</a></h2>
+  
+    <h3>查找wio过高进程</h3>
+
+<ol>
+<li>/etc/init.d/syslog stop</li>
+<li>echo 1 &gt; /proc/sys/vm/block_dump</li>
+<li>dmesg | egrep &quot;READ|WRITE|dirtied&quot; | egrep -o &#39;([a-zA-Z]*)&#39; | sort | uniq -c | sort -rn | head</li>
+<li>echo 0 &gt; /proc/sys/vm/block_dump</li>
+<li>/etc/init.d/syslog start</li>
+</ol>
+
+
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 13 Mar 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/linux/2014-03/linux-trip.html#comments"> Comments</a>
+    </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/linux/2014-03/linux-trip.html"><span class="readmore">Read More &raquo; </span></a>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/jvm/2014-03/jvm-parameter.html">JVM常用的参数说明</a></h2>
+  
+    <table><thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">-Djava.io.tmpdir</td>
+<td align="left">指定目录,可以避免jps找不到pid</td>
+</tr>
+<tr>
+<td align="left">-XX:+PrintFlagsFinal</td>
+<td align="left">打印jvm参数的默认值</td>
+</tr>
+<tr>
+<td align="left">-XX:+PrintCommandLineFlags</td>
+<td align="left">打印与默认值不同的参数</td>
+</tr>
+</tbody></table>
+
+
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 13 Mar 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/jvm/2014-03/jvm-parameter.html#comments"> Comments</a>
+    </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/jvm/2014-03/jvm-parameter.html"><span class="readmore">Read More &raquo; </span></a>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<div class="wrapper">
   <h2 class="h2 entry-title"><a href="/jvm/2014-03/java-mission-control.html">Java Mission Control</a></h2>
   
     <h3>Mac上使用</h3>
 
 <ol>
-<li>下载<code>jdk7u40</code>以后的版本,执行<code>sudo jmc</code>,使用管理员启动jmc.</li>
+<li>下载<code>jdk7u40</code>以后的版本,执行jmc.mac os上暂时用不了,但可以用方法2</li>
 <li>使用eclipse:
 <a href="http://archive.eclipse.org/eclipse/downloads/drops/R-3.8-201206081200/download.php?dropFile=eclipse-platform-3.8-macosx-cocoa-x86_64.tar.gz">eclipse3.8</a>
-<a href="https://download.oracle.com/technology/products/missioncontrol/updatesites/experimental/5.2.0/eclipse/">插件路径</a></li>
+使用其他平台jdk的jmc更新完插件,拷贝JAVA_HOME/lib/missioncontrol/plugins下的jar包到eclipse/plugins即可</li>
 </ol>
 
 <h3>启动Java Flight Recorder (JFR)</h3>
@@ -233,6 +303,12 @@ IMAGE_PATH : false
 <p><a href="https://github.com/bboniao/bboniao.github.com/releases/download/tdv1.1/tdv1.1.jar">Thread Dump Viewer.</a>
 <a href="http://sourceforge.net/projects/tdv/">code地址</a></p>
 
+<p><a href="https://github.com/bboniao/bboniao.github.com/releases/download/tda2.2/tda.jar">Thread Dump Analyzer.</a>
+<a href="http://sourceforge.net/projects/tdv/">code地址</a></p>
+
+<p><a href="https://github.com/bboniao/bboniao.github.com/releases/download/gchisto/gchisto.jar">GC Histogram Tool,不支持G1.</a>
+<a href="https://svn.java.net/svn/tda%7Esvn">code地址</a></p>
+
 
   
 
@@ -248,39 +324,6 @@ IMAGE_PATH : false
   </div>
 </div>
 
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/jvm/2014-03/g1garbage-first.html">G1(Garbage First)的使用</a></h2>
-  
-    <h3>为什么采用G1</h3>
-
-<p>Hbase开启SLAB之后还是会产生很多碎片,导致Full GC.原因是BlockCache产生很多碎片,CMS对碎片无能为力.采用G1吞吐量与CMS相当</p>
-
-<h3>我的参数配置(g1和cms)</h3>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">-Xmx24g -Xms24g -XX:PermSize=96m -XX:MaxPermSize=96m -XX:+UseG1GC -XX:SurvivorRatio=6 -XX:MaxGCPauseMillis=400 -XX:G1ReservePercent=15  -XX:InitiatingHeapOccupancyPercent=40 -XX:ConcGCThreads=8
-
--Xmx24g -Xms24g -Xmn5g -XX:PermSize=96m -XX:MaxPermSize=96m -XX:SurvivorRatio=2 -XX:+UseConcMarkSweepGC -XX:CMSInitiatingOccupancyFraction=68 -XX:+UseCMSCompactAtFullCollection -XX:CMSFullGCsBeforeCompaction=0 -XX:+CMSConcurrentMTEnabled -XX:PretenureSizeThreshold=2097151 -XX:MaxTenuringThreshold=6 -XX:-OmitStackTraceInFastThrow -XX:+CMSScavengeBeforeRemark
-</code></pre></div>
-<ol>
-<li>新生代和region大小没有指定,G1可以更好的自动分配资源.</li>
-<li>提高MaxGCPauseMillis,实时性要求没有太严格,可以提高吞吐量</li>
-<li>提高G1ReservePercent,降低InitiatingHeapOccupancyPercent,提高ConcGCThreads因为遇到内存不足而产生了Full GC</li>
-</ol>
-
-
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 07 Mar 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/jvm/2014-03/g1garbage-first.html#comments"> Comments</a>
-    </div>
-    
-    <a class="btn btn-default btn-sm pull-right" href="/jvm/2014-03/g1garbage-first.html"><span class="readmore">Read More &raquo; </span></a>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-
 
 <!-- Pagination links -->
 <div class="pull-right">
@@ -288,10 +331,10 @@ IMAGE_PATH : false
     <span><a class="btn btn-default btn-sm disabled" href="/">Home</a></span>
     <span><a class="btn btn-default btn-sm disabled">&laquo; Prev</a></span>
   
-  <span><a class="btn btn-default btn-sm disabled">Page: 1 of 1</a></span>
+  <span><a class="btn btn-default btn-sm disabled">Page: 1 of 2</a></span>
   
-    <span><a class="btn btn-default btn-sm disabled">Next &raquo;</a></span>
-    <span><a class="btn btn-default btn-sm disabled">Last</a></span>
+    <a class="btn btn-default btn-sm" href="/page2/">Next &raquo;</a>
+    <a class="btn btn-default btn-sm" href="/page2/">Last</a>
   
 </div>
 
@@ -312,7 +355,7 @@ IMAGE_PATH : false
   
      
     	<li><a href="/categories.html#jvm-ref">
-    		jvm <span>2</span>
+    		jvm <span>3</span>
     	</a></li>
      
     	<li><a href="/categories.html#tools-ref">
@@ -321,6 +364,10 @@ IMAGE_PATH : false
      
     	<li><a href="/categories.html#jekyll-ref">
     		jekyll <span>1</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#linux-ref">
+    		linux <span>1</span>
     	</a></li>
     
   
@@ -335,6 +382,10 @@ IMAGE_PATH : false
        <h4>Recently Posts</h4>
        <div class="category">
          <ul>
+           
+           <li><a href="/linux/2014-03/linux-trip.html">Linux小技巧</a></li>
+           
+           <li><a href="/jvm/2014-03/jvm-parameter.html">JVM常用的参数说明</a></li>
            
            <li><a href="/jvm/2014-03/java-mission-control.html">Java Mission Control</a></li>
            

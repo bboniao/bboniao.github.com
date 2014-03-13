@@ -7,7 +7,10 @@ http://bboniao.com/pages.html
 http://bboniao.com/rss.xml
 http://bboniao.com/sitemap.txt
 http://bboniao.com/tags.html
+http://bboniao.com/page2/index.html
 
+http://bboniao.com/linux/2014-03/linux-trip.html
+http://bboniao.com/jvm/2014-03/jvm-parameter.html
 http://bboniao.com/jvm/2014-03/java-mission-control.html
 http://bboniao.com/jekyll/2014-03/jekyllcdn.html
 http://bboniao.com/tools/2014-03/tools.html
