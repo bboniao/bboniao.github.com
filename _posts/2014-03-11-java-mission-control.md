@@ -9,10 +9,10 @@ tags: jmc
 
 ###Mac上使用
 
-1. 下载`jdk7u40`以后的版本,执行`sudo jmc`,使用管理员启动jmc.
+1. 下载`jdk7u40`以后的版本,执行jmc.mac os上暂时用不了,但可以用方法2
 2. 使用eclipse:
   [eclipse3.8](http://archive.eclipse.org/eclipse/downloads/drops/R-3.8-201206081200/download.php?dropFile=eclipse-platform-3.8-macosx-cocoa-x86_64.tar.gz)
-  [插件路径](https://download.oracle.com/technology/products/missioncontrol/updatesites/experimental/5.2.0/eclipse/)
+  使用其他平台jdk的jmc更新完插件,拷贝JAVA_HOME/lib/missioncontrol/plugins下的jar包到eclipse/plugins即可
 
 ###启动Java Flight Recorder (JFR)
 
