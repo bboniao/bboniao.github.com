@@ -9,6 +9,9 @@ http://bboniao.com/sitemap.txt
 http://bboniao.com/tags.html
 http://bboniao.com/page2/index.html
 
+http://bboniao.com/java/2014-03/jmeter.html
+http://bboniao.com/hadoop/2014-03/hadoop2hbase096.html
+http://bboniao.com/hadoop/2014-03/hadoop2-compile.html
 http://bboniao.com/linux/2014-03/linux-trip.html
 http://bboniao.com/jvm/2014-03/jvm-parameter.html
 http://bboniao.com/jvm/2014-03/java-mission-control.html

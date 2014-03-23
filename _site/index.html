@@ -165,6 +165,75 @@ var _hmt = _hmt || [];
 
 
 <div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/java/2014-03/jmeter.html">jmeter使用</a></h2>
+  
+    
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 15 Mar 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/java/2014-03/jmeter.html#comments"> Comments</a>
+    </div>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/hadoop/2014-03/hadoop2hbase096.html">hadoop2和hbase0.96的配置</a></h2>
+  
+    
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 15 Mar 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/hadoop/2014-03/hadoop2hbase096.html#comments"> Comments</a>
+    </div>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/hadoop/2014-03/hadoop2-compile.html">hadoop2 compile</a></h2>
+  
+    <h3>使用Maven 3.0</h3>
+
+<h3>安装依赖的包:</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">yum install gcc-c++ cmake zlib-devel
+</code></pre></div>
+<h3>安装protobuf</h3>
+
+<h3>编辑hadoop-common-project/hadoop-auth/pom.xml.添加</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&lt;dependency&gt;
+  &lt;groupId&gt;org.mortbay.jetty&lt;/groupId&gt;
+  &lt;artifactId&gt;jetty-util&lt;/artifactId&gt;
+  &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre></div>
+<h3>执行命令:</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">mvn package -Pdist,native -DskipTests -Dtar
+</code></pre></div>
+<h3>编译好的tar在hadoop-common-project/hadoop-common/target</h3>
+
+
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 15 Mar 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/hadoop/2014-03/hadoop2-compile.html#comments"> Comments</a>
+    </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/hadoop/2014-03/hadoop2-compile.html"><span class="readmore">Read More &raquo; </span></a>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<div class="wrapper">
   <h2 class="h2 entry-title"><a href="/linux/2014-03/linux-trip.html">Linux小技巧</a></h2>
   
     <h3>查找wio过高进程</h3>
@@ -230,100 +299,6 @@ var _hmt = _hmt || [];
   </div>
 </div>
 
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/jvm/2014-03/java-mission-control.html">Java Mission Control</a></h2>
-  
-    <h3>Mac上使用</h3>
-
-<ol>
-<li>下载<code>jdk7u40</code>以后的版本,执行jmc.mac os上暂时用不了,但可以用方法2</li>
-<li>使用eclipse:
-<a href="http://archive.eclipse.org/eclipse/downloads/drops/R-3.8-201206081200/download.php?dropFile=eclipse-platform-3.8-macosx-cocoa-x86_64.tar.gz">eclipse3.8</a>
-使用其他平台jdk的jmc更新完插件,拷贝JAVA_HOME/lib/missioncontrol/plugins下的jar包到eclipse/plugins即可</li>
-</ol>
-
-<h3>启动Java Flight Recorder (JFR)</h3>
-
-<ol>
-<li><p>启动参数:</p>
-
-<p>-Dcom.sun.management.jmxremote.port=7091 -Dcom.sun.management.jmxremote.rmi.port=7091 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false  -XX:+UnlockCommercialFeatures -XX:+FlightRecorder</p></li>
-</ol>
-
-
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 11 Mar 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/jvm/2014-03/java-mission-control.html#comments"> Comments</a>
-    </div>
-    
-    <a class="btn btn-default btn-sm pull-right" href="/jvm/2014-03/java-mission-control.html"><span class="readmore">Read More &raquo; </span></a>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/jekyll/2014-03/jekyllcdn.html">jekyll使用七牛的CDN</a></h2>
-  
-    <h3>注册七牛</h3>
-
-<p>进入<a href="https://portal.qiniu.com/">七牛的用户界面</a>,创建一个空间,访问控制选择公开,然后点击一键加速网站,填写你的网站地址</p>
-
-<h3>修改_config.xml</h3>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">safe: false
-cdn_url : http://bboniao.qiniudn.com
-JB :
-ASSET_PATH : false
-IMAGE_PATH : false
-</code></pre></div>
-
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 09 Mar 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/jekyll/2014-03/jekyllcdn.html#comments"> Comments</a>
-    </div>
-    
-    <a class="btn btn-default btn-sm pull-right" href="/jekyll/2014-03/jekyllcdn.html"><span class="readmore">Read More &raquo; </span></a>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/tools/2014-03/tools.html">常用工具包收集</a></h2>
-  
-    <p><a href="https://github.com/bboniao/bboniao.github.com/releases/download/gcviewer-1.34-SNAPSHOT/gcviewer-1.34-SNAPSHOT.jar">GC Log分析工具,支持G1.</a>
-<a href="https://github.com/chewiebug/GCViewer">code地址</a></p>
-
-<p><a href="https://github.com/bboniao/bboniao.github.com/releases/download/tdv1.1/tdv1.1.jar">Thread Dump Viewer.</a>
-<a href="http://sourceforge.net/projects/tdv/">code地址</a></p>
-
-<p><a href="https://github.com/bboniao/bboniao.github.com/releases/download/tda2.2/tda.jar">Thread Dump Analyzer.</a>
-<a href="http://sourceforge.net/projects/tdv/">code地址</a></p>
-
-<p><a href="https://github.com/bboniao/bboniao.github.com/releases/download/gchisto/gchisto.jar">GC Histogram Tool,不支持G1.</a>
-<a href="https://svn.java.net/svn/tda%7Esvn">code地址</a></p>
-
-
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 07 Mar 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/tools/2014-03/tools.html#comments"> Comments</a>
-    </div>
-    
-    <a class="btn btn-default btn-sm pull-right" href="/tools/2014-03/tools.html"><span class="readmore">Read More &raquo; </span></a>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-
 
 <!-- Pagination links -->
 <div class="pull-right">
@@ -369,6 +344,14 @@ IMAGE_PATH : false
     	<li><a href="/categories.html#linux-ref">
     		linux <span>1</span>
     	</a></li>
+     
+    	<li><a href="/categories.html#hadoop-ref">
+    		hadoop <span>2</span>
+    	</a></li>
+     
+    	<li><a href="/categories.html#java-ref">
+    		java <span>1</span>
+    	</a></li>
     
   
 
@@ -382,6 +365,12 @@ IMAGE_PATH : false
        <h4>Recently Posts</h4>
        <div class="category">
          <ul>
+           
+           <li><a href="/java/2014-03/jmeter.html">jmeter使用</a></li>
+           
+           <li><a href="/hadoop/2014-03/hadoop2hbase096.html">hadoop2和hbase0.96的配置</a></li>
+           
+           <li><a href="/hadoop/2014-03/hadoop2-compile.html">hadoop2 compile</a></li>
            
            <li><a href="/linux/2014-03/linux-trip.html">Linux小技巧</a></li>
            
