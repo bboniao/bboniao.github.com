@@ -9,6 +9,7 @@ http://bboniao.com/sitemap.txt
 http://bboniao.com/tags.html
 http://bboniao.com/page2/index.html
 
+http://bboniao.com/java/2014-03/resin-load.html
 http://bboniao.com/java/2014-03/jmeter.html
 http://bboniao.com/hadoop/2014-03/hadoop2hbase096.html
 http://bboniao.com/hadoop/2014-03/hadoop2-compile.html

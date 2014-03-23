@@ -165,6 +165,36 @@ var _hmt = _hmt || [];
 
 
 <div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/java/2014-03/resin-load.html">记录一次resin load过高的解决过程</a></h2>
+  
+    <h5>1.使用<a href="https://github.com/bboniao/bboniao.github.com/releases/download/0.2.6/housemd-0.2.6.zip">housemd</a>统计方法耗时,<a href="https://github.com/CSUG/HouseMD/wiki/UserGuideCN">中文说明</a></h5>
+
+<p><code>./housewd $jvm_pid</code></p>
+
+<p><code>trace -d  -l 50000 -t 50000 ClassName</code></p>
+
+<h5>2.使用ss统计tcp信息,参照<a href="http://www.ttlsa.com/linux-command/ss-replace-netstat/">文章</a></h5>
+
+<p><code>ss -s</code></p>
+
+<p><code>ss -t -a | grep ESTAB</code></p>
+
+
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 23 Mar 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/java/2014-03/resin-load.html#comments"> Comments</a>
+    </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/java/2014-03/resin-load.html"><span class="readmore">Read More &raquo; </span></a>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<div class="wrapper">
   <h2 class="h2 entry-title"><a href="/java/2014-03/jmeter.html">jmeter使用</a></h2>
   
     
@@ -261,44 +291,6 @@ var _hmt = _hmt || [];
   </div>
 </div>
 
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/jvm/2014-03/jvm-parameter.html">JVM常用的参数说明</a></h2>
-  
-    <table><thead>
-<tr>
-<th align="left">参数</th>
-<th align="left">描述</th>
-</tr>
-</thead><tbody>
-<tr>
-<td align="left">-Djava.io.tmpdir</td>
-<td align="left">指定目录,可以避免jps找不到pid</td>
-</tr>
-<tr>
-<td align="left">-XX:+PrintFlagsFinal</td>
-<td align="left">打印jvm参数的默认值</td>
-</tr>
-<tr>
-<td align="left">-XX:+PrintCommandLineFlags</td>
-<td align="left">打印与默认值不同的参数</td>
-</tr>
-</tbody></table>
-
-
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 13 Mar 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/jvm/2014-03/jvm-parameter.html#comments"> Comments</a>
-    </div>
-    
-    <a class="btn btn-default btn-sm pull-right" href="/jvm/2014-03/jvm-parameter.html"><span class="readmore">Read More &raquo; </span></a>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-
 
 <!-- Pagination links -->
 <div class="pull-right">
@@ -350,7 +342,7 @@ var _hmt = _hmt || [];
     	</a></li>
      
     	<li><a href="/categories.html#java-ref">
-    		java <span>1</span>
+    		java <span>2</span>
     	</a></li>
     
   
@@ -365,6 +357,8 @@ var _hmt = _hmt || [];
        <h4>Recently Posts</h4>
        <div class="category">
          <ul>
+           
+           <li><a href="/java/2014-03/resin-load.html">记录一次resin load过高的解决过程</a></li>
            
            <li><a href="/java/2014-03/jmeter.html">jmeter使用</a></li>
            

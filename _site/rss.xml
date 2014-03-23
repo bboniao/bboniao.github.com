@@ -5,10 +5,43 @@
         <description>My Blog - bboniao</description>
         <link>http://bboniao.com</link>
         <link>http://bboniao.com</link>
-        <lastBuildDate>2014-03-23T13:23:33+08:00</lastBuildDate>
-        <pubDate>2014-03-23T13:23:33+08:00</pubDate>
+        <lastBuildDate>2014-03-23T14:16:12+08:00</lastBuildDate>
+        <pubDate>2014-03-23T14:16:12+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>记录一次resin load过高的解决过程</title>
+                <description>&lt;h5&gt;1.使用&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/0.2.6/housemd-0.2.6.zip&quot;&gt;housemd&lt;/a&gt;统计方法耗时,&lt;a href=&quot;https://github.com/CSUG/HouseMD/wiki/UserGuideCN&quot;&gt;中文说明&lt;/a&gt;&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;./housewd $jvm_pid&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;trace -d  -l 50000 -t 50000 ClassName&lt;/code&gt;&lt;/p&gt;
+
+&lt;h5&gt;2.使用ss统计tcp信息,参照&lt;a href=&quot;http://www.ttlsa.com/linux-command/ss-replace-netstat/&quot;&gt;文章&lt;/a&gt;&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;ss -s&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ss -t -a | grep ESTAB&lt;/code&gt;&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h5&gt;3.统计java各个线程的个数&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;jstack $jvm_pid | grep &amp;#39;nid=&amp;#39; | awk -F &amp;#39;-&amp;#39; &amp;#39;{print $1}&amp;#39; | awk &amp;#39;{++S[$0]} END {for (a in S) print S[a],a}&amp;#39; | sort -nr&lt;/code&gt;&lt;/p&gt;
+
+&lt;h5&gt;4.统计各个状态线程的个数&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;jstack $jvm_pid | grep java.lang.Thread.State | awk &amp;#39;{++S[$0]} END {for (a in S) print S[a],a}&amp;#39; | sort -nr&lt;/code&gt;&lt;/p&gt;
+
+&lt;h5&gt;5.查找哪些线程cpu使用过高&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;jstack $jvm_pid &amp;gt; jstack01 &amp;amp;&amp;amp; ps mp $jvm_pid -o THREAD,tid,time | sort -k2nr | awk &amp;#39;{printf(&amp;quot;%x&amp;quot;,$8)}{print &amp;quot; &amp;quot;,($2&amp;quot;%&amp;quot;),&amp;quot; &amp;quot;,$9}&amp;#39; | head -30&lt;/code&gt;&lt;/p&gt;
+</description>
+                <link>http://bboniao.com/java/2014-03/resin-load.html</link>
+                <guid>http://bboniao.com/java/2014-03/resin-load</guid>
+                <pubDate>2014-03-23T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>jmeter使用</title>
