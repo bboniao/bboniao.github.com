@@ -171,7 +171,36 @@ var _hmt = _hmt || [];
 <div class="wrapper">
   <h2 class="h2 entry-title"><a href="/java/2014-04/a-better-log4j-smtpappender.html">A Better Log4j SMTPAppender</a></h2>
   
-    log4j配置mail发送log,会有多少发多少,如下改动可以在指定时间内发送指定次数的log java代码 package com.sohu.rc.util; import org.apache.log4j.net.SMTPAppender; public class LimitedSMTPAppender extends SMTPAppender { private int limit = 10; // max at 10 mails ... private int cycleSeconds = 3600; // ... per hour public void setLimit(int limit) { this.limit = limit; } public void setCycleSeconds(int cycleSeconds) { this.cycleSeconds = cycleSeconds; }...
+    <h3>log4j配置mail发送log,会有多少发多少,如下改动可以在指定时间内发送指定次数的log</h3>
+
+<h3>java代码</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">package com.sohu.rc.util;
+import org.apache.log4j.net.SMTPAppender;
+public class LimitedSMTPAppender extends SMTPAppender {
+    private int limit = 10; // max at 10 mails ...
+    private int cycleSeconds = 3600; // ... per hour
+    public void setLimit(int limit) {
+        this.limit = limit;
+    }
+    public void setCycleSeconds(int cycleSeconds) {
+        this.cycleSeconds = cycleSeconds;
+    }
+    private int lastVisited;
+    private long lastCycle;
+    @Override
+    protected boolean checkEntryConditions() {
+        final long now = System.currentTimeMillis();
+        final long thisCycle = now - (now % (1000L * cycleSeconds));
+        if (lastCycle != thisCycle) {
+            lastCycle = thisCycle;
+            lastVisited = 0;
+        }
+        lastVisited++;
+        return super.checkEntryConditions() &amp;&amp; lastVisited &lt;= limit;
+    }
+}
+</code></pre></div>
+
   
 
   <div class="status">
@@ -179,6 +208,8 @@ var _hmt = _hmt || [];
       <span class="glyphicon glyphicon-time"></span> 12 Apr 2014
       <span class="glyphicon glyphicon-comment"></span><a href="/java/2014-04/a-better-log4j-smtpappender.html#comments"> Comments</a>
     </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/java/2014-04/a-better-log4j-smtpappender.html"><span class="readmore">Read More &raquo; </span></a>
     
     <div class="clearfix"></div>
   </div>

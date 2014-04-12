@@ -36,7 +36,7 @@ tags: log4j
             return super.checkEntryConditions() && lastVisited <= limit;
         }
     }
-
+<!-- more -->
 ###log4j.properties的配置
     log4j.rootLogger=info,mail
     log4j.threshhold=ALL

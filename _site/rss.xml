@@ -5,8 +5,8 @@
         <description>My Blog - bboniao</description>
         <link>http://bboniao.com</link>
         <link>http://bboniao.com</link>
-        <lastBuildDate>2014-04-12T20:56:38+08:00</lastBuildDate>
-        <pubDate>2014-04-12T20:56:38+08:00</pubDate>
+        <lastBuildDate>2014-04-12T20:59:14+08:00</lastBuildDate>
+        <pubDate>2014-04-12T20:59:14+08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -41,6 +41,8 @@ public class LimitedSMTPAppender extends SMTPAppender {
     }
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;!-- more --&gt;
+
 &lt;h3&gt;log4j.properties的配置&lt;/h3&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;log4j.rootLogger=info,mail
 log4j.threshhold=ALL
@@ -63,7 +65,7 @@ log4j.appender.mail.layout.ConversionPattern=[%-5p] %d(%r) --&amp;gt; [%t] %l: %
 
 &lt;h5&gt;hbase:打开bin/hbase-daemon.sh,配置&lt;code&gt;HBASE_ROOT_LOGGER&lt;/code&gt;&lt;/h5&gt;
 
-&lt;h5&gt;否则log4j.properties中的&lt;code&gt;log4j.rootLogger=&lt;/code&gt;不会生效&lt;/h5&gt;
+&lt;h5&gt;否则log4j.properties中的&lt;code&gt;log4j.rootLogger&lt;/code&gt;不会生效&lt;/h5&gt;
 
 &lt;h3&gt;&lt;a href=&quot;http://blog.cherouvim.com/a-better-smtpappender/&quot;&gt;参考链接&lt;/a&gt;&lt;/h3&gt;
 </description>
