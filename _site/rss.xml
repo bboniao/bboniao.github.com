@@ -5,10 +5,27 @@
         <description>My Blog - bboniao</description>
         <link>http://bboniao.com</link>
         <link>http://bboniao.com</link>
-        <lastBuildDate>2014-03-23T14:16:12+08:00</lastBuildDate>
-        <pubDate>2014-03-23T14:16:12+08:00</pubDate>
+        <lastBuildDate>2014-04-12T20:19:43+08:00</lastBuildDate>
+        <pubDate>2014-04-12T20:19:43+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>Kill Zombie Process</title>
+                <description>&lt;h3&gt;查找僵尸进程&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;ps aux |awk &amp;#39;{print $8 &amp;quot; &amp;quot; $2}&amp;#39; |grep -w Z&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3&gt;查找此进程信息和父进程pid&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;ps -ef |grep $pid&lt;/code&gt;&lt;/p&gt;
+
+&lt;!-- more --&gt;
+</description>
+                <link>http://bboniao.com/linux/2014-04/kill-zombie-process.html</link>
+                <guid>http://bboniao.com/linux/2014-04/kill-zombie-process</guid>
+                <pubDate>2014-04-01T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>记录一次resin load过高的解决过程</title>
@@ -53,7 +70,32 @@
 
         <item>
                 <title>hadoop2和hbase0.96的配置</title>
-                <description></description>
+                <description>&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;集群&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;hadoop&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;hbase&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;资料库&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/tag/hadoop1.major.conf&quot;&gt;hadoop-1.0.3&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/tag/hbase92.major.conf&quot;&gt;hbase-0.92.1&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;标示库&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/tag/hadoop1.map.conf&quot;&gt;hadoop-1.0.3&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/tag/hbase92.map.conf&quot;&gt;hbase-0.92.1&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;测试库&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/tag/hadoop2.conf&quot;&gt;hadoop-2.2.0&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/tag/hbase96.conf&quot;&gt;hbase-0.96.1&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;!-- more --&gt;
+</description>
                 <link>http://bboniao.com/hadoop/2014-03/hadoop2hbase096.html</link>
                 <guid>http://bboniao.com/hadoop/2014-03/hadoop2hbase096</guid>
                 <pubDate>2014-03-15T00:00:00+08:00</pubDate>

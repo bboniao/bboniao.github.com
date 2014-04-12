@@ -121,6 +121,10 @@ var _hmt = _hmt || [];
       
     
   
+    
+      
+    
+  
 
 
 
@@ -163,6 +167,32 @@ var _hmt = _hmt || [];
     </div>
     <article>
 
+
+<div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/linux/2014-04/kill-zombie-process.html">Kill Zombie Process</a></h2>
+  
+    <h3>查找僵尸进程</h3>
+
+<p><code>ps aux |awk &#39;{print $8 &quot; &quot; $2}&#39; |grep -w Z</code></p>
+
+<h3>查找此进程信息和父进程pid</h3>
+
+<p><code>ps -ef |grep $pid</code></p>
+
+
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 01 Apr 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/linux/2014-04/kill-zombie-process.html#comments"> Comments</a>
+    </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/linux/2014-04/kill-zombie-process.html"><span class="readmore">Read More &raquo; </span></a>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
 
 <div class="wrapper">
   <h2 class="h2 entry-title"><a href="/java/2014-03/resin-load.html">记录一次resin load过高的解决过程</a></h2>
@@ -213,7 +243,31 @@ var _hmt = _hmt || [];
 <div class="wrapper">
   <h2 class="h2 entry-title"><a href="/hadoop/2014-03/hadoop2hbase096.html">hadoop2和hbase0.96的配置</a></h2>
   
-    
+    <table><thead>
+<tr>
+<th align="left">集群</th>
+<th align="left">hadoop</th>
+<th align="left">hbase</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">资料库</td>
+<td align="left"><a href="https://github.com/bboniao/bboniao.github.com/releases/tag/hadoop1.major.conf">hadoop-1.0.3</a></td>
+<td align="left"><a href="https://github.com/bboniao/bboniao.github.com/releases/tag/hbase92.major.conf">hbase-0.92.1</a></td>
+</tr>
+<tr>
+<td align="left">标示库</td>
+<td align="left"><a href="https://github.com/bboniao/bboniao.github.com/releases/tag/hadoop1.map.conf">hadoop-1.0.3</a></td>
+<td align="left"><a href="https://github.com/bboniao/bboniao.github.com/releases/tag/hbase92.map.conf">hbase-0.92.1</a></td>
+</tr>
+<tr>
+<td align="left">测试库</td>
+<td align="left"><a href="https://github.com/bboniao/bboniao.github.com/releases/tag/hadoop2.conf">hadoop-2.2.0</a></td>
+<td align="left"><a href="https://github.com/bboniao/bboniao.github.com/releases/tag/hbase96.conf">hbase-0.96.1</a></td>
+</tr>
+</tbody></table>
+
+
   
 
   <div class="status">
@@ -221,6 +275,8 @@ var _hmt = _hmt || [];
       <span class="glyphicon glyphicon-time"></span> 15 Mar 2014
       <span class="glyphicon glyphicon-comment"></span><a href="/hadoop/2014-03/hadoop2hbase096.html#comments"> Comments</a>
     </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/hadoop/2014-03/hadoop2hbase096.html"><span class="readmore">Read More &raquo; </span></a>
     
     <div class="clearfix"></div>
   </div>
@@ -263,34 +319,6 @@ var _hmt = _hmt || [];
   </div>
 </div>
 
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/linux/2014-03/linux-trip.html">Linux小技巧</a></h2>
-  
-    <h3>查找wio过高进程</h3>
-
-<ol>
-<li>/etc/init.d/syslog stop</li>
-<li>echo 1 &gt; /proc/sys/vm/block_dump</li>
-<li>dmesg | egrep &quot;READ|WRITE|dirtied&quot; | egrep -o &#39;([a-zA-Z]*)&#39; | sort | uniq -c | sort -rn | head</li>
-<li>echo 0 &gt; /proc/sys/vm/block_dump</li>
-<li>/etc/init.d/syslog start</li>
-</ol>
-
-
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 13 Mar 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/linux/2014-03/linux-trip.html#comments"> Comments</a>
-    </div>
-    
-    <a class="btn btn-default btn-sm pull-right" href="/linux/2014-03/linux-trip.html"><span class="readmore">Read More &raquo; </span></a>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-
 
 <!-- Pagination links -->
 <div class="pull-right">
@@ -298,10 +326,10 @@ var _hmt = _hmt || [];
     <span><a class="btn btn-default btn-sm disabled" href="/">Home</a></span>
     <span><a class="btn btn-default btn-sm disabled">&laquo; Prev</a></span>
   
-  <span><a class="btn btn-default btn-sm disabled">Page: 1 of 2</a></span>
+  <span><a class="btn btn-default btn-sm disabled">Page: 1 of 3</a></span>
   
     <a class="btn btn-default btn-sm" href="/page2/">Next &raquo;</a>
-    <a class="btn btn-default btn-sm" href="/page2/">Last</a>
+    <a class="btn btn-default btn-sm" href="/page3/">Last</a>
   
 </div>
 
@@ -334,7 +362,7 @@ var _hmt = _hmt || [];
     	</a></li>
      
     	<li><a href="/categories.html#linux-ref">
-    		linux <span>1</span>
+    		linux <span>2</span>
     	</a></li>
      
     	<li><a href="/categories.html#hadoop-ref">
@@ -358,6 +386,8 @@ var _hmt = _hmt || [];
        <div class="category">
          <ul>
            
+           <li><a href="/linux/2014-04/kill-zombie-process.html">Kill Zombie Process</a></li>
+           
            <li><a href="/java/2014-03/resin-load.html">记录一次resin load过高的解决过程</a></li>
            
            <li><a href="/java/2014-03/jmeter.html">jmeter使用</a></li>
@@ -375,8 +405,6 @@ var _hmt = _hmt || [];
            <li><a href="/jekyll/2014-03/jekyllcdn.html">jekyll使用七牛的CDN</a></li>
            
            <li><a href="/tools/2014-03/tools.html">常用工具包收集</a></li>
-           
-           <li><a href="/jvm/2014-03/g1garbage-first.html">G1(Garbage First)的使用</a></li>
            
          </ul>
        </div>
