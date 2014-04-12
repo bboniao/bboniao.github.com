@@ -56,5 +56,6 @@ tags: log4j
 ###hadoop/hbase配置
 #####hadoop:打开bin/hadoop-daemon.sh,配置`HADOOP_ROOT_LOGGER`
 #####hbase:打开bin/hbase-daemon.sh,配置`HBASE_ROOT_LOGGER`
+#####否则log4j.properties中的`log4j.rootLogger`不会生效
 
 ###[参考链接](http://blog.cherouvim.com/a-better-smtpappender/)

@@ -4,7 +4,7 @@
  <title>My Blog</title>
  <link href="http://bboniao.com/" rel="self"/>
  <link href="http://bboniao.com"/>
- <updated>2014-04-12T20:51:14+08:00</updated>
+ <updated>2014-04-12T20:56:38+08:00</updated>
  <id>http://bboniao.com</id>
  <author>
    <name>bboniao</name>
@@ -67,6 +67,8 @@ log4j.appender.mail.layout.ConversionPattern=[%-5p] %d(%r) --&amp;gt; [%t] %l: %
 &lt;h5&gt;hadoop:打开bin/hadoop-daemon.sh,配置&lt;code&gt;HADOOP_ROOT_LOGGER&lt;/code&gt;&lt;/h5&gt;
 
 &lt;h5&gt;hbase:打开bin/hbase-daemon.sh,配置&lt;code&gt;HBASE_ROOT_LOGGER&lt;/code&gt;&lt;/h5&gt;
+
+&lt;h5&gt;否则log4j.properties中的&lt;code&gt;log4j.rootLogger=&lt;/code&gt;不会生效&lt;/h5&gt;
 
 &lt;h3&gt;&lt;a href=&quot;http://blog.cherouvim.com/a-better-smtpappender/&quot;&gt;参考链接&lt;/a&gt;&lt;/h3&gt;
 </content>
