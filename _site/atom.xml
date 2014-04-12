@@ -4,13 +4,73 @@
  <title>My Blog</title>
  <link href="http://bboniao.com/" rel="self"/>
  <link href="http://bboniao.com"/>
- <updated>2014-04-12T20:19:43+08:00</updated>
+ <updated>2014-04-12T20:51:14+08:00</updated>
  <id>http://bboniao.com</id>
  <author>
    <name>bboniao</name>
    <email>bboniao@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>A Better Log4j SMTPAppender</title>
+   <link href="http://bboniao.com/java/2014-04/a-better-log4j-smtpappender.html"/>
+   <updated>2014-04-12T00:00:00+08:00</updated>
+   <id>http://bboniao.com/java/2014-04/a-better-log4j-smtpappender</id>
+   <content type="html">&lt;h3&gt;log4j配置mail发送log,会有多少发多少,如下改动可以在指定时间内发送指定次数的log&lt;/h3&gt;
+
+&lt;h3&gt;java代码&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;package com.sohu.rc.util;
+import org.apache.log4j.net.SMTPAppender;
+public class LimitedSMTPAppender extends SMTPAppender {
+    private int limit = 10; // max at 10 mails ...
+    private int cycleSeconds = 3600; // ... per hour
+    public void setLimit(int limit) {
+        this.limit = limit;
+    }
+    public void setCycleSeconds(int cycleSeconds) {
+        this.cycleSeconds = cycleSeconds;
+    }
+    private int lastVisited;
+    private long lastCycle;
+    @Override
+    protected boolean checkEntryConditions() {
+        final long now = System.currentTimeMillis();
+        final long thisCycle = now - (now % (1000L * cycleSeconds));
+        if (lastCycle != thisCycle) {
+            lastCycle = thisCycle;
+            lastVisited = 0;
+        }
+        lastVisited++;
+        return super.checkEntryConditions() &amp;amp;&amp;amp; lastVisited &amp;lt;= limit;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;log4j.properties的配置&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;log4j.rootLogger=info,mail
+log4j.threshhold=ALL
+
+log4j.appender.mail=com.sohu.rc.util.LimitedSMTPAppender
+log4j.appender.mail.limit=3
+log4j.appender.mail.cycleSeconds=60
+log4j.appender.mail.Threshold=ERROR
+log4j.appender.mail.BufferSize=32
+log4j.appender.mail.From = bboniao@gmail.com
+log4j.appender.mail.SMTPHost=10.11.132.229
+log4j.appender.mail.Subject=Rc_Strategy_Log4J_Message
+log4j.appender.mail.To= bboniao@163.com
+log4j.appender.mail.layout=org.apache.log4j.PatternLayout
+log4j.appender.mail.layout.ConversionPattern=[%-5p] %d(%r) --&amp;gt; [%t] %l: %m %x %n
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;hadoop/hbase配置&lt;/h3&gt;
+
+&lt;h5&gt;hadoop:打开bin/hadoop-daemon.sh,配置&lt;code&gt;HADOOP_ROOT_LOGGER&lt;/code&gt;&lt;/h5&gt;
+
+&lt;h5&gt;hbase:打开bin/hbase-daemon.sh,配置&lt;code&gt;HBASE_ROOT_LOGGER&lt;/code&gt;&lt;/h5&gt;
+
+&lt;h3&gt;&lt;a href=&quot;http://blog.cherouvim.com/a-better-smtpappender/&quot;&gt;参考链接&lt;/a&gt;&lt;/h3&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Kill Zombie Process</title>
