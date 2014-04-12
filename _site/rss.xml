@@ -5,8 +5,8 @@
         <description>My Blog - bboniao</description>
         <link>http://bboniao.com</link>
         <link>http://bboniao.com</link>
-        <lastBuildDate>2014-04-12T20:59:14+08:00</lastBuildDate>
-        <pubDate>2014-04-12T20:59:14+08:00</pubDate>
+        <lastBuildDate>2014-04-12T22:19:36+08:00</lastBuildDate>
+        <pubDate>2014-04-12T22:19:36+08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -126,7 +126,128 @@ log4j.appender.mail.layout.ConversionPattern=[%-5p] %d(%r) --&amp;gt; [%t] %l: %
 
         <item>
                 <title>jmeter使用</title>
-                <description></description>
+                <description>&lt;h3&gt;1.pom.xml引入依赖&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;    &amp;lt;dependency&amp;gt;
+        &amp;lt;groupId&amp;gt;org.apache.jmeter&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;ApacheJMeter_java&amp;lt;/artifactId&amp;gt;
+        &amp;lt;version&amp;gt;${apache.jmeter.version}&amp;lt;/version&amp;gt;
+    &amp;lt;/dependency&amp;gt;
+
+    &amp;lt;dependency&amp;gt;
+        &amp;lt;groupId&amp;gt;org.apache.jmeter&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;ApacheJMeter_core&amp;lt;/artifactId&amp;gt;
+        &amp;lt;version&amp;gt;${apache.jmeter.version}&amp;lt;/version&amp;gt;
+    &amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;!-- more --&gt;
+
+&lt;h3&gt;2.实现接口&lt;code&gt;org.apache.jmeter.protocol.java.sampler.AbstractJavaSamplerClient&lt;/code&gt;&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;public class HbaseServiceLoadMeter extends AbstractJavaSamplerClient {
+
+    public  HTablePool majorHpool;
+    public  HTablePool mapHpool;
+
+    /**
+     * 初始化
+     */
+    @Override
+    public void setupTest(JavaSamplerContext context) {
+        Configuration majorConf = HBaseConfiguration.create();
+        majorConf.addResource(&amp;quot;hbase-site-92.xml&amp;quot;);
+        this.majorHpool = new HTablePool(majorConf, 512);
+
+        Configuration mapConf = HBaseConfiguration.create();
+        mapConf.addResource(&amp;quot;map-hbase-site.xml&amp;quot;);
+        this.mapHpool = new HTablePool(mapConf, 512);
+    }
+
+    /**
+     * 指定各种参数和默认值.可以在GUI中动态指定.
+     */
+    @Override
+    public Arguments getDefaultParameters() {
+        Arguments arguments = new Arguments();
+        arguments.addArgument(&amp;quot;p&amp;quot;, &amp;quot;&amp;quot;);
+        arguments.addArgument(&amp;quot;y&amp;quot;, &amp;quot;&amp;quot;);
+        arguments.addArgument(&amp;quot;u&amp;quot;, &amp;quot;&amp;quot;);
+        return arguments;
+    }
+
+    /**
+     * 测试代码调用逻辑
+     */
+    @Override
+    public SampleResult runTest(JavaSamplerContext context) {
+        SampleResult sr = new SampleResult();
+        // Start
+        sr.sampleStart();
+        try {
+            String y = context.getParameter(&amp;quot;y&amp;quot;);
+            String u = context.getParameter(&amp;quot;u&amp;quot;);
+            String p = context.getParameter(&amp;quot;p&amp;quot;);
+
+            Long ukey = getUkey(p, y, u);
+            sr.setSuccessful(getRcEntire(ukey));
+        } catch (Exception e) {
+            getLogger().error(e.getMessage(), e);
+            sr.setSuccessful(false);
+        } finally {
+            sr.sampleEnd();
+        }
+        return sr;
+    }
+
+    private boolean getRcEntire(Long ukey) {
+    }
+
+    private Long getUkey(String p, String y, String u) {
+
+    }
+
+    private Long getCommonUkey(String rowkey, String family) {
+
+    }
+
+    /**
+     * 测试结束清理方法,全局调用一次
+     *
+     */
+    @Override
+    public void teardownTest(JavaSamplerContext context) {
+        try {
+            this.majorHpool.close();
+            this.mapHpool.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;3.打成jar包,以及依赖的jar包放到jmeter安装目录下的&lt;code&gt;lib/ext&lt;/code&gt;&lt;/h3&gt;
+
+&lt;h3&gt;4.打开jmeter.新建&lt;code&gt;Test Plan&lt;/code&gt;&lt;/h3&gt;
+
+&lt;h3&gt;5.在&lt;code&gt;Test Plan&lt;/code&gt;下,新建&lt;code&gt;Thread Group&lt;/code&gt;,设置&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Number of Threads(users)
+Ramp-Up Period(in seconds)
+Loop Count
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;6.在&lt;code&gt;Thread Group&lt;/code&gt;下,新建&lt;code&gt;Java Request&lt;/code&gt;,设置&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;ClassName
+Send Parameters With the Request(接口AbstractJavaSamplerClient的getDefaultParameters方法定义的)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;7.在&lt;code&gt;Java Request&lt;/code&gt;下,新建&lt;code&gt;CSV Data Set Config&lt;/code&gt;,指定参数的输入文件,设置&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Filename
+File encoding
+Variable Names(comma-delimited)
+Delimiter(use&amp;#39;\t&amp;#39; for tab)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;8.在&lt;code&gt;Java Request&lt;/code&gt;下,新建&lt;code&gt;Aggregate Report&lt;/code&gt;,统计压测效果&lt;/h3&gt;
+
+&lt;h3&gt;9.&lt;a href=&quot;%E5%9C%A8%60Java%20Request%60%E4%B8%8B,%E6%96%B0%E5%BB%BA://github.com/bboniao/bboniao.github.com/releases/download/rc_entire_0.96.jmx/rc_entire_0.96.jmx&quot;&gt;配置文件样例&lt;/a&gt;&lt;/h3&gt;
+
+&lt;h3&gt;10.终端下,执行命令:&lt;code&gt;jmeter -n -t rc_entire_0.96.jmx -l log.jtl&lt;/code&gt;,&lt;em&gt;.jmx是GUI配置后生成的,&lt;/em&gt;.jtl是结果文件,使用GUI查看比较方便&lt;/h3&gt;
+</description>
                 <link>http://bboniao.com/java/2014-03/jmeter.html</link>
                 <guid>http://bboniao.com/java/2014-03/jmeter</guid>
                 <pubDate>2014-03-15T00:00:00+08:00</pubDate>
