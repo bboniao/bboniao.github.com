@@ -10,6 +10,7 @@ http://bboniao.com/tags.html
 http://bboniao.com/page2/index.html
 http://bboniao.com/page3/index.html
 
+http://bboniao.com/memcache/2014-04/memcachehash.html
 http://bboniao.com/java/2014-04/a-better-log4j-smtpappender.html
 http://bboniao.com/linux/2014-04/kill-zombie-process.html
 http://bboniao.com/java/2014-03/resin-load.html

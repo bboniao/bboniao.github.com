@@ -169,6 +169,43 @@ var _hmt = _hmt || [];
 
 
 <div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/memcache/2014-04/memcachehash.html">memcache使用一致性hash,找出指向的节点</a></h2>
+  
+    <h3>代码如下</h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">//地址列表
+String[] array = addrs.split(&quot;;&quot;);
+List&lt;InetSocketAddress&gt; isa = new ArrayList&lt;InetSocketAddress&gt;();
+for(int i = 0;i &lt; array.length;i ++){
+    String[] addr = array[i].split(&quot;:&quot;);
+    isa.add(new InetSocketAddress(addr[0], Integer.parseInt(addr[1])));
+}
+MemcachedClientBuilder builder = new XMemcachedClientBuilder(isa);
+//一致性hash
+builder.setSessionLocator(new KetamaMemcachedSessionLocator());
+builder.setOpTimeout(200);
+
+builder.build();
+String memcacheKey = &quot;test&quot;;
+InetSocketAddress i = builder.getSessionLocator().getSessionByKey(memcacheKey).getRemoteSocketAddress();
+System.out.println(i.getHostString());
+System.out.println(i.getPort());
+</code></pre></div>
+
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 14 Apr 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/memcache/2014-04/memcachehash.html#comments"> Comments</a>
+    </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/memcache/2014-04/memcachehash.html"><span class="readmore">Read More &raquo; </span></a>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<div class="wrapper">
   <h2 class="h2 entry-title"><a href="/java/2014-04/a-better-log4j-smtpappender.html">A Better Log4j SMTPAppender</a></h2>
   
     <h3>log4j配置mail发送log,会有多少发多少,如下改动可以在指定时间内发送指定次数的log</h3>
@@ -302,48 +339,6 @@ public class LimitedSMTPAppender extends SMTPAppender {
   </div>
 </div>
 
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/hadoop/2014-03/hadoop2hbase096.html">hadoop2和hbase0.96的配置</a></h2>
-  
-    <table><thead>
-<tr>
-<th align="left">集群</th>
-<th align="left">hadoop</th>
-<th align="left">hbase</th>
-</tr>
-</thead><tbody>
-<tr>
-<td align="left">资料库</td>
-<td align="left"><a href="https://github.com/bboniao/bboniao.github.com/releases/tag/hadoop1.major.conf">hadoop-1.0.3</a></td>
-<td align="left"><a href="https://github.com/bboniao/bboniao.github.com/releases/tag/hbase92.major.conf">hbase-0.92.1</a></td>
-</tr>
-<tr>
-<td align="left">标示库</td>
-<td align="left"><a href="https://github.com/bboniao/bboniao.github.com/releases/tag/hadoop1.map.conf">hadoop-1.0.3</a></td>
-<td align="left"><a href="https://github.com/bboniao/bboniao.github.com/releases/tag/hbase92.map.conf">hbase-0.92.1</a></td>
-</tr>
-<tr>
-<td align="left">测试库</td>
-<td align="left"><a href="https://github.com/bboniao/bboniao.github.com/releases/tag/hadoop2.conf">hadoop-2.2.0</a></td>
-<td align="left"><a href="https://github.com/bboniao/bboniao.github.com/releases/tag/hbase96.conf">hbase-0.96.1</a></td>
-</tr>
-</tbody></table>
-
-
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 15 Mar 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/hadoop/2014-03/hadoop2hbase096.html#comments"> Comments</a>
-    </div>
-    
-    <a class="btn btn-default btn-sm pull-right" href="/hadoop/2014-03/hadoop2hbase096.html"><span class="readmore">Read More &raquo; </span></a>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-
 
 <!-- Pagination links -->
 <div class="pull-right">
@@ -397,6 +392,10 @@ public class LimitedSMTPAppender extends SMTPAppender {
     	<li><a href="/categories.html#java-ref">
     		java <span>3</span>
     	</a></li>
+     
+    	<li><a href="/categories.html#memcache-ref">
+    		memcache <span>1</span>
+    	</a></li>
     
   
 
@@ -410,6 +409,8 @@ public class LimitedSMTPAppender extends SMTPAppender {
        <h4>Recently Posts</h4>
        <div class="category">
          <ul>
+           
+           <li><a href="/memcache/2014-04/memcachehash.html">memcache使用一致性hash,找出指向的节点</a></li>
            
            <li><a href="/java/2014-04/a-better-log4j-smtpappender.html">A Better Log4j SMTPAppender</a></li>
            
@@ -428,8 +429,6 @@ public class LimitedSMTPAppender extends SMTPAppender {
            <li><a href="/jvm/2014-03/jvm-parameter.html">JVM常用的参数说明</a></li>
            
            <li><a href="/jvm/2014-03/java-mission-control.html">Java Mission Control</a></li>
-           
-           <li><a href="/jekyll/2014-03/jekyllcdn.html">jekyll使用七牛的CDN</a></li>
            
          </ul>
        </div>

@@ -5,10 +5,38 @@
         <description>My Blog - bboniao</description>
         <link>http://bboniao.com</link>
         <link>http://bboniao.com</link>
-        <lastBuildDate>2014-04-12T22:19:36+08:00</lastBuildDate>
-        <pubDate>2014-04-12T22:19:36+08:00</pubDate>
+        <lastBuildDate>2014-04-14T16:19:24+08:00</lastBuildDate>
+        <pubDate>2014-04-14T16:19:24+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>memcache使用一致性hash,找出指向的节点</title>
+                <description>&lt;h3&gt;代码如下&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;//地址列表
+String[] array = addrs.split(&amp;quot;;&amp;quot;);
+List&amp;lt;InetSocketAddress&amp;gt; isa = new ArrayList&amp;lt;InetSocketAddress&amp;gt;();
+for(int i = 0;i &amp;lt; array.length;i ++){
+    String[] addr = array[i].split(&amp;quot;:&amp;quot;);
+    isa.add(new InetSocketAddress(addr[0], Integer.parseInt(addr[1])));
+}
+MemcachedClientBuilder builder = new XMemcachedClientBuilder(isa);
+//一致性hash
+builder.setSessionLocator(new KetamaMemcachedSessionLocator());
+builder.setOpTimeout(200);
+
+builder.build();
+String memcacheKey = &amp;quot;test&amp;quot;;
+InetSocketAddress i = builder.getSessionLocator().getSessionByKey(memcacheKey).getRemoteSocketAddress();
+System.out.println(i.getHostString());
+System.out.println(i.getPort());
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;!-- more --&gt;
+</description>
+                <link>http://bboniao.com/memcache/2014-04/memcachehash.html</link>
+                <guid>http://bboniao.com/memcache/2014-04/memcachehash</guid>
+                <pubDate>2014-04-14T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>A Better Log4j SMTPAppender</title>
