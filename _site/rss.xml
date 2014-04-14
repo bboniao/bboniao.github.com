@@ -5,8 +5,8 @@
         <description>My Blog - bboniao</description>
         <link>http://bboniao.com</link>
         <link>http://bboniao.com</link>
-        <lastBuildDate>2014-04-14T16:19:24+08:00</lastBuildDate>
-        <pubDate>2014-04-14T16:19:24+08:00</pubDate>
+        <lastBuildDate>2014-04-14T16:25:35+08:00</lastBuildDate>
+        <pubDate>2014-04-14T16:25:35+08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -272,9 +272,11 @@ Delimiter(use&amp;#39;\t&amp;#39; for tab)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3&gt;8.在&lt;code&gt;Java Request&lt;/code&gt;下,新建&lt;code&gt;Aggregate Report&lt;/code&gt;,统计压测效果&lt;/h3&gt;
 
-&lt;h3&gt;9.&lt;a href=&quot;%E5%9C%A8%60Java%20Request%60%E4%B8%8B,%E6%96%B0%E5%BB%BA://github.com/bboniao/bboniao.github.com/releases/download/rc_entire_0.96.jmx/rc_entire_0.96.jmx&quot;&gt;配置文件样例&lt;/a&gt;&lt;/h3&gt;
+&lt;h3&gt;9.&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/rc_entire_0.96.jmx/rc_entire_0.96.jmx&quot;&gt;配置文件样例&lt;/a&gt;&lt;/h3&gt;
 
-&lt;h3&gt;10.终端下,执行命令:&lt;code&gt;jmeter -n -t rc_entire_0.96.jmx -l log.jtl&lt;/code&gt;,&lt;em&gt;.jmx是GUI配置后生成的,&lt;/em&gt;.jtl是结果文件,使用GUI查看比较方便&lt;/h3&gt;
+&lt;h3&gt;10.终端下,执行命令:&lt;code&gt;jmeter -n -t rc_entire_0.96.jmx -l log.jtl&lt;/code&gt;,rc&lt;em&gt;entire&lt;/em&gt;0.96.jmx是GUI配置后生成的,log.jtl是结果文件,使用GUI查看比较方便&lt;/h3&gt;
+
+&lt;h3&gt;11.&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/ifox.home.jmx/ifox.home.jmx&quot;&gt;HTTP配置文件样例&lt;/a&gt;&lt;/h3&gt;
 </description>
                 <link>http://bboniao.com/java/2014-03/jmeter.html</link>
                 <guid>http://bboniao.com/java/2014-03/jmeter</guid>
