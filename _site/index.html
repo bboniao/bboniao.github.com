@@ -125,6 +125,10 @@ var _hmt = _hmt || [];
       
     
   
+    
+      
+    
+  
 
 
 
@@ -167,6 +171,86 @@ var _hmt = _hmt || [];
     </div>
     <article>
 
+
+<div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/hbase/2014-04/hbasecolumncolumnput.html">HBase在单Column和多Column情况下批量Put的性能对比分析</a></h2>
+  
+    <h3>转自<a href="http://blog.linezing.com/?p=2106">量子恒道官方博客</a></h3>
+
+<p>针对HBase在单column family单column qualifier和单column family多column qualifier两种场景下，分别批量Put写入时的性能对比情况，下面是结合HBase的源码来简单分析解释这一现象。</p>
+
+<h3>1. 测试结果</h3>
+
+<p>在客户端批量写入时，单列族单列模式和单列族多列模式的TPS和RPC次数相差很大，以客户端10个线程，开启WAL的两种模式下的测试数据为例，</p>
+
+<h5>1)单列族单列模式下，TPS能够达到12403.87，实际RPC次数为53次；</h5>
+
+<h5>2)单列族多列模式下，TPS只有1730.68，实际RPC次数为478次。</h5>
+
+<p>二者TPS相差约7倍，RPC次数相差约9倍。详细的测试环境这里不再罗列，我们这里关心的只是在两种条件下的性能差别情况。</p>
+
+
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 16 Apr 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/hbase/2014-04/hbasecolumncolumnput.html#comments"> Comments</a>
+    </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/hbase/2014-04/hbasecolumncolumnput.html"><span class="readmore">Read More &raquo; </span></a>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/hbase/2014-04/hbase-delete-put.html">hbase delete put的陷阱</a></h2>
+  
+    <h3>问题</h3>
+
+<p>删除数据之后,再插入,查询的时候怎么也找不到.删除和插入都是同一个rowkey,同一个列,同一个版本.</p>
+
+<h3>原因</h3>
+
+<p>如果rowkey/family/qulifier/timestamp都一样,多次删除和插入之后,获取哪个值取决于KeyValue.Type.Put之前是Delete就不会被插入了.</p>
+
+
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 16 Apr 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/hbase/2014-04/hbase-delete-put.html#comments"> Comments</a>
+    </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/hbase/2014-04/hbase-delete-put.html"><span class="readmore">Read More &raquo; </span></a>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/hbase/2014-04/hbase-cloumnfamily.html">为什么要控制hbase cloumnFamily的数量</a></h2>
+  
+    <p>设计Hbase schema,要尽量使用一个column family.原因主要是flush和compact机制造成的.</p>
+
+<p>flush和compact都是基于region级别的:当一个column family数据导入过多,发生flush,也会触发其他所有column family的(此时很小的memstore也会被触发的).而flush会生成很多storefile,紧接着就会触发compact.过多没必要的flush/compact会大大增加io的开销,影响hbase整体性能.</p>
+
+
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 16 Apr 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/hbase/2014-04/hbase-cloumnfamily.html#comments"> Comments</a>
+    </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/hbase/2014-04/hbase-cloumnfamily.html"><span class="readmore">Read More &raquo; </span></a>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
 
 <div class="wrapper">
   <h2 class="h2 entry-title"><a href="/memcache/2014-04/memcachehash.html">memcache使用一致性hash,找出指向的节点</a></h2>
@@ -252,93 +336,6 @@ public class LimitedSMTPAppender extends SMTPAppender {
   </div>
 </div>
 
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/linux/2014-04/kill-zombie-process.html">Kill Zombie Process</a></h2>
-  
-    <h3>查找僵尸进程</h3>
-
-<p><code>ps aux |awk &#39;{print $8 &quot; &quot; $2}&#39; |grep -w Z</code></p>
-
-<h3>查找此进程信息和父进程pid</h3>
-
-<p><code>ps -ef |grep $pid</code></p>
-
-
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 01 Apr 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/linux/2014-04/kill-zombie-process.html#comments"> Comments</a>
-    </div>
-    
-    <a class="btn btn-default btn-sm pull-right" href="/linux/2014-04/kill-zombie-process.html"><span class="readmore">Read More &raquo; </span></a>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/java/2014-03/resin-load.html">记录一次resin load过高的解决过程</a></h2>
-  
-    <h5>1.使用<a href="https://github.com/bboniao/bboniao.github.com/releases/download/0.2.6/housemd-0.2.6.zip">housemd</a>统计方法耗时,<a href="https://github.com/CSUG/HouseMD/wiki/UserGuideCN">中文说明</a></h5>
-
-<p><code>./housewd $jvm_pid</code></p>
-
-<p><code>trace -d  -l 50000 -t 50000 ClassName</code></p>
-
-<h5>2.使用ss统计tcp信息,参照<a href="http://www.ttlsa.com/linux-command/ss-replace-netstat/">文章</a></h5>
-
-<p><code>ss -s</code></p>
-
-<p><code>ss -t -a | grep ESTAB</code></p>
-
-
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 23 Mar 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/java/2014-03/resin-load.html#comments"> Comments</a>
-    </div>
-    
-    <a class="btn btn-default btn-sm pull-right" href="/java/2014-03/resin-load.html"><span class="readmore">Read More &raquo; </span></a>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/java/2014-03/jmeter.html">jmeter使用</a></h2>
-  
-    <h3>1.pom.xml引入依赖</h3>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">    &lt;dependency&gt;
-        &lt;groupId&gt;org.apache.jmeter&lt;/groupId&gt;
-        &lt;artifactId&gt;ApacheJMeter_java&lt;/artifactId&gt;
-        &lt;version&gt;${apache.jmeter.version}&lt;/version&gt;
-    &lt;/dependency&gt;
-
-    &lt;dependency&gt;
-        &lt;groupId&gt;org.apache.jmeter&lt;/groupId&gt;
-        &lt;artifactId&gt;ApacheJMeter_core&lt;/artifactId&gt;
-        &lt;version&gt;${apache.jmeter.version}&lt;/version&gt;
-    &lt;/dependency&gt;
-</code></pre></div>
-
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 15 Mar 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/java/2014-03/jmeter.html#comments"> Comments</a>
-    </div>
-    
-    <a class="btn btn-default btn-sm pull-right" href="/java/2014-03/jmeter.html"><span class="readmore">Read More &raquo; </span></a>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-
 
 <!-- Pagination links -->
 <div class="pull-right">
@@ -346,10 +343,10 @@ public class LimitedSMTPAppender extends SMTPAppender {
     <span><a class="btn btn-default btn-sm disabled" href="/">Home</a></span>
     <span><a class="btn btn-default btn-sm disabled">&laquo; Prev</a></span>
   
-  <span><a class="btn btn-default btn-sm disabled">Page: 1 of 3</a></span>
+  <span><a class="btn btn-default btn-sm disabled">Page: 1 of 4</a></span>
   
     <a class="btn btn-default btn-sm" href="/page2/">Next &raquo;</a>
-    <a class="btn btn-default btn-sm" href="/page3/">Last</a>
+    <a class="btn btn-default btn-sm" href="/page4/">Last</a>
   
 </div>
 
@@ -396,6 +393,10 @@ public class LimitedSMTPAppender extends SMTPAppender {
     	<li><a href="/categories.html#memcache-ref">
     		memcache <span>1</span>
     	</a></li>
+     
+    	<li><a href="/categories.html#hbase-ref">
+    		hbase <span>3</span>
+    	</a></li>
     
   
 
@@ -410,6 +411,12 @@ public class LimitedSMTPAppender extends SMTPAppender {
        <div class="category">
          <ul>
            
+           <li><a href="/hbase/2014-04/hbasecolumncolumnput.html">HBase在单Column和多Column情况下批量Put的性能对比分析</a></li>
+           
+           <li><a href="/hbase/2014-04/hbase-delete-put.html">hbase delete put的陷阱</a></li>
+           
+           <li><a href="/hbase/2014-04/hbase-cloumnfamily.html">为什么要控制hbase cloumnFamily的数量</a></li>
+           
            <li><a href="/memcache/2014-04/memcachehash.html">memcache使用一致性hash,找出指向的节点</a></li>
            
            <li><a href="/java/2014-04/a-better-log4j-smtpappender.html">A Better Log4j SMTPAppender</a></li>
@@ -423,12 +430,6 @@ public class LimitedSMTPAppender extends SMTPAppender {
            <li><a href="/hadoop/2014-03/hadoop2hbase096.html">hadoop2和hbase0.96的配置</a></li>
            
            <li><a href="/hadoop/2014-03/hadoop2-compile.html">hadoop2 compile</a></li>
-           
-           <li><a href="/linux/2014-03/linux-trip.html">Linux小技巧</a></li>
-           
-           <li><a href="/jvm/2014-03/jvm-parameter.html">JVM常用的参数说明</a></li>
-           
-           <li><a href="/jvm/2014-03/java-mission-control.html">Java Mission Control</a></li>
            
          </ul>
        </div>
