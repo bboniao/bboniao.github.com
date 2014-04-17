@@ -173,6 +173,51 @@ var _hmt = _hmt || [];
 
 
 <div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/jvm/2014-04/java-cpu-monitor.html">java cpu monitor</a></h2>
+  
+    <h3>转自<a href="http://www.javaarch.net/jiagoushi/55.htm">java-cpu-monitor shell脚本</a></h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">#!/bin/bash                                                                                                                           
+
+threshold=${1-95}
+now=$(date &#39;+%Y-%m-%d %H:%M:%S&#39;)
+cache=()
+
+jps -q | xargs ps hH k -pcpu o pid,lwp,pcpu,args \
+  | awk &quot;\$3 &gt;= $threshold&quot; | while read line; do
+
+  array=($(echo &quot;$line&quot;))
+  pid=${array[0]}
+  lwp=$(printf &#39;%#x&#39; ${array[1]})
+
+  if [ -z &quot;${cache[$pid]}&quot; ]; then
+    cache[$pid]=$(jstack $pid)
+  fi
+
+  echo &quot;[$now] ${line}&quot;
+  echo
+  echo &quot;${cache[$pid]}&quot; | sed -n &quot;/nid=$lwp/,/^$/p&quot;
+  echo
+
+done
+</code></pre></div>
+<p>threshold设置一下cpu的使用率</p>
+
+
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 16 Apr 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/jvm/2014-04/java-cpu-monitor.html#comments"> Comments</a>
+    </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/jvm/2014-04/java-cpu-monitor.html"><span class="readmore">Read More &raquo; </span></a>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<div class="wrapper">
   <h2 class="h2 entry-title"><a href="/hbase/2014-04/hbasecolumncolumnput.html">HBase在单Column和多Column情况下批量Put的性能对比分析</a></h2>
   
     <h3>转自<a href="http://blog.linezing.com/?p=2106">量子恒道官方博客</a></h3>
@@ -289,53 +334,6 @@ System.out.println(i.getPort());
   </div>
 </div>
 
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/java/2014-04/a-better-log4j-smtpappender.html">A Better Log4j SMTPAppender</a></h2>
-  
-    <h3>log4j配置mail发送log,会有多少发多少,如下改动可以在指定时间内发送指定次数的log</h3>
-
-<h3>java代码</h3>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">package com.sohu.rc.util;
-import org.apache.log4j.net.SMTPAppender;
-public class LimitedSMTPAppender extends SMTPAppender {
-    private int limit = 10; // max at 10 mails ...
-    private int cycleSeconds = 3600; // ... per hour
-    public void setLimit(int limit) {
-        this.limit = limit;
-    }
-    public void setCycleSeconds(int cycleSeconds) {
-        this.cycleSeconds = cycleSeconds;
-    }
-    private int lastVisited;
-    private long lastCycle;
-    @Override
-    protected boolean checkEntryConditions() {
-        final long now = System.currentTimeMillis();
-        final long thisCycle = now - (now % (1000L * cycleSeconds));
-        if (lastCycle != thisCycle) {
-            lastCycle = thisCycle;
-            lastVisited = 0;
-        }
-        lastVisited++;
-        return super.checkEntryConditions() &amp;&amp; lastVisited &lt;= limit;
-    }
-}
-</code></pre></div>
-
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 12 Apr 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/java/2014-04/a-better-log4j-smtpappender.html#comments"> Comments</a>
-    </div>
-    
-    <a class="btn btn-default btn-sm pull-right" href="/java/2014-04/a-better-log4j-smtpappender.html"><span class="readmore">Read More &raquo; </span></a>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-
 
 <!-- Pagination links -->
 <div class="pull-right">
@@ -367,7 +365,7 @@ public class LimitedSMTPAppender extends SMTPAppender {
   
      
     	<li><a href="/categories.html#jvm-ref">
-    		jvm <span>3</span>
+    		jvm <span>4</span>
     	</a></li>
      
     	<li><a href="/categories.html#tools-ref">
@@ -411,6 +409,8 @@ public class LimitedSMTPAppender extends SMTPAppender {
        <div class="category">
          <ul>
            
+           <li><a href="/jvm/2014-04/java-cpu-monitor.html">java cpu monitor</a></li>
+           
            <li><a href="/hbase/2014-04/hbasecolumncolumnput.html">HBase在单Column和多Column情况下批量Put的性能对比分析</a></li>
            
            <li><a href="/hbase/2014-04/hbase-delete-put.html">hbase delete put的陷阱</a></li>
@@ -428,8 +428,6 @@ public class LimitedSMTPAppender extends SMTPAppender {
            <li><a href="/java/2014-03/jmeter.html">jmeter使用</a></li>
            
            <li><a href="/hadoop/2014-03/hadoop2hbase096.html">hadoop2和hbase0.96的配置</a></li>
-           
-           <li><a href="/hadoop/2014-03/hadoop2-compile.html">hadoop2 compile</a></li>
            
          </ul>
        </div>

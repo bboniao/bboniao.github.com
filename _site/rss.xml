@@ -5,10 +5,46 @@
         <description>My Blog - bboniao</description>
         <link>http://bboniao.com</link>
         <link>http://bboniao.com</link>
-        <lastBuildDate>2014-04-16T16:27:56+08:00</lastBuildDate>
-        <pubDate>2014-04-16T16:27:56+08:00</pubDate>
+        <lastBuildDate>2014-04-16T21:13:04+08:00</lastBuildDate>
+        <pubDate>2014-04-16T21:13:04+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>java cpu monitor</title>
+                <description>&lt;h3&gt;转自&lt;a href=&quot;http://www.javaarch.net/jiagoushi/55.htm&quot;&gt;java-cpu-monitor shell脚本&lt;/a&gt;&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash                                                                                                                           
+
+threshold=${1-95}
+now=$(date &amp;#39;+%Y-%m-%d %H:%M:%S&amp;#39;)
+cache=()
+
+jps -q | xargs ps hH k -pcpu o pid,lwp,pcpu,args \
+  | awk &amp;quot;\$3 &amp;gt;= $threshold&amp;quot; | while read line; do
+
+  array=($(echo &amp;quot;$line&amp;quot;))
+  pid=${array[0]}
+  lwp=$(printf &amp;#39;%#x&amp;#39; ${array[1]})
+
+  if [ -z &amp;quot;${cache[$pid]}&amp;quot; ]; then
+    cache[$pid]=$(jstack $pid)
+  fi
+
+  echo &amp;quot;[$now] ${line}&amp;quot;
+  echo
+  echo &amp;quot;${cache[$pid]}&amp;quot; | sed -n &amp;quot;/nid=$lwp/,/^$/p&amp;quot;
+  echo
+
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;threshold设置一下cpu的使用率&lt;/p&gt;
+
+&lt;!-- more --&gt;
+</description>
+                <link>http://bboniao.com/jvm/2014-04/java-cpu-monitor.html</link>
+                <guid>http://bboniao.com/jvm/2014-04/java-cpu-monitor</guid>
+                <pubDate>2014-04-16T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>HBase在单Column和多Column情况下批量Put的性能对比分析</title>
