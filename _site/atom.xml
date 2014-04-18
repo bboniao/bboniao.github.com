@@ -4,7 +4,7 @@
  <title>My Blog</title>
  <link href="http://bboniao.com/" rel="self"/>
  <link href="http://bboniao.com"/>
- <updated>2014-04-16T21:13:04+08:00</updated>
+ <updated>2014-04-18T15:55:48+08:00</updated>
  <id>http://bboniao.com</id>
  <author>
    <name>bboniao</name>
@@ -268,6 +268,17 @@ import org.apache.log4j.net.SMTPAppender;
 public class LimitedSMTPAppender extends SMTPAppender {
     private int limit = 10; // max at 10 mails ...
     private int cycleSeconds = 3600; // ... per hour
+
+    public
+    LimitedSMTPAppender() {
+        this(new LimitedEvaluator());
+    }
+
+    public
+    LimitedSMTPAppender(TriggeringEventEvaluator evaluator) {
+        this.evaluator = evaluator;
+    }
+
     public void setLimit(int limit) {
         this.limit = limit;
     }
@@ -287,6 +298,11 @@ public class LimitedSMTPAppender extends SMTPAppender {
         lastVisited++;
         return super.checkEntryConditions() &amp;amp;&amp;amp; lastVisited &amp;lt;= limit;
     }
+}
+class LimitedEvaluator implements TriggeringEventEvaluator {
+  public boolean isTriggeringEvent(LoggingEvent event) {
+    return event.getLevel().isGreaterOrEqual(Level.ERROR);
+  }
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;!-- more --&gt;
@@ -314,6 +330,8 @@ log4j.appender.mail.layout.ConversionPattern=[%-5p] %d(%r) --&amp;gt; [%t] %l: %
 &lt;h5&gt;hbase:打开bin/hbase-daemon.sh,配置&lt;code&gt;HBASE_ROOT_LOGGER&lt;/code&gt;&lt;/h5&gt;
 
 &lt;h5&gt;否则log4j.properties中的&lt;code&gt;log4j.rootLogger&lt;/code&gt;不会生效&lt;/h5&gt;
+
+&lt;h5&gt;注意:&lt;code&gt;log4j.appender.mail.Threshold&lt;/code&gt;和&lt;code&gt;this.evaluator&lt;/code&gt;统一&lt;/h5&gt;
 
 &lt;h3&gt;&lt;a href=&quot;http://blog.cherouvim.com/a-better-smtpappender/&quot;&gt;参考链接&lt;/a&gt;&lt;/h3&gt;
 </content>

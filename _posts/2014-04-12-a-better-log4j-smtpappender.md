@@ -16,6 +16,17 @@ tags: log4j
     public class LimitedSMTPAppender extends SMTPAppender {
         private int limit = 10; // max at 10 mails ...
         private int cycleSeconds = 3600; // ... per hour
+        
+        public
+        LimitedSMTPAppender() {
+            this(new LimitedEvaluator());
+        }
+
+        public
+        LimitedSMTPAppender(TriggeringEventEvaluator evaluator) {
+            this.evaluator = evaluator;
+        }
+
         public void setLimit(int limit) {
             this.limit = limit;
         }
@@ -35,6 +46,11 @@ tags: log4j
             lastVisited++;
             return super.checkEntryConditions() && lastVisited <= limit;
         }
+    }
+    class LimitedEvaluator implements TriggeringEventEvaluator {
+      public boolean isTriggeringEvent(LoggingEvent event) {
+        return event.getLevel().isGreaterOrEqual(Level.ERROR);
+      }
     }
 <!-- more -->
 ###log4j.properties的配置
@@ -57,5 +73,6 @@ tags: log4j
 #####hadoop:打开bin/hadoop-daemon.sh,配置`HADOOP_ROOT_LOGGER`
 #####hbase:打开bin/hbase-daemon.sh,配置`HBASE_ROOT_LOGGER`
 #####否则log4j.properties中的`log4j.rootLogger`不会生效
-
+#####注意:`log4j.appender.mail.Threshold`和`this.evaluator`统一
 ###[参考链接](http://blog.cherouvim.com/a-better-smtpappender/)
+
