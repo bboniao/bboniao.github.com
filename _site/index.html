@@ -173,6 +173,28 @@ var _hmt = _hmt || [];
 
 
 <div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/system%20performance%20enterprise%20and%20the%20cloud/2014-04/system-performance-enterprise-and-the-cloud-chapter-1.html">System Performance Enterprise and the Cloud Chapter 1-2</a></h2>
+  
+    <h5>Generic system software stack</h5>
+
+<p><img src="/images/generic_system_software_stack.png" alt="image"></p>
+
+
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 26 Apr 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/system%20performance%20enterprise%20and%20the%20cloud/2014-04/system-performance-enterprise-and-the-cloud-chapter-1.html#comments"> Comments</a>
+    </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/system%20performance%20enterprise%20and%20the%20cloud/2014-04/system-performance-enterprise-and-the-cloud-chapter-1.html"><span class="readmore">Read More &raquo; </span></a>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<div class="wrapper">
   <h2 class="h2 entry-title"><a href="/jvm/2014-04/jvmhs_err_pidlog.html">JVM致命错误日志（hs_err_pid.log）解读</a></h2>
   
     <h3>淘宝的一个<a href="https://github.com/bboniao/bboniao.github.com/releases/download/javacrash/javacrash-120504004849-phpapp02.pptx">ppt</a></h3>
@@ -192,6 +214,22 @@ var _hmt = _hmt || [];
     </div>
     
     <a class="btn btn-default btn-sm pull-right" href="/jvm/2014-04/jvmhs_err_pidlog.html"><span class="readmore">Read More &raquo; </span></a>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/jvm/2014-04/java-core-dump-analysis.html">java core dump analysis</a></h2>
+  
+    
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 22 Apr 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/jvm/2014-04/java-core-dump-analysis.html#comments"> Comments</a>
+    </div>
     
     <div class="clearfix"></div>
   </div>
@@ -274,54 +312,6 @@ done
   </div>
 </div>
 
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/hbase/2014-04/hbase-delete-put.html">hbase delete put的陷阱</a></h2>
-  
-    <h3>问题</h3>
-
-<p>删除数据之后,再插入,查询的时候怎么也找不到.删除和插入都是同一个rowkey,同一个列,同一个版本.</p>
-
-<h3>原因</h3>
-
-<p>如果rowkey/family/qulifier/timestamp都一样,多次删除和插入之后,获取哪个值取决于KeyValue.Type.Put之前是Delete就不会被插入了.</p>
-
-
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 16 Apr 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/hbase/2014-04/hbase-delete-put.html#comments"> Comments</a>
-    </div>
-    
-    <a class="btn btn-default btn-sm pull-right" href="/hbase/2014-04/hbase-delete-put.html"><span class="readmore">Read More &raquo; </span></a>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/hbase/2014-04/hbase-cloumnfamily.html">为什么要控制hbase cloumnFamily的数量</a></h2>
-  
-    <p>设计Hbase schema,要尽量使用一个column family.原因主要是flush和compact机制造成的.</p>
-
-<p>flush和compact都是基于region级别的:当一个column family数据导入过多,发生flush,也会触发其他所有column family的(此时很小的memstore也会被触发的).而flush会生成很多storefile,紧接着就会触发compact.过多没必要的flush/compact会大大增加io的开销,影响hbase整体性能.</p>
-
-
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 16 Apr 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/hbase/2014-04/hbase-cloumnfamily.html#comments"> Comments</a>
-    </div>
-    
-    <a class="btn btn-default btn-sm pull-right" href="/hbase/2014-04/hbase-cloumnfamily.html"><span class="readmore">Read More &raquo; </span></a>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-
 
 <!-- Pagination links -->
 <div class="pull-right">
@@ -353,7 +343,7 @@ done
   
      
     	<li><a href="/categories.html#jvm-ref">
-    		jvm <span>5</span>
+    		jvm <span>6</span>
     	</a></li>
      
     	<li><a href="/categories.html#tools-ref">
@@ -383,6 +373,10 @@ done
     	<li><a href="/categories.html#hbase-ref">
     		hbase <span>3</span>
     	</a></li>
+     
+    	<li><a href="/categories.html#system performance enterprise and the cloud-ref">
+    		system performance enterprise and the cloud <span>1</span>
+    	</a></li>
     
   
 
@@ -397,7 +391,11 @@ done
        <div class="category">
          <ul>
            
+           <li><a href="/system%20performance%20enterprise%20and%20the%20cloud/2014-04/system-performance-enterprise-and-the-cloud-chapter-1.html">System Performance Enterprise and the Cloud Chapter 1-2</a></li>
+           
            <li><a href="/jvm/2014-04/jvmhs_err_pidlog.html">JVM致命错误日志（hs_err_pid.log）解读</a></li>
+           
+           <li><a href="/jvm/2014-04/java-core-dump-analysis.html">java core dump analysis</a></li>
            
            <li><a href="/jvm/2014-04/java-cpu-monitor.html">java cpu monitor</a></li>
            
@@ -412,10 +410,6 @@ done
            <li><a href="/java/2014-04/a-better-log4j-smtpappender.html">A Better Log4j SMTPAppender</a></li>
            
            <li><a href="/linux/2014-04/kill-zombie-process.html">Kill Zombie Process</a></li>
-           
-           <li><a href="/java/2014-03/resin-load.html">记录一次resin load过高的解决过程</a></li>
-           
-           <li><a href="/java/2014-03/jmeter.html">jmeter使用</a></li>
            
          </ul>
        </div>

@@ -11,7 +11,9 @@ http://bboniao.com/page2/index.html
 http://bboniao.com/page3/index.html
 http://bboniao.com/page4/index.html
 
+http://bboniao.com/system%20performance%20enterprise%20and%20the%20cloud/2014-04/system-performance-enterprise-and-the-cloud-chapter-1.html
 http://bboniao.com/jvm/2014-04/jvmhs_err_pidlog.html
+http://bboniao.com/jvm/2014-04/java-core-dump-analysis.html
 http://bboniao.com/jvm/2014-04/java-cpu-monitor.html
 http://bboniao.com/hbase/2014-04/hbasecolumncolumnput.html
 http://bboniao.com/hbase/2014-04/hbase-delete-put.html

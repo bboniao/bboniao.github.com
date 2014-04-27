@@ -5,10 +5,382 @@
         <description>My Blog - bboniao</description>
         <link>http://bboniao.com</link>
         <link>http://bboniao.com</link>
-        <lastBuildDate>2014-04-22T17:32:30+08:00</lastBuildDate>
-        <pubDate>2014-04-22T17:32:30+08:00</pubDate>
+        <lastBuildDate>2014-04-27T15:21:13+08:00</lastBuildDate>
+        <pubDate>2014-04-27T15:21:13+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>System Performance Enterprise and the Cloud Chapter 1-2</title>
+                <description>&lt;h5&gt;Generic system software stack&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/generic_system_software_stack.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h5&gt;Activities&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Setting performance objectives and performance modeling&lt;/li&gt;
+&lt;li&gt;Performance characterization of prototype software or hardware&lt;/li&gt;
+&lt;li&gt;Performance analysis of development code, pre-integration&lt;/li&gt;
+&lt;li&gt;Performing non-regression testing of software builds, pre- or post-release&lt;/li&gt;
+&lt;li&gt;Benchmarking/ benchmarketing for software releases&lt;/li&gt;
+&lt;li&gt;Proof-of-concept testing in the target environment&lt;/li&gt;
+&lt;li&gt;Configuration optimization for production deployment&lt;/li&gt;
+&lt;li&gt;Monitoring of running production software&lt;/li&gt;
+&lt;li&gt;Performance analysis of issues&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h5&gt;Perspectives&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/analysis_perspectives.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+
+&lt;h5&gt;Terminology&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;IOPS&lt;/li&gt;
+&lt;li&gt;Throughput&lt;/li&gt;
+&lt;li&gt;Response time&lt;/li&gt;
+&lt;li&gt;Latency&lt;/li&gt;
+&lt;li&gt;Utilization&lt;/li&gt;
+&lt;li&gt;Saturation&lt;/li&gt;
+&lt;li&gt;Bottleneck&lt;/li&gt;
+&lt;li&gt;Workload&lt;/li&gt;
+&lt;li&gt;Cache&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h5&gt;Models&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;System under Test&lt;/li&gt;
+&lt;li&gt;Queueing System&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h5&gt;Concepts&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Latency&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/network_connection_latency.png&quot; alt=&quot;Network connection latency&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Time Scales
+&lt;img src=&quot;/images/Time_Scale_of_System_Latencies.png&quot; alt=&quot;Time Scale of System Latencies&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Trade-offs
+&lt;img src=&quot;/images/Trade-offs.png&quot; alt=&quot;Trade offs&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Tuning Efforts
+&lt;img src=&quot;/images/Tuning_Efforts.png&quot; alt=&quot;Tuning Efforts&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Level of Appropriateness&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Point-in-Time Recommendations&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Load versus Architecture
+&lt;img src=&quot;/images/Load_versus_Architecture.png&quot; alt=&quot;Load versus Architecture&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Scalability
+&lt;img src=&quot;/images/Throughput_versus_load.png&quot; alt=&quot;Throughput versus load&quot;&gt;
+&lt;img src=&quot;/images/Performance_degradation.png&quot; alt=&quot;Performance degradation&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Known-Unknowns&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Known-knowns&lt;/li&gt;
+&lt;li&gt;Known-unknowns&lt;/li&gt;
+&lt;li&gt;Unknown-unknowns&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Metrics&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;IOPS&lt;/li&gt;
+&lt;li&gt;Throughput&lt;/li&gt;
+&lt;li&gt;Utilization&lt;/li&gt;
+&lt;li&gt;Latency&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Utilization&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Time-Based&lt;/li&gt;
+&lt;li&gt;Capacity-Based&lt;/li&gt;
+&lt;li&gt;Non-Idle Time&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Saturation
+&lt;img src=&quot;/images/Utilization_versus_saturation.png&quot; alt=&quot;Utilization versus saturation&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Profiling&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Caching&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Most recently used(MRU)&lt;/li&gt;
+&lt;li&gt;Last recently used(LRU)&lt;/li&gt;
+&lt;li&gt;Most frequently used(MFU)&lt;/li&gt;
+&lt;li&gt;Last frequently used(LFU)&lt;/li&gt;
+&lt;li&gt;Not frequently used(NFU)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h5&gt;Perspectives&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Resource Analysis&lt;/li&gt;
+&lt;li&gt;Workload Analysis&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h5&gt;Methodology&lt;/h5&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/analysis_perspectives.png&quot; alt=&quot;Generic System Performance Methodologies&quot;&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Streetlight Anti-Method&lt;/li&gt;
+&lt;li&gt;Random Change Anti-Method
+
+&lt;ul&gt;
+&lt;li&gt;Pick a random item to change(e.g.,a tunable parameter) &lt;/li&gt;
+&lt;li&gt;Change it in one direction&lt;/li&gt;
+&lt;li&gt;Measure performance&lt;/li&gt;
+&lt;li&gt;Chang it in the other direction&lt;/li&gt;
+&lt;li&gt;Measure performance&lt;/li&gt;
+&lt;li&gt;Were the results in step 3 or step 5 better than the baseline?If so,keep the change and go back to step 1&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Blame-Someone-Else Anti-Method
+
+&lt;ul&gt;
+&lt;li&gt;Find a system or environment component for which you are not responsible&lt;/li&gt;
+&lt;li&gt;Hypothesize that the issue is with that component&lt;/li&gt;
+&lt;li&gt;Redirect the issue to the team responsible for that component&lt;/li&gt;
+&lt;li&gt;When proven wrong,go back to step 1&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Ad Hoc Checklist Method&lt;/li&gt;
+&lt;li&gt;Problem Statement
+
+&lt;ul&gt;
+&lt;li&gt;What makes you think there is a performance problem?&lt;/li&gt;
+&lt;li&gt;Has this system ever performed well?&lt;/li&gt;
+&lt;li&gt;What changed recently? Software? Hardware? Load?&lt;/li&gt;
+&lt;li&gt;Can the problem be expressed in terms of latency or runtime?&lt;/li&gt;
+&lt;li&gt;Does the problem affect other perple or applications(or is it just you)?&lt;/li&gt;
+&lt;li&gt;What is the environment? What software and hardware are used? Versions? Configuration?&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Scientific Method
+
+&lt;ul&gt;
+&lt;li&gt;Question&lt;/li&gt;
+&lt;li&gt;Hypothesis&lt;/li&gt;
+&lt;li&gt;Prediction&lt;/li&gt;
+&lt;li&gt;Test&lt;/li&gt;
+&lt;li&gt;Analysis&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Diagnosis Cycle
+
+&lt;ul&gt;
+&lt;li&gt;hypothesis--&amp;gt; instrumentation--&amp;gt; data--&amp;gt; hypothesis &lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Tools Method
+
+&lt;ul&gt;
+&lt;li&gt;List available performance tools(optionlly, install or purchase more)&lt;/li&gt;
+&lt;li&gt;For each tool, list useful metrics it provides&lt;/li&gt;
+&lt;li&gt;For each metric, list possible rules for interpretation&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;The USE(utilization saturation errors) Method&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Procedure
+&lt;img src=&quot;/images/Procedure.png&quot; alt=&quot;The USE method flow&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Metrics
+&lt;img src=&quot;/images/Example_USE_Method_Metrics.png&quot; alt=&quot;Example USE Method Metrics&quot;&gt;
+&lt;img src=&quot;/images/Example_USE_Method_Advanced_Metrics.png&quot; alt=&quot;Example USE Method Advanced Metrics&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Software Resources&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Mutex locks&lt;/li&gt;
+&lt;li&gt;Thread pools&lt;/li&gt;
+&lt;li&gt;Process/thread capacity&lt;/li&gt;
+&lt;li&gt;File descriptor capacity &lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Workload Characterization
+
+&lt;ul&gt;
+&lt;li&gt;Who is causing the load? Process ID, user ID, remote IP address?&lt;/li&gt;
+&lt;li&gt;Why is the load being called? Code path, stack trace?&lt;/li&gt;
+&lt;li&gt;What are the load characteristics? IOPS, throoughput, direction(read/write)&lt;/li&gt;
+&lt;li&gt;How is the load changing over time? Is there a dialy pattern&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Drill-Down Analysis
+
+&lt;ul&gt;
+&lt;li&gt;three stages&lt;/li&gt;
+&lt;li&gt;Monitoring&lt;/li&gt;
+&lt;li&gt;Identification&lt;/li&gt;
+&lt;li&gt;Analysis&lt;/li&gt;
+&lt;li&gt;Five Whys(database)&lt;/li&gt;
+&lt;li&gt;A database has begun to perform poorly for many queries. Why?&lt;/li&gt;
+&lt;li&gt;It is delayed by disk I/O due to memory paging. Why?&lt;/li&gt;
+&lt;li&gt;Database memory usage has grown too large. Why?&lt;/li&gt;
+&lt;li&gt;The allocator is consuming more memory than it should. Why?&lt;/li&gt;
+&lt;li&gt;The allocator has a memory fragmentation issue.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Latency Analysis(Mysql query latency)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Is there a query latency issue?(yes)&lt;/li&gt;
+&lt;li&gt;Is the query time largely spent on-CPU or waiting off-CPU?(off-CPU)&lt;/li&gt;
+&lt;li&gt;What is the off-CPU time spent waiting for?(file system I/O)&lt;/li&gt;
+&lt;li&gt;Is the file system I/O time due to disk I/O or lock contention?(disk I/O)&lt;/li&gt;
+&lt;li&gt;Is the disk I/O time likely due to random seeks or data transfer time?(transfer time)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Latency_analysis_procedure.png&quot; alt=&quot;Latency analysis procedure&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Method R&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Event Tracing&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Input: all attributes of an event request: type, direction, size, and so on&lt;/li&gt;
+&lt;li&gt;Times: start time, end time, latency(difference)&lt;/li&gt;
+&lt;li&gt;Result: error status, result of event(size)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Baseline Statistics&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Static Performance Tuning&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Does the component make sense?&lt;/li&gt;
+&lt;li&gt;Does the configuration make sense for the intended workload?&lt;/li&gt;
+&lt;li&gt;Was the component autoconfigured in the best state for the intended workload?&lt;/li&gt;
+&lt;li&gt;Has the component experienced an error and is it in a degraded state?
+Examples&lt;/li&gt;
+&lt;li&gt;Network interface negotiation: selecting 100 Mbits/s instead of 1 Gbit/s&lt;/li&gt;
+&lt;li&gt;Failed disk in a RAID pool&lt;/li&gt;
+&lt;li&gt;Older version of the operating system, application, or firmware used&lt;/li&gt;
+&lt;li&gt;Mismatched file system record size compared to workload I/O size&lt;/li&gt;
+&lt;li&gt;Server accidentally configured as a router&lt;/li&gt;
+&lt;li&gt;Server configured to use resources, such as authentication, from a remote data center instead of locally&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Cache Tuning&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Aim to cache as high in the stack as possible, close to where the work is performed, reducing the operational overhead of cache hits.&lt;/li&gt;
+&lt;li&gt;Check that the cache is enabled and working.&lt;/li&gt;
+&lt;li&gt;Check the cache hit/miss ratios and miss rate.&lt;/li&gt;
+&lt;li&gt;If the cache is dynamic, check its current size.&lt;/li&gt;
+&lt;li&gt;Tune the cache for the workload. This task depends on available cache tunable parameters&lt;/li&gt;
+&lt;li&gt;Tune the workload for the cache. Doing this includes reducing unnecessary comsumers of the cache, which frees up more space for the target workload&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Micro-Benchmarking&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Syscall time: for fork(), exec(), open(), read(), close()&lt;/li&gt;
+&lt;li&gt;File system reads: from a cache file, varying the read size from 1 byte to 1 Mbyte&lt;/li&gt;
+&lt;li&gt;Network throughput: transferring data between TCP endpoints, for varying socket buffer sizes&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h5&gt;Modeling&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Enterprise versus Cloud&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Visual Identification&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Linear scalability&lt;/li&gt;
+&lt;li&gt;Contention&lt;/li&gt;
+&lt;li&gt;Coherence&lt;/li&gt;
+&lt;li&gt;Knee point&lt;/li&gt;
+&lt;li&gt;Scalability ceiling&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/scalability_profile.png&quot; alt=&quot;scalability profile&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Amdahl&amp;#39;s Law of Scalability   C(N) = N/1 + a(N - 1)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Collect data of range of N, either by observation of an existing system or experimentally using micro-benchmarking or load generators&lt;/li&gt;
+&lt;li&gt;Perform regression analysis to determine the Amdahl parameter(a); this may be done using statistical software, such as gnuplot or R&lt;/li&gt;
+&lt;li&gt;Present the result for analysis.The collected data points can be plotted along with the model function to predict scaling and reveal differences between the data and the model. This may also be done using gnuplot or R&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Universal Scalability Law  C(N)=N/1 + a(N - 1) + BN(N - 1)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Queueing Theory&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Arrival process&lt;/li&gt;
+&lt;li&gt;Service time distribution&lt;/li&gt;
+&lt;li&gt;Number of server centers&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h5&gt;Capacity Planning&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Resource Limits
+
+&lt;ul&gt;
+&lt;li&gt;Measure the rate of server requests, and monitor this rate over time&lt;/li&gt;
+&lt;li&gt;Measure hardware and software resource usage. Monitor this rate over time&lt;/li&gt;
+&lt;li&gt;Express server requests in terms of resources used&lt;/li&gt;
+&lt;li&gt;Extrapolate server requests to known(or experimentally determined)limits for earch resource&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Factor Analysis
+
+&lt;ul&gt;
+&lt;li&gt;Test performance with all factors configured to maximum&lt;/li&gt;
+&lt;li&gt;Change factors one by one, testing performance(it should drop for each)&lt;/li&gt;
+&lt;li&gt;Attribute a percentage performance drop to each factor, based on measurements, along with the cost savings&lt;/li&gt;
+&lt;li&gt;Starting with maximum performance(and cost),choose factors to save cost, while maintaining the required requests per second based on their combined performance drop&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Scaling Solutions&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h5&gt;Statistics&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Quantifying Performance
+
+&lt;ul&gt;
+&lt;li&gt;Observation-Based&lt;/li&gt;
+&lt;li&gt;Choose a reliable metric&lt;/li&gt;
+&lt;li&gt;Estimate the performance gain from resolving the issue&lt;/li&gt;
+&lt;li&gt;Experimentation-Based&lt;/li&gt;
+&lt;li&gt;Apply the fix&lt;/li&gt;
+&lt;li&gt;Quantify before versus after using a reliable metric&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Averages
+
+&lt;ul&gt;
+&lt;li&gt;Geometric Mean&lt;/li&gt;
+&lt;li&gt;Harmonic Mean&lt;/li&gt;
+&lt;li&gt;Averages over Time&lt;/li&gt;
+&lt;li&gt;Decayed Average&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Standard Deviations,Percentiles,Median&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/staticsis_values.png&quot; alt=&quot;staticsis values&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Coefficient of Variation
+5.Multimodal Distributions
+6.Outliers&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h5&gt;Monitoring&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Time-Based Patterns&lt;/li&gt;
+&lt;li&gt;Monitoring Products&lt;/li&gt;
+&lt;li&gt;Summary-since-Boot&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h5&gt;Visualizations&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Line Chart&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Line_Chart.png&quot; alt=&quot;Line Chart&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Scatter Plots
+&lt;img src=&quot;/images/Scatter_Plots.png&quot; alt=&quot;Scatter Plots&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Heat Maps
+&lt;img src=&quot;/images/heat_map.png&quot; alt=&quot;heat map&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Surface Plot
+&lt;img src=&quot;/images/Surface_Plot.png&quot; alt=&quot;Surface Plot&quot;&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Visualization Tools&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+                <link>http://bboniao.com/system%20performance%20enterprise%20and%20the%20cloud/2014-04/system-performance-enterprise-and-the-cloud-chapter-1.html</link>
+                <guid>http://bboniao.com/system%20performance%20enterprise%20and%20the%20cloud/2014-04/system-performance-enterprise-and-the-cloud-chapter-1</guid>
+                <pubDate>2014-04-26T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>JVM致命错误日志（hs_err_pid.log）解读</title>
@@ -228,6 +600,14 @@ Memory: 4k page, physical 3631860k(155144k free), swap 5124724k(5056452k free)
 </description>
                 <link>http://bboniao.com/jvm/2014-04/jvmhs_err_pidlog.html</link>
                 <guid>http://bboniao.com/jvm/2014-04/jvmhs_err_pidlog</guid>
+                <pubDate>2014-04-22T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>java core dump analysis</title>
+                <description></description>
+                <link>http://bboniao.com/jvm/2014-04/java-core-dump-analysis.html</link>
+                <guid>http://bboniao.com/jvm/2014-04/java-core-dump-analysis</guid>
                 <pubDate>2014-04-22T00:00:00+08:00</pubDate>
         </item>
 

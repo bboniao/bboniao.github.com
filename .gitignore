@@ -6,7 +6,7 @@ Thumbs.db
 
 !.gitkeep
 
-.rbenv-version
-.rvmrc
-.sass-cache
-.swp
+*.rbenv-version
+*.rvmrc
+*.sass-cache
+*.swp
