@@ -10,7 +10,11 @@ http://bboniao.com/tags.html
 http://bboniao.com/page2/index.html
 http://bboniao.com/page3/index.html
 http://bboniao.com/page4/index.html
+http://bboniao.com/page5/index.html
 
+http://bboniao.com/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-4.html
+http://bboniao.com/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-3.html
+http://bboniao.com/java%20performance:the%20definitive%20guide/2014-04/java-performancethe-definitive-guide-chapter-1-2.html
 http://bboniao.com/system%20performance%20enterprise%20and%20the%20cloud/2014-04/system-performance-enterprise-and-the-cloud-chapter-1.html
 http://bboniao.com/jvm/2014-04/jvmhs_err_pidlog.html
 http://bboniao.com/jvm/2014-04/java-core-dump-analysis.html

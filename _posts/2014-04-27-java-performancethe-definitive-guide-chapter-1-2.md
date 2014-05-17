@@ -26,10 +26,13 @@ tags: performance
  - Microbenchmarks must measure the correct input
 2. Macrobenchmarks
 3. Mesobenchmarks
+
 ##### Understand Throughput, Batching, and Response Time
 1. Elapsed Time(Batch)Measurements
 2. Throughput Measurements
 3. Response Time Tests
 [Faban](http://faban.org/)
+
 ##### Understand Variability
+
 ##### Test Early, Test Often

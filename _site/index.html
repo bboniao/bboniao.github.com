@@ -129,6 +129,10 @@ var _hmt = _hmt || [];
       
     
   
+    
+      
+    
+  
 
 
 
@@ -171,6 +175,114 @@ var _hmt = _hmt || [];
     </div>
     <article>
 
+
+<div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-4.html">Java Performance:The Definitive Guide Chapter 4</a></h2>
+  
+    <h5>Tuning the Code Cache</h5>
+
+<p><code>-XX:ReservedCodeCacheSize=N</code>,<code>-XX:InitialCodeCacheSize=N</code>,调整code cache size的大小.查看方式:jmc--MBean Server--Memory--Active Memory Pools--Code Cache和jconsole--Memory--Chart--Memory pool &quot;Code Cache&quot;</p>
+
+<table><thead>
+<tr>
+<th align="left">jvm类型</th>
+<th align="left">默认code cache size</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">32-bit client,Java 8</td>
+<td align="left">32MB</td>
+</tr>
+<tr>
+<td align="left">32-bit server with tiered compilation, Java 8</td>
+<td align="left">240MB</td>
+</tr>
+<tr>
+<td align="left">64-bit server with tiered compilation, Java 8</td>
+<td align="left">240MB</td>
+</tr>
+<tr>
+<td align="left">32-bit client, Java 7</td>
+<td align="left">32MB</td>
+</tr>
+<tr>
+<td align="left">32-bit server, Java 7</td>
+<td align="left">32MB</td>
+</tr>
+<tr>
+<td align="left">64-bit server, Java 7</td>
+<td align="left">48MB</td>
+</tr>
+<tr>
+<td align="left">64-bit server with tiered compilation, Java 7</td>
+<td align="left">96MB</td>
+</tr>
+</tbody></table>
+
+
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 17 May 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-4.html#comments"> Comments</a>
+    </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-4.html"><span class="readmore">Read More &raquo; </span></a>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-3.html">Java Performance:The Definitive Guide Chapter 3</a></h2>
+  
+    Network Usage nicstat nicstat 1 Time Int rKB/s wKB/s rPk/s wPk/s rAvs wAvs %Util Sat 21:45:53 lo 1.45 1.45 8.54 8.54 174.0 174.0 0.00 0.00 21:45:53 eth0 35.45 12.14 72.33 86.34 501.9 144.0 0.04 0.00 21:45:53 eth1 0.43 0.36 6.01 1.05 73.54 354.8 0.00 0.00 Time Int rKB/s wKB/s rPk/s...
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 15 May 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-3.html#comments"> Comments</a>
+    </div>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/java%20performance:the%20definitive%20guide/2014-04/java-performancethe-definitive-guide-chapter-1-2.html">Java Performance:The Definitive Guide Chapter 1 2</a></h2>
+  
+    <h5>The Complete Performance Story</h5>
+
+<ol>
+<li>Write Better Algorithms</li>
+<li>Write Less Code</li>
+<li>Prematurely Optimize</li>
+<li>Look Elsewhere: The Database Is Always the Bottleneck</li>
+<li>Optimize for the Common Case
+
+<ul>
+<li>Optimize code by profiling it and focusing on the operations in the profile taking the most time</li>
+<li>Apply Occam&#39;s Razor to diagnosing performance problems</li>
+<li>Write simple algorithms for the most common operations in an application</li>
+</ul></li>
+</ol>
+
+
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 27 Apr 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/java%20performance:the%20definitive%20guide/2014-04/java-performancethe-definitive-guide-chapter-1-2.html#comments"> Comments</a>
+    </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/java%20performance:the%20definitive%20guide/2014-04/java-performancethe-definitive-guide-chapter-1-2.html"><span class="readmore">Read More &raquo; </span></a>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
 
 <div class="wrapper">
   <h2 class="h2 entry-title"><a href="/system%20performance%20enterprise%20and%20the%20cloud/2014-04/system-performance-enterprise-and-the-cloud-chapter-1.html">System Performance Enterprise and the Cloud Chapter 1-2</a></h2>
@@ -219,99 +331,6 @@ var _hmt = _hmt || [];
   </div>
 </div>
 
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/jvm/2014-04/java-core-dump-analysis.html">java core dump analysis</a></h2>
-  
-    
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 22 Apr 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/jvm/2014-04/java-core-dump-analysis.html#comments"> Comments</a>
-    </div>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/jvm/2014-04/java-cpu-monitor.html">java cpu monitor</a></h2>
-  
-    <h3>转自<a href="http://www.javaarch.net/jiagoushi/55.htm">java-cpu-monitor shell脚本</a></h3>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">#!/bin/bash                                                                                                                           
-
-threshold=${1-95}
-now=$(date &#39;+%Y-%m-%d %H:%M:%S&#39;)
-cache=()
-
-jps -q | xargs ps hH k -pcpu o pid,lwp,pcpu,args \
-  | awk &quot;\$3 &gt;= $threshold&quot; | while read line; do
-
-  array=($(echo &quot;$line&quot;))
-  pid=${array[0]}
-  lwp=$(printf &#39;%#x&#39; ${array[1]})
-
-  if [ -z &quot;${cache[$pid]}&quot; ]; then
-    cache[$pid]=$(jstack $pid)
-  fi
-
-  echo &quot;[$now] ${line}&quot;
-  echo
-  echo &quot;${cache[$pid]}&quot; | sed -n &quot;/nid=$lwp/,/^$/p&quot;
-  echo
-
-done
-</code></pre></div>
-<p>threshold设置一下cpu的使用率</p>
-
-
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 16 Apr 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/jvm/2014-04/java-cpu-monitor.html#comments"> Comments</a>
-    </div>
-    
-    <a class="btn btn-default btn-sm pull-right" href="/jvm/2014-04/java-cpu-monitor.html"><span class="readmore">Read More &raquo; </span></a>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/hbase/2014-04/hbasecolumncolumnput.html">HBase在单Column和多Column情况下批量Put的性能对比分析</a></h2>
-  
-    <h3>转自<a href="http://blog.linezing.com/?p=2106">量子恒道官方博客</a></h3>
-
-<p>针对HBase在单column family单column qualifier和单column family多column qualifier两种场景下，分别批量Put写入时的性能对比情况，下面是结合HBase的源码来简单分析解释这一现象。</p>
-
-<h3>1. 测试结果</h3>
-
-<p>在客户端批量写入时，单列族单列模式和单列族多列模式的TPS和RPC次数相差很大，以客户端10个线程，开启WAL的两种模式下的测试数据为例，</p>
-
-<h5>1)单列族单列模式下，TPS能够达到12403.87，实际RPC次数为53次；</h5>
-
-<h5>2)单列族多列模式下，TPS只有1730.68，实际RPC次数为478次。</h5>
-
-<p>二者TPS相差约7倍，RPC次数相差约9倍。详细的测试环境这里不再罗列，我们这里关心的只是在两种条件下的性能差别情况。</p>
-
-
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 16 Apr 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/hbase/2014-04/hbasecolumncolumnput.html#comments"> Comments</a>
-    </div>
-    
-    <a class="btn btn-default btn-sm pull-right" href="/hbase/2014-04/hbasecolumncolumnput.html"><span class="readmore">Read More &raquo; </span></a>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-
 
 <!-- Pagination links -->
 <div class="pull-right">
@@ -319,10 +338,10 @@ done
     <span><a class="btn btn-default btn-sm disabled" href="/">Home</a></span>
     <span><a class="btn btn-default btn-sm disabled">&laquo; Prev</a></span>
   
-  <span><a class="btn btn-default btn-sm disabled">Page: 1 of 4</a></span>
+  <span><a class="btn btn-default btn-sm disabled">Page: 1 of 5</a></span>
   
     <a class="btn btn-default btn-sm" href="/page2/">Next &raquo;</a>
-    <a class="btn btn-default btn-sm" href="/page4/">Last</a>
+    <a class="btn btn-default btn-sm" href="/page5/">Last</a>
   
 </div>
 
@@ -377,6 +396,10 @@ done
     	<li><a href="/categories.html#system performance enterprise and the cloud-ref">
     		system performance enterprise and the cloud <span>1</span>
     	</a></li>
+     
+    	<li><a href="/categories.html#java performance:the definitive guide-ref">
+    		java performance:the definitive guide <span>3</span>
+    	</a></li>
     
   
 
@@ -391,6 +414,12 @@ done
        <div class="category">
          <ul>
            
+           <li><a href="/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-4.html">Java Performance:The Definitive Guide Chapter 4</a></li>
+           
+           <li><a href="/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-3.html">Java Performance:The Definitive Guide Chapter 3</a></li>
+           
+           <li><a href="/java%20performance:the%20definitive%20guide/2014-04/java-performancethe-definitive-guide-chapter-1-2.html">Java Performance:The Definitive Guide Chapter 1 2</a></li>
+           
            <li><a href="/system%20performance%20enterprise%20and%20the%20cloud/2014-04/system-performance-enterprise-and-the-cloud-chapter-1.html">System Performance Enterprise and the Cloud Chapter 1-2</a></li>
            
            <li><a href="/jvm/2014-04/jvmhs_err_pidlog.html">JVM致命错误日志（hs_err_pid.log）解读</a></li>
@@ -404,12 +433,6 @@ done
            <li><a href="/hbase/2014-04/hbase-delete-put.html">hbase delete put的陷阱</a></li>
            
            <li><a href="/hbase/2014-04/hbase-cloumnfamily.html">为什么要控制hbase cloumnFamily的数量</a></li>
-           
-           <li><a href="/memcache/2014-04/memcachehash.html">memcache使用一致性hash,找出指向的节点</a></li>
-           
-           <li><a href="/java/2014-04/a-better-log4j-smtpappender.html">A Better Log4j SMTPAppender</a></li>
-           
-           <li><a href="/linux/2014-04/kill-zombie-process.html">Kill Zombie Process</a></li>
            
          </ul>
        </div>

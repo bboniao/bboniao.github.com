@@ -5,10 +5,369 @@
         <description>My Blog - bboniao</description>
         <link>http://bboniao.com</link>
         <link>http://bboniao.com</link>
-        <lastBuildDate>2014-04-27T15:21:13+08:00</lastBuildDate>
-        <pubDate>2014-04-27T15:21:13+08:00</pubDate>
+        <lastBuildDate>2014-05-17T11:33:37+08:00</lastBuildDate>
+        <pubDate>2014-05-17T11:33:37+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>Java Performance:The Definitive Guide Chapter 4</title>
+                <description>&lt;h5&gt;Tuning the Code Cache&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;-XX:ReservedCodeCacheSize=N&lt;/code&gt;,&lt;code&gt;-XX:InitialCodeCacheSize=N&lt;/code&gt;,调整code cache size的大小.查看方式:jmc--MBean Server--Memory--Active Memory Pools--Code Cache和jconsole--Memory--Chart--Memory pool &amp;quot;Code Cache&amp;quot;&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;jvm类型&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;默认code cache size&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;32-bit client,Java 8&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;32MB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;32-bit server with tiered compilation, Java 8&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;240MB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;64-bit server with tiered compilation, Java 8&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;240MB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;32-bit client, Java 7&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;32MB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;32-bit server, Java 7&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;32MB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;64-bit server, Java 7&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;48MB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;64-bit server with tiered compilation, Java 7&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;96MB&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h5&gt;Compilation Thresholds&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;OSR trigger=(CompileThreshold*((OnStackReplacePercentage-InterpreterProfilePercentage)/100))&lt;/code&gt;&lt;/p&gt;
+
+&lt;h5&gt;Inspecting the Compilation Process&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;-XX:+PrintCompilation&lt;/code&gt;,打印编译过程&lt;/p&gt;
+
+&lt;p&gt;各种属性说明&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;符号&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;%&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;OSR编译&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;s&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;方法同步&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;!&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;异常处理的方法&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;b&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;编译发生在阻塞模式&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;n&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;编译放生在本地方法的包装器上&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;&lt;code&gt;jstat -compiler pid&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Compiled Failed Invalid   Time   FailedType FailedMethod
+     199      0       0     1.16          0 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;jstat -printcompilation pid Nms&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Compiled  Size  Type Method
+     208     37    1 java/awt/Rectangle &amp;lt;init&amp;gt;
+     209    159    1 java/util/HashMap &amp;lt;init&amp;gt;
+     210    836    1 sun/java2d/pipe/AlphaPaintPipe renderPathTile
+     212    836    1 sun/java2d/pipe/AlphaPaintPipe renderPathTile
+     213    319    1 java/security/AccessControlContext optimize
+     215    361    1 java/awt/TexturePaintContext getRaster
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;Tiered Compilation Levels&lt;/h5&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;level&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;0&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;解释代码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;1&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;简单C1编译代码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;2&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;限制C1编译代码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;3&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;完全C1编译代码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;4&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;C2编译代码&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h5&gt;总结&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;不用担心小方法(尤其set/get),编译器会优化&lt;/li&gt;
+&lt;li&gt;需要编译的代码会放到队列中.&lt;/li&gt;
+&lt;li&gt;需要调节code cacehe,以免影响JIT&lt;/li&gt;
+&lt;li&gt;越简单的方法,越容易优化.复杂的循环结果和大方法,将影响JIT&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+                <link>http://bboniao.com/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-4.html</link>
+                <guid>http://bboniao.com/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-4</guid>
+                <pubDate>2014-05-17T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>Java Performance:The Definitive Guide Chapter 3</title>
+                <description>&lt;h5&gt;Network Usage&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://jaist.dl.sourceforge.net/project/nicstat/nicstat-src-1.95.tar.gz&quot;&gt;nicstat&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;nicstat 1&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;    Time      Int   rKB/s   wKB/s   rPk/s   wPk/s    rAvs    wAvs %Util    Sat
+21:45:53       lo    1.45    1.45    8.54    8.54   174.0   174.0  0.00   0.00
+21:45:53     eth0   35.45   12.14   72.33   86.34   501.9   144.0  0.04   0.00
+21:45:53     eth1    0.43    0.36    6.01    1.05   73.54   354.8  0.00   0.00
+    Time      Int   rKB/s   wKB/s   rPk/s   wPk/s    rAvs    wAvs %Util    Sat
+21:45:54       lo    2.80    2.80   12.99   12.99   220.3   220.3  0.00   0.00
+21:45:54     eth0    1.35    1.78   20.99   21.99   66.00   82.86  0.00   0.00
+21:45:54     eth1    0.41    0.00    7.00    0.00   60.00    0.00  0.00   0.00
+    Time      Int   rKB/s   wKB/s   rPk/s   wPk/s    rAvs    wAvs %Util    Sat
+21:45:55       lo    0.30    0.30    6.00    6.00   50.67   50.67  0.00   0.00
+21:45:55     eth0    2.70    3.93   36.99   50.99   74.65   78.88  0.01   0.00
+21:45:55     eth1    0.23    0.00    4.00    0.00   60.00    0.00  0.00   0.00
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;!-- more  --&gt;
+
+&lt;h5&gt;jcmd&lt;/h5&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;命令&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;jcmd pid VM.uptime&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;jvm启动时长&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;jcmd pid VM.system_properties&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;列出jvm系统参数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;jcmd pid VM.version&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;jvm版本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;jcmd pid VM.command_line&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;jvm启动参数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;jcmd pid VM.flags [-all]&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;jvm性能参数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;jcmd pid Thread.print&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;等价于jstack pid&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;jcmd pid PerfCounter.print&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;jvm所有性能指标&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h5&gt;Working with tuning flags&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;jcmd pid VM.flags -all | grep manageable&lt;/code&gt;列出的jvm参数,可以使用&lt;code&gt;jinfo -flag [+-]parameter pid&lt;/code&gt;动态修改&lt;/p&gt;
+
+&lt;h5&gt;Enable JFR via the command line&lt;/h5&gt;
+
+&lt;p&gt;&lt;code&gt;-XX:+UnlockCommercialFeatures -XX:+FlightRecorder&lt;/code&gt;开启JFR之后,可以通过&lt;code&gt;-XX:+FlightRecorderOptions=string&lt;/code&gt;和jcmd pid JFR.start [option_list]激活记录
+&lt;code&gt;string&lt;/code&gt;和&lt;code&gt;[option_list]&lt;/code&gt;,是逗号隔开的键值对,如下:&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;参数&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;name=name&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;记录名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;defaultrecording=&amp;lt;true&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;false&amp;gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;settings=path&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;包含JFR配置的文件名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;delay=time&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;延迟时间(例如:30s,1h)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;duration=time&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;记录持续时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;filename=path&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;记录输出的目录&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;compress=&amp;lt;true&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;false&amp;gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;maxage=time&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;记录文件保留时间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;maxsize=size&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;记录文件最大size,(例如:1024K,1M)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;&lt;code&gt;jcmd pid JFR.dump [option_list]&lt;/code&gt;,随时dump记录文件,option如下:&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;参数&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;name=name&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;记录名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;recording=n&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;记录数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;filename=path&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;记录文件的路径&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;p&gt;&lt;code&gt;jcmd pid JFR.check [verbose]&lt;/code&gt;,检查记录是否在运行&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;jcmd pid JFR.stop [option_list]&lt;/code&gt;,终止记录进程&lt;/p&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;参数&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;name=name&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;记录名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;recording=n&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;停止记录数,可以参考JFR.check&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;discard=boolean&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;如果为true,抛弃数据,不会写入文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;filename=path&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;记录文件的路径&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+</description>
+                <link>http://bboniao.com/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-3.html</link>
+                <guid>http://bboniao.com/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-3</guid>
+                <pubDate>2014-05-15T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>Java Performance:The Definitive Guide Chapter 1 2</title>
+                <description>&lt;h5&gt;The Complete Performance Story&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Write Better Algorithms&lt;/li&gt;
+&lt;li&gt;Write Less Code&lt;/li&gt;
+&lt;li&gt;Prematurely Optimize&lt;/li&gt;
+&lt;li&gt;Look Elsewhere: The Database Is Always the Bottleneck&lt;/li&gt;
+&lt;li&gt;Optimize for the Common Case
+
+&lt;ul&gt;
+&lt;li&gt;Optimize code by profiling it and focusing on the operations in the profile taking the most time&lt;/li&gt;
+&lt;li&gt;Apply Occam&amp;#39;s Razor to diagnosing performance problems&lt;/li&gt;
+&lt;li&gt;Write simple algorithms for the most common operations in an application&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h5&gt;Test a Real Application&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Microbenchmarks
+
+&lt;ul&gt;
+&lt;li&gt;Microbenchmarks must use their results&lt;/li&gt;
+&lt;li&gt;Microbenchmarks must not include extraneous operations&lt;/li&gt;
+&lt;li&gt;Microbenchmarks must measure the correct input&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Macrobenchmarks&lt;/li&gt;
+&lt;li&gt;Mesobenchmarks&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h5&gt;Understand Throughput, Batching, and Response Time&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Elapsed Time(Batch)Measurements&lt;/li&gt;
+&lt;li&gt;Throughput Measurements&lt;/li&gt;
+&lt;li&gt;Response Time Tests
+&lt;a href=&quot;http://faban.org/&quot;&gt;Faban&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h5&gt;Understand Variability&lt;/h5&gt;
+
+&lt;h5&gt;Test Early, Test Often&lt;/h5&gt;
+</description>
+                <link>http://bboniao.com/java%20performance:the%20definitive%20guide/2014-04/java-performancethe-definitive-guide-chapter-1-2.html</link>
+                <guid>http://bboniao.com/java%20performance:the%20definitive%20guide/2014-04/java-performancethe-definitive-guide-chapter-1-2</guid>
+                <pubDate>2014-04-27T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>System Performance Enterprise and the Cloud Chapter 1-2</title>
