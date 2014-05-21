@@ -64,7 +64,7 @@ $(document).ready(function() {
   function findEntries(q) {
     var matches = [];
     var rq = new RegExp(q, 'im');
-    var rl = /^http:\/\/havee\.me\/(.+)\.html$/;
+    var rl = /^http:\/\/bboniao\.com\/(.+)\.html$/;
     for (var i = 0; i < entries.length; i++) {
       var entry = entries[i];
       var title = $(entry.getElementsByTagName('title')[0]).text();
