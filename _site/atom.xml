@@ -1,971 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
- 
+
  <title>My Blog</title>
- <link href="http://bboniao.com/" rel="self"/>
+ <link href="http://bboniao.com//atom.xml" rel="self"/>
  <link href="http://bboniao.com"/>
- <updated>2014-05-17T11:33:37+08:00</updated>
+ <updated>2014-05-21T20:13:26+08:00</updated>
  <id>http://bboniao.com</id>
  <author>
    <name>bboniao</name>
-   <email>bboniao@gmail.com</email>
  </author>
 
  
  <entry>
-   <title>Java Performance:The Definitive Guide Chapter 4</title>
+   <title>Java Performance:The Definitive Guide Chapter 4></title>
    <link href="http://bboniao.com/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-4.html"/>
    <updated>2014-05-17T00:00:00+08:00</updated>
    <id>http://bboniao.com/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-4</id>
-   <content type="html">&lt;h5&gt;Tuning the Code Cache&lt;/h5&gt;
+   <content type="html">Tuning the Code Cache
 
-&lt;p&gt;&lt;code&gt;-XX:ReservedCodeCacheSize=N&lt;/code&gt;,&lt;code&gt;-XX:InitialCodeCacheSize=N&lt;/code&gt;,调整code cache size的大小.查看方式:jmc--MBean Server--Memory--Active Memory Pools--Code Cache和jconsole--Memory--Chart--Memory pool &amp;quot;Code Cache&amp;quot;&lt;/p&gt;
+-XX:ReservedCodeCacheSize=N,-XX:InitialCodeCacheSize=N,调整code cache size的大小.查看方式:jmc--MBean Server--Memory--Active Memory Pools--Code Cache和jconsole--Memory--Chart--Memory pool &amp;quot;Code Cache&amp;quot;
 
-&lt;table&gt;&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;left&quot;&gt;jvm类型&lt;/th&gt;
-&lt;th align=&quot;left&quot;&gt;默认code cache size&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;32-bit client,Java 8&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;32MB&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;32-bit server with tiered compilation, Java 8&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;240MB&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;64-bit server with tiered compilation, Java 8&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;240MB&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;32-bit client, Java 7&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;32MB&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;32-bit server, Java 7&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;32MB&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;64-bit server, Java 7&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;48MB&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;64-bit server with tiered compilation, Java 7&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;96MB&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
 
-&lt;!-- more --&gt;
 
-&lt;h5&gt;Compilation Thresholds&lt;/h5&gt;
+jvm类型
+默认code cache size
 
-&lt;p&gt;&lt;code&gt;OSR trigger=(CompileThreshold*((OnStackReplacePercentage-InterpreterProfilePercentage)/100))&lt;/code&gt;&lt;/p&gt;
 
-&lt;h5&gt;Inspecting the Compilation Process&lt;/h5&gt;
 
-&lt;p&gt;&lt;code&gt;-XX:+PrintCompilation&lt;/code&gt;,打印编译过程&lt;/p&gt;
+32-bit client,Java 8
+32MB
 
-&lt;p&gt;各种属性说明&lt;/p&gt;
 
-&lt;table&gt;&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;left&quot;&gt;符号&lt;/th&gt;
-&lt;th align=&quot;left&quot;&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;%&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;OSR编译&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;s&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;方法同步&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;!&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;异常处理的方法&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;b&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;编译发生在阻塞模式&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;n&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;编译放生在本地方法的包装器上&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-
-&lt;p&gt;&lt;code&gt;jstat -compiler pid&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Compiled Failed Invalid   Time   FailedType FailedMethod
-     199      0       0     1.16          0 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code&gt;jstat -printcompilation pid Nms&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Compiled  Size  Type Method
-     208     37    1 java/awt/Rectangle &amp;lt;init&amp;gt;
-     209    159    1 java/util/HashMap &amp;lt;init&amp;gt;
-     210    836    1 sun/java2d/pipe/AlphaPaintPipe renderPathTile
-     212    836    1 sun/java2d/pipe/AlphaPaintPipe renderPathTile
-     213    319    1 java/security/AccessControlContext optimize
-     215    361    1 java/awt/TexturePaintContext getRaster
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;Tiered Compilation Levels&lt;/h5&gt;
-
-&lt;table&gt;&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;left&quot;&gt;level&lt;/th&gt;
-&lt;th align=&quot;left&quot;&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;0&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;解释代码&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;1&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;简单C1编译代码&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;2&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;限制C1编译代码&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;3&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;完全C1编译代码&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;4&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;C2编译代码&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-
-&lt;h5&gt;总结&lt;/h5&gt;
-
-&lt;ol&gt;
-&lt;li&gt;不用担心小方法(尤其set/get),编译器会优化&lt;/li&gt;
-&lt;li&gt;需要编译的代码会放到队列中.&lt;/li&gt;
-&lt;li&gt;需要调节code cacehe,以免影响JIT&lt;/li&gt;
-&lt;li&gt;越简单的方法,越容易优化.复杂的循环结果和大方法,将影响JIT&lt;/li&gt;
-&lt;/ol&gt;
-</content>
+32-bit server wi...</content>
  </entry>
  
  <entry>
-   <title>Java Performance:The Definitive Guide Chapter 3</title>
+   <title>Java Performance:The Definitive Guide Chapter 3></title>
    <link href="http://bboniao.com/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-3.html"/>
    <updated>2014-05-15T00:00:00+08:00</updated>
    <id>http://bboniao.com/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-3</id>
-   <content type="html">&lt;h5&gt;Network Usage&lt;/h5&gt;
+   <content type="html">Network Usage
 
-&lt;p&gt;&lt;a href=&quot;http://jaist.dl.sourceforge.net/project/nicstat/nicstat-src-1.95.tar.gz&quot;&gt;nicstat&lt;/a&gt;&lt;/p&gt;
+nicstat
 
-&lt;p&gt;&lt;code&gt;nicstat 1&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;    Time      Int   rKB/s   wKB/s   rPk/s   wPk/s    rAvs    wAvs %Util    Sat
+nicstat 1
+    Time      Int   rKB/s   wKB/s   rPk/s   wPk/s    rAvs    wAvs %Util    Sat
 21:45:53       lo    1.45    1.45    8.54    8.54   174.0   174.0  0.00   0.00
 21:45:53     eth0   35.45   12.14   72.33   86.34   501.9   144.0  0.04   0.00
-21:45:53     eth1    0.43    0.36    6.01    1.05   73.54   354.8  0.00   0.00
-    Time      Int   rKB/s   wKB/s   rPk/s   wPk/s    rAvs    wAvs %Util    Sat
-21:45:54       lo    2.80    2.80   12.99   12.99   220.3   220.3  0.00   0.00
-21:45:54     eth0    1.35    1.78   20.99   21.99   66.00   82.86  0.00   0.00
-21:45:54     eth1    0.41    0.00    7.00    0.00   60.00    0.00  0.00   0.00
-    Time      Int   rKB/s   wKB/s   rPk/s   wPk/s    rAvs    wAvs %Util    Sat
-21:45:55       lo    0.30    0.30    6.00    6.00   50.67   50.67  0.00   0.00
-21:45:55     eth0    2.70    3.93   36.99   50.99   74.65   78.88  0.01   0.00
-21:45:55     eth1    0.23    0.00    4.00    0.00   60.00    0.00  0.00   0.00
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;!-- more  --&gt;
-
-&lt;h5&gt;jcmd&lt;/h5&gt;
-
-&lt;table&gt;&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;left&quot;&gt;命令&lt;/th&gt;
-&lt;th align=&quot;left&quot;&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;jcmd pid VM.uptime&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;jvm启动时长&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;jcmd pid VM.system_properties&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;列出jvm系统参数&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;jcmd pid VM.version&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;jvm版本&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;jcmd pid VM.command_line&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;jvm启动参数&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;jcmd pid VM.flags [-all]&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;jvm性能参数&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;jcmd pid Thread.print&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;等价于jstack pid&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;jcmd pid PerfCounter.print&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;jvm所有性能指标&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-
-&lt;h5&gt;Working with tuning flags&lt;/h5&gt;
-
-&lt;p&gt;&lt;code&gt;jcmd pid VM.flags -all | grep manageable&lt;/code&gt;列出的jvm参数,可以使用&lt;code&gt;jinfo -flag [+-]parameter pid&lt;/code&gt;动态修改&lt;/p&gt;
-
-&lt;h5&gt;Enable JFR via the command line&lt;/h5&gt;
-
-&lt;p&gt;&lt;code&gt;-XX:+UnlockCommercialFeatures -XX:+FlightRecorder&lt;/code&gt;开启JFR之后,可以通过&lt;code&gt;-XX:+FlightRecorderOptions=string&lt;/code&gt;和jcmd pid JFR.start [option_list]激活记录
-&lt;code&gt;string&lt;/code&gt;和&lt;code&gt;[option_list]&lt;/code&gt;,是逗号隔开的键值对,如下:&lt;/p&gt;
-
-&lt;table&gt;&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;left&quot;&gt;参数&lt;/th&gt;
-&lt;th align=&quot;left&quot;&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;name=name&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;记录名&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;defaultrecording=&amp;lt;true&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;false&amp;gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;settings=path&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;包含JFR配置的文件名&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;delay=time&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;延迟时间(例如:30s,1h)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;duration=time&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;记录持续时间&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;filename=path&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;记录输出的目录&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;compress=&amp;lt;true&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;false&amp;gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;maxage=time&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;记录文件保留时间&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;maxsize=size&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;记录文件最大size,(例如:1024K,1M)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-
-&lt;p&gt;&lt;code&gt;jcmd pid JFR.dump [option_list]&lt;/code&gt;,随时dump记录文件,option如下:&lt;/p&gt;
-
-&lt;table&gt;&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;left&quot;&gt;参数&lt;/th&gt;
-&lt;th align=&quot;left&quot;&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;name=name&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;记录名&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;recording=n&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;记录数&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;filename=path&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;记录文件的路径&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-
-&lt;p&gt;&lt;code&gt;jcmd pid JFR.check [verbose]&lt;/code&gt;,检查记录是否在运行&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;jcmd pid JFR.stop [option_list]&lt;/code&gt;,终止记录进程&lt;/p&gt;
-
-&lt;table&gt;&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;left&quot;&gt;参数&lt;/th&gt;
-&lt;th align=&quot;left&quot;&gt;说明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;name=name&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;记录名&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;recording=n&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;停止记录数,可以参考JFR.check&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;discard=boolean&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;如果为true,抛弃数据,不会写入文件&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;filename=path&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;记录文件的路径&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-</content>
+21:45:53     eth1    0.43 ...</content>
  </entry>
  
  <entry>
-   <title>Java Performance:The Definitive Guide Chapter 1 2</title>
+   <title>Java Performance:The Definitive Guide Chapter 1 2></title>
    <link href="http://bboniao.com/java%20performance:the%20definitive%20guide/2014-04/java-performancethe-definitive-guide-chapter-1-2.html"/>
    <updated>2014-04-27T00:00:00+08:00</updated>
    <id>http://bboniao.com/java%20performance:the%20definitive%20guide/2014-04/java-performancethe-definitive-guide-chapter-1-2</id>
-   <content type="html">&lt;h5&gt;The Complete Performance Story&lt;/h5&gt;
+   <content type="html">The Complete Performance Story
 
-&lt;ol&gt;
-&lt;li&gt;Write Better Algorithms&lt;/li&gt;
-&lt;li&gt;Write Less Code&lt;/li&gt;
-&lt;li&gt;Prematurely Optimize&lt;/li&gt;
-&lt;li&gt;Look Elsewhere: The Database Is Always the Bottleneck&lt;/li&gt;
-&lt;li&gt;Optimize for the Common Case
 
-&lt;ul&gt;
-&lt;li&gt;Optimize code by profiling it and focusing on the operations in the profile taking the most time&lt;/li&gt;
-&lt;li&gt;Apply Occam&amp;#39;s Razor to diagnosing performance problems&lt;/li&gt;
-&lt;li&gt;Write simple algorithms for the most common operations in an application&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
+Write Better Algorithms
+Write Less Code
+Prematurely Optimize
+Look Elsewhere: The Database Is Always the Bottleneck
+Optimize for the Common Case
 
-&lt;!-- more --&gt;
 
-&lt;h5&gt;Test a Real Application&lt;/h5&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Microbenchmarks
-
-&lt;ul&gt;
-&lt;li&gt;Microbenchmarks must use their results&lt;/li&gt;
-&lt;li&gt;Microbenchmarks must not include extraneous operations&lt;/li&gt;
-&lt;li&gt;Microbenchmarks must measure the correct input&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Macrobenchmarks&lt;/li&gt;
-&lt;li&gt;Mesobenchmarks&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h5&gt;Understand Throughput, Batching, and Response Time&lt;/h5&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Elapsed Time(Batch)Measurements&lt;/li&gt;
-&lt;li&gt;Throughput Measurements&lt;/li&gt;
-&lt;li&gt;Response Time Tests
-&lt;a href=&quot;http://faban.org/&quot;&gt;Faban&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h5&gt;Understand Variability&lt;/h5&gt;
-
-&lt;h5&gt;Test Early, Test Often&lt;/h5&gt;
-</content>
+Optimize code by profiling it and focusing on the operations in the profile taking the most time
+Apply Occam&amp;#39;s Raz...</content>
  </entry>
  
  <entry>
-   <title>System Performance Enterprise and the Cloud Chapter 1-2</title>
+   <title>System Performance Enterprise and the Cloud Chapter 1-2></title>
    <link href="http://bboniao.com/system%20performance%20enterprise%20and%20the%20cloud/2014-04/system-performance-enterprise-and-the-cloud-chapter-1.html"/>
    <updated>2014-04-26T00:00:00+08:00</updated>
    <id>http://bboniao.com/system%20performance%20enterprise%20and%20the%20cloud/2014-04/system-performance-enterprise-and-the-cloud-chapter-1</id>
-   <content type="html">&lt;h5&gt;Generic system software stack&lt;/h5&gt;
+   <content type="html">Generic system software stack
 
-&lt;p&gt;&lt;img src=&quot;/images/generic_system_software_stack.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
 
-&lt;!-- more --&gt;
 
-&lt;h5&gt;Activities&lt;/h5&gt;
 
-&lt;ol&gt;
-&lt;li&gt;Setting performance objectives and performance modeling&lt;/li&gt;
-&lt;li&gt;Performance characterization of prototype software or hardware&lt;/li&gt;
-&lt;li&gt;Performance analysis of development code, pre-integration&lt;/li&gt;
-&lt;li&gt;Performing non-regression testing of software builds, pre- or post-release&lt;/li&gt;
-&lt;li&gt;Benchmarking/ benchmarketing for software releases&lt;/li&gt;
-&lt;li&gt;Proof-of-concept testing in the target environment&lt;/li&gt;
-&lt;li&gt;Configuration optimization for production deployment&lt;/li&gt;
-&lt;li&gt;Monitoring of running production software&lt;/li&gt;
-&lt;li&gt;Performance analysis of issues&lt;/li&gt;
-&lt;/ol&gt;
 
-&lt;h5&gt;Perspectives&lt;/h5&gt;
+Activities
 
-&lt;p&gt;&lt;img src=&quot;/images/analysis_perspectives.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
 
-&lt;h5&gt;Terminology&lt;/h5&gt;
-
-&lt;ol&gt;
-&lt;li&gt;IOPS&lt;/li&gt;
-&lt;li&gt;Throughput&lt;/li&gt;
-&lt;li&gt;Response time&lt;/li&gt;
-&lt;li&gt;Latency&lt;/li&gt;
-&lt;li&gt;Utilization&lt;/li&gt;
-&lt;li&gt;Saturation&lt;/li&gt;
-&lt;li&gt;Bottleneck&lt;/li&gt;
-&lt;li&gt;Workload&lt;/li&gt;
-&lt;li&gt;Cache&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h5&gt;Models&lt;/h5&gt;
-
-&lt;ol&gt;
-&lt;li&gt;System under Test&lt;/li&gt;
-&lt;li&gt;Queueing System&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h5&gt;Concepts&lt;/h5&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Latency&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/network_connection_latency.png&quot; alt=&quot;Network connection latency&quot;&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Time Scales
-&lt;img src=&quot;/images/Time_Scale_of_System_Latencies.png&quot; alt=&quot;Time Scale of System Latencies&quot;&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Trade-offs
-&lt;img src=&quot;/images/Trade-offs.png&quot; alt=&quot;Trade offs&quot;&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Tuning Efforts
-&lt;img src=&quot;/images/Tuning_Efforts.png&quot; alt=&quot;Tuning Efforts&quot;&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Level of Appropriateness&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Point-in-Time Recommendations&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Load versus Architecture
-&lt;img src=&quot;/images/Load_versus_Architecture.png&quot; alt=&quot;Load versus Architecture&quot;&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Scalability
-&lt;img src=&quot;/images/Throughput_versus_load.png&quot; alt=&quot;Throughput versus load&quot;&gt;
-&lt;img src=&quot;/images/Performance_degradation.png&quot; alt=&quot;Performance degradation&quot;&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Known-Unknowns&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Known-knowns&lt;/li&gt;
-&lt;li&gt;Known-unknowns&lt;/li&gt;
-&lt;li&gt;Unknown-unknowns&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Metrics&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;IOPS&lt;/li&gt;
-&lt;li&gt;Throughput&lt;/li&gt;
-&lt;li&gt;Utilization&lt;/li&gt;
-&lt;li&gt;Latency&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Utilization&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Time-Based&lt;/li&gt;
-&lt;li&gt;Capacity-Based&lt;/li&gt;
-&lt;li&gt;Non-Idle Time&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Saturation
-&lt;img src=&quot;/images/Utilization_versus_saturation.png&quot; alt=&quot;Utilization versus saturation&quot;&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Profiling&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Caching&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Most recently used(MRU)&lt;/li&gt;
-&lt;li&gt;Last recently used(LRU)&lt;/li&gt;
-&lt;li&gt;Most frequently used(MFU)&lt;/li&gt;
-&lt;li&gt;Last frequently used(LFU)&lt;/li&gt;
-&lt;li&gt;Not frequently used(NFU)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h5&gt;Perspectives&lt;/h5&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Resource Analysis&lt;/li&gt;
-&lt;li&gt;Workload Analysis&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h5&gt;Methodology&lt;/h5&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/analysis_perspectives.png&quot; alt=&quot;Generic System Performance Methodologies&quot;&gt;&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Streetlight Anti-Method&lt;/li&gt;
-&lt;li&gt;Random Change Anti-Method
-
-&lt;ul&gt;
-&lt;li&gt;Pick a random item to change(e.g.,a tunable parameter) &lt;/li&gt;
-&lt;li&gt;Change it in one direction&lt;/li&gt;
-&lt;li&gt;Measure performance&lt;/li&gt;
-&lt;li&gt;Chang it in the other direction&lt;/li&gt;
-&lt;li&gt;Measure performance&lt;/li&gt;
-&lt;li&gt;Were the results in step 3 or step 5 better than the baseline?If so,keep the change and go back to step 1&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Blame-Someone-Else Anti-Method
-
-&lt;ul&gt;
-&lt;li&gt;Find a system or environment component for which you are not responsible&lt;/li&gt;
-&lt;li&gt;Hypothesize that the issue is with that component&lt;/li&gt;
-&lt;li&gt;Redirect the issue to the team responsible for that component&lt;/li&gt;
-&lt;li&gt;When proven wrong,go back to step 1&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Ad Hoc Checklist Method&lt;/li&gt;
-&lt;li&gt;Problem Statement
-
-&lt;ul&gt;
-&lt;li&gt;What makes you think there is a performance problem?&lt;/li&gt;
-&lt;li&gt;Has this system ever performed well?&lt;/li&gt;
-&lt;li&gt;What changed recently? Software? Hardware? Load?&lt;/li&gt;
-&lt;li&gt;Can the problem be expressed in terms of latency or runtime?&lt;/li&gt;
-&lt;li&gt;Does the problem affect other perple or applications(or is it just you)?&lt;/li&gt;
-&lt;li&gt;What is the environment? What software and hardware are used? Versions? Configuration?&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Scientific Method
-
-&lt;ul&gt;
-&lt;li&gt;Question&lt;/li&gt;
-&lt;li&gt;Hypothesis&lt;/li&gt;
-&lt;li&gt;Prediction&lt;/li&gt;
-&lt;li&gt;Test&lt;/li&gt;
-&lt;li&gt;Analysis&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Diagnosis Cycle
-
-&lt;ul&gt;
-&lt;li&gt;hypothesis--&amp;gt; instrumentation--&amp;gt; data--&amp;gt; hypothesis &lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Tools Method
-
-&lt;ul&gt;
-&lt;li&gt;List available performance tools(optionlly, install or purchase more)&lt;/li&gt;
-&lt;li&gt;For each tool, list useful metrics it provides&lt;/li&gt;
-&lt;li&gt;For each metric, list possible rules for interpretation&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;The USE(utilization saturation errors) Method&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Procedure
-&lt;img src=&quot;/images/Procedure.png&quot; alt=&quot;The USE method flow&quot;&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Metrics
-&lt;img src=&quot;/images/Example_USE_Method_Metrics.png&quot; alt=&quot;Example USE Method Metrics&quot;&gt;
-&lt;img src=&quot;/images/Example_USE_Method_Advanced_Metrics.png&quot; alt=&quot;Example USE Method Advanced Metrics&quot;&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Software Resources&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Mutex locks&lt;/li&gt;
-&lt;li&gt;Thread pools&lt;/li&gt;
-&lt;li&gt;Process/thread capacity&lt;/li&gt;
-&lt;li&gt;File descriptor capacity &lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Workload Characterization
-
-&lt;ul&gt;
-&lt;li&gt;Who is causing the load? Process ID, user ID, remote IP address?&lt;/li&gt;
-&lt;li&gt;Why is the load being called? Code path, stack trace?&lt;/li&gt;
-&lt;li&gt;What are the load characteristics? IOPS, throoughput, direction(read/write)&lt;/li&gt;
-&lt;li&gt;How is the load changing over time? Is there a dialy pattern&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Drill-Down Analysis
-
-&lt;ul&gt;
-&lt;li&gt;three stages&lt;/li&gt;
-&lt;li&gt;Monitoring&lt;/li&gt;
-&lt;li&gt;Identification&lt;/li&gt;
-&lt;li&gt;Analysis&lt;/li&gt;
-&lt;li&gt;Five Whys(database)&lt;/li&gt;
-&lt;li&gt;A database has begun to perform poorly for many queries. Why?&lt;/li&gt;
-&lt;li&gt;It is delayed by disk I/O due to memory paging. Why?&lt;/li&gt;
-&lt;li&gt;Database memory usage has grown too large. Why?&lt;/li&gt;
-&lt;li&gt;The allocator is consuming more memory than it should. Why?&lt;/li&gt;
-&lt;li&gt;The allocator has a memory fragmentation issue.&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Latency Analysis(Mysql query latency)&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Is there a query latency issue?(yes)&lt;/li&gt;
-&lt;li&gt;Is the query time largely spent on-CPU or waiting off-CPU?(off-CPU)&lt;/li&gt;
-&lt;li&gt;What is the off-CPU time spent waiting for?(file system I/O)&lt;/li&gt;
-&lt;li&gt;Is the file system I/O time due to disk I/O or lock contention?(disk I/O)&lt;/li&gt;
-&lt;li&gt;Is the disk I/O time likely due to random seeks or data transfer time?(transfer time)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Latency_analysis_procedure.png&quot; alt=&quot;Latency analysis procedure&quot;&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Method R&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Event Tracing&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Input: all attributes of an event request: type, direction, size, and so on&lt;/li&gt;
-&lt;li&gt;Times: start time, end time, latency(difference)&lt;/li&gt;
-&lt;li&gt;Result: error status, result of event(size)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Baseline Statistics&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Static Performance Tuning&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Does the component make sense?&lt;/li&gt;
-&lt;li&gt;Does the configuration make sense for the intended workload?&lt;/li&gt;
-&lt;li&gt;Was the component autoconfigured in the best state for the intended workload?&lt;/li&gt;
-&lt;li&gt;Has the component experienced an error and is it in a degraded state?
-Examples&lt;/li&gt;
-&lt;li&gt;Network interface negotiation: selecting 100 Mbits/s instead of 1 Gbit/s&lt;/li&gt;
-&lt;li&gt;Failed disk in a RAID pool&lt;/li&gt;
-&lt;li&gt;Older version of the operating system, application, or firmware used&lt;/li&gt;
-&lt;li&gt;Mismatched file system record size compared to workload I/O size&lt;/li&gt;
-&lt;li&gt;Server accidentally configured as a router&lt;/li&gt;
-&lt;li&gt;Server configured to use resources, such as authentication, from a remote data center instead of locally&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Cache Tuning&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Aim to cache as high in the stack as possible, close to where the work is performed, reducing the operational overhead of cache hits.&lt;/li&gt;
-&lt;li&gt;Check that the cache is enabled and working.&lt;/li&gt;
-&lt;li&gt;Check the cache hit/miss ratios and miss rate.&lt;/li&gt;
-&lt;li&gt;If the cache is dynamic, check its current size.&lt;/li&gt;
-&lt;li&gt;Tune the cache for the workload. This task depends on available cache tunable parameters&lt;/li&gt;
-&lt;li&gt;Tune the workload for the cache. Doing this includes reducing unnecessary comsumers of the cache, which frees up more space for the target workload&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Micro-Benchmarking&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Syscall time: for fork(), exec(), open(), read(), close()&lt;/li&gt;
-&lt;li&gt;File system reads: from a cache file, varying the read size from 1 byte to 1 Mbyte&lt;/li&gt;
-&lt;li&gt;Network throughput: transferring data between TCP endpoints, for varying socket buffer sizes&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h5&gt;Modeling&lt;/h5&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Enterprise versus Cloud&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Visual Identification&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Linear scalability&lt;/li&gt;
-&lt;li&gt;Contention&lt;/li&gt;
-&lt;li&gt;Coherence&lt;/li&gt;
-&lt;li&gt;Knee point&lt;/li&gt;
-&lt;li&gt;Scalability ceiling&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/scalability_profile.png&quot; alt=&quot;scalability profile&quot;&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Amdahl&amp;#39;s Law of Scalability   C(N) = N/1 + a(N - 1)&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Collect data of range of N, either by observation of an existing system or experimentally using micro-benchmarking or load generators&lt;/li&gt;
-&lt;li&gt;Perform regression analysis to determine the Amdahl parameter(a); this may be done using statistical software, such as gnuplot or R&lt;/li&gt;
-&lt;li&gt;Present the result for analysis.The collected data points can be plotted along with the model function to predict scaling and reveal differences between the data and the model. This may also be done using gnuplot or R&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Universal Scalability Law  C(N)=N/1 + a(N - 1) + BN(N - 1)&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Queueing Theory&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Arrival process&lt;/li&gt;
-&lt;li&gt;Service time distribution&lt;/li&gt;
-&lt;li&gt;Number of server centers&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h5&gt;Capacity Planning&lt;/h5&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Resource Limits
-
-&lt;ul&gt;
-&lt;li&gt;Measure the rate of server requests, and monitor this rate over time&lt;/li&gt;
-&lt;li&gt;Measure hardware and software resource usage. Monitor this rate over time&lt;/li&gt;
-&lt;li&gt;Express server requests in terms of resources used&lt;/li&gt;
-&lt;li&gt;Extrapolate server requests to known(or experimentally determined)limits for earch resource&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Factor Analysis
-
-&lt;ul&gt;
-&lt;li&gt;Test performance with all factors configured to maximum&lt;/li&gt;
-&lt;li&gt;Change factors one by one, testing performance(it should drop for each)&lt;/li&gt;
-&lt;li&gt;Attribute a percentage performance drop to each factor, based on measurements, along with the cost savings&lt;/li&gt;
-&lt;li&gt;Starting with maximum performance(and cost),choose factors to save cost, while maintaining the required requests per second based on their combined performance drop&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Scaling Solutions&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h5&gt;Statistics&lt;/h5&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Quantifying Performance
-
-&lt;ul&gt;
-&lt;li&gt;Observation-Based&lt;/li&gt;
-&lt;li&gt;Choose a reliable metric&lt;/li&gt;
-&lt;li&gt;Estimate the performance gain from resolving the issue&lt;/li&gt;
-&lt;li&gt;Experimentation-Based&lt;/li&gt;
-&lt;li&gt;Apply the fix&lt;/li&gt;
-&lt;li&gt;Quantify before versus after using a reliable metric&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Averages
-
-&lt;ul&gt;
-&lt;li&gt;Geometric Mean&lt;/li&gt;
-&lt;li&gt;Harmonic Mean&lt;/li&gt;
-&lt;li&gt;Averages over Time&lt;/li&gt;
-&lt;li&gt;Decayed Average&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Standard Deviations,Percentiles,Median&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/staticsis_values.png&quot; alt=&quot;staticsis values&quot;&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Coefficient of Variation
-5.Multimodal Distributions
-6.Outliers&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h5&gt;Monitoring&lt;/h5&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Time-Based Patterns&lt;/li&gt;
-&lt;li&gt;Monitoring Products&lt;/li&gt;
-&lt;li&gt;Summary-since-Boot&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h5&gt;Visualizations&lt;/h5&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Line Chart&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/Line_Chart.png&quot; alt=&quot;Line Chart&quot;&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Scatter Plots
-&lt;img src=&quot;/images/Scatter_Plots.png&quot; alt=&quot;Scatter Plots&quot;&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Heat Maps
-&lt;img src=&quot;/images/heat_map.png&quot; alt=&quot;heat map&quot;&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Surface Plot
-&lt;img src=&quot;/images/Surface_Plot.png&quot; alt=&quot;Surface Plot&quot;&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Visualization Tools&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</content>
+Setting performance objectives and performance modeling
+Performance characterization of prototype software or hardware
+Performance analysis of development code, pre-integration
+Performing non-regression testing of software builds, pre- or post-relea...</content>
  </entry>
  
  <entry>
-   <title>JVM致命错误日志（hs_err_pid.log）解读</title>
+   <title>JVM致命错误日志（hs_err_pid.log）解读></title>
    <link href="http://bboniao.com/jvm/2014-04/jvmhs_err_pidlog.html"/>
    <updated>2014-04-22T00:00:00+08:00</updated>
    <id>http://bboniao.com/jvm/2014-04/jvmhs_err_pidlog</id>
-   <content type="html">&lt;h3&gt;淘宝的一个&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/javacrash/javacrash-120504004849-phpapp02.pptx&quot;&gt;ppt&lt;/a&gt;&lt;/h3&gt;
+   <content type="html">淘宝的一个ppt
 
-&lt;h3&gt;&lt;a href=&quot;http://www.raychase.net/1459&quot;&gt;转自《四火的唠叨》&lt;/a&gt;&lt;/h3&gt;
+转自《四火的唠叨》
 
-&lt;h5&gt;致命错误出现的时候，JVM生成了hs&lt;em&gt;err&lt;/em&gt;pid&lt;pid&gt;.log这样的文件，其中往往包含了虚拟机崩溃原因的重要信息。因为经常遇到，在这篇文章里，我挑选了一个，并且逐段分析它包含的内容（文件可以在文章最后下载）。默认情况下文件是创建在工作目录下的（如果没权限创建的话JVM会尝试把文件写到/tmp这样的临时目录下面去），当然，文件格式和路径也可以通过参数指定，比如：&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;java -XX:ErrorFile=/var/log/java/java_error%p.log
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;!-- more --&gt;
+致命错误出现的时候，JVM生成了hserrpid.log这样的文件，其中往往包含了虚拟机崩溃原因的重要信息。因为经常遇到，在这篇文章里，我挑选了一个，并且逐段分析它包含的内容（文件可以在文章最后下载）。默认情况下文件是创建在工作目录下的（如果没权限创建的话JVM会尝试把文件写到/tmp这样的临时目录下面去），当然，文件格式和路径也可以通过参数指定，比如：
+java -XX:ErrorFile=/var/log/java/java_error%p.log
 
-&lt;h5&gt;这个文件将包括：&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;触发致命错误的操作异常或者信号；
+
+
+这个文件将包括：
+触发致命错误的操作异常或者信号；
 版本和配置信息；
-触发致命异常的线程详细信息和线程栈；
-当前运行的线程列表和它们的状态；
-堆的总括信息；
-加载的本地库；
-命令行参数；
-环境变量；
-操作系统CPU的详细信息。
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;首先，看到的是对问题的概要介绍：&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;# SIGSEGV (0xb) at pc=0x03568cf4, pid=16819, tid=3073346448
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;一个非预期的错误被JRE检测到，其中：&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;SIGSEGV是信号名称
-0xb是信号码
-pc=0x03568cf4指的是程序计数器的值
-pid=16819是进程号
-tid=3073346448是线程号
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;如果你对JVM有了解，应该不会对这些东西陌生。&lt;/h5&gt;
-
-&lt;h5&gt;接下来是JRE和JVM的版本信息：&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;# JRE version: 6.0_32-b05
-# Java VM: Java HotSpot(TM) Server VM (20.7-b02 mixed mode linux-x86 )
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;运行在mixed模式下。&lt;/h5&gt;
-
-&lt;h5&gt;然后是问题帧的信息：&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;# Problematic frame:
-
-# C  [libgtk-x11-2.0.so.0+0x19fcf4]  __float128+0x19fcf4
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;C：帧类型为本地帧，帧的类型包括&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;C：本地C帧
-j：解释的Java帧
-V：虚拟机帧
-v：虚拟机生成的存根栈帧
-J：其他帧类型，包括编译后的Java帧
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;libgtk-x11-2.0.so.0+0x19fcf4：和程序计数器（pc）表达的含义一样，但是用的是本地so库+偏移量的方式。&lt;/h5&gt;
-
-&lt;h5&gt;接下去第一部分是线程信息：&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Current thread (0x09f30c00):  JavaThread &amp;quot;main&amp;quot; [_thread_in_native, id=16822, stack(0xb72a8000,0xb72f9000)]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;当前线程的：&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;0x09f30c00：指针
-JavaThread：线程类型，可能的类型包括：
-  JavaThread
-  VMThread
-  CompilerThread
-  GCTaskThread
-  WatcherThread
-  ConcurrentMarkSweepThread
-main：名字
-  _thread_in_native：线程当前状态，状态枚举包括：
-  _thread_uninitialized：线程还没有创建，它只在内存原因崩溃的时候才出现
-  _thread_new：线程已经被创建，但是还没有启动
-  _thread_in_native：线程正在执行本地代码，一般这种情况很可能是本地代码有问题
-  _thread_in_vm：线程正在执行虚拟机代码
-  _thread_in_Java：线程正在执行解释或者编译后的Java代码
-  _thread_blocked：线程处于阻塞状态
-  …_trans：以_trans结尾，线程正处于要切换到其它状态的中间状态
-id=16822：线程ID
-0xb72a8000,0xb72f9000：栈区间 
-
-siginfo:si_signo=SIGSEGV: si_errno=0, si_code=1 (SEGV_MAPERR), si_addr=0x00000010
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;这部分是导致虚拟机终止的非预期的信号信息，含义前面已经大致提到过了。其中si&lt;em&gt;errno和si&lt;/em&gt;code是Linux下用来鉴别异常的，Windows下是一个ExceptionCode。&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;EAX=0x00000000, EBX=0x0375dd84, ECX=0x00000000, EDX=0x00000000
-ESP=0xb72f0fa0, EBP=0xb72f0fb8, ESI=0x00000000, EDI=0x0a6c1800
-EIP=0x03568cf4, EFLAGS=0x00010246, CR2=0x00000010
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;这是寄存器上下文。&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Top of Stack: (sp=0xb72f0fa0)
-0xb72f0fa0:   00000000 00402250 0040217f 0375dd84
-0xb72f0fb0:   00000000 0a6c1800 b72f0fe8 0356c2c0
-0xb72f0fc0:   00000000 0a6c1800 b72f0fe8 003b3e77
-0xb72f0fd0:   003e6c8b 0a1a70d0 0a193358 0375dd84
-0xb72f0fe0:   0a276418 0a276418 b72f1048 03536c56
-0xb72f0ff0:   0acad000 0b3ca978 0000000c 00dd0674
-0xb72f1000:   00000003 0a2c7d50 b72f1038 0000330c
-0xb72f1010:   ffffffff ffffffff 00000001 00000001
-
-Instructions: (pc=0x03568cf4)
-0x03568cd4:   89 14 24 89 75 f8 89 d6 89 7d fc 89 c7 e8 7e 1b
-0x03568ce4:   ea ff 89 34 24 89 87 d4 02 00 00 e8 30 00 ea ff
-0x03568cf4:   8b 40 10 89 3c 24 c7 44 24 08 00 00 00 00 89 87
-0x03568d04:   d0 02 00 00 8b 83 88 24 00 00 89 44 24 04 e8 dd
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;栈顶程序计数器旁的操作码，它们可以被反汇编成系统崩溃前执行的指令。&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Register to memory mapping:
-
-EAX=0x00000000 is an unknown value
-EBX=0x0375dd84: &amp;lt;offset 0x394d84&amp;gt; in /usr/lib/libgtk-x11-2.0.so.0 at 0x033c9000
-ECX=0x00000000 is an unknown value
-EDX=0x00000000 is an unknown value
-ESP=0xb72f0fa0 is pointing into the stack for thread: 0x09f30c00
-EBP=0xb72f0fb8 is pointing into the stack for thread: 0x09f30c00
-ESI=0x00000000 is an unknown value
-EDI=0x0a6c1800 is an unknown value
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;寄存器和内存映射信息。&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Stack: [0xb72a8000,0xb72f9000],  sp=0xb72f0fa0,  free space=291k
-Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
-C  [libgtk-x11-2.0.so.0+0x19fcf4]  __float128+0x19fcf4
-C  [libgtk-x11-2.0.so.0+0x1a32c0]  __float128+0xc0
-... ...
-C  [libswt-pi-gtk-3738.so+0x33f6a]  Java_org_eclipse_swt_internal_gtk_OS__1Call+0xf
-J  org.eclipse.swt.internal.gtk.OS._Call(III)I
-J  org.eclipse.swt.internal.gtk.OS.Call(III)I
-
-Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
-J  org.eclipse.swt.internal.gtk.OS._Call(III)I
-J  org.eclipse.swt.internal.gtk.OS.Call(III)I
-j  org.eclipse.swt.widgets.Widget.fixedSizeAllocateProc(II)I+5
-j  org.eclipse.swt.widgets.Display.fixedSizeAllocateProc(II)I+17
-v  ~StubRoutines::call_stub
-... ...
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;线程栈。包含了地址、栈顶、栈计数器和线程尚未使用的栈信息，由于栈可能非常长，打印的长度有限制，但是至少本地栈和Java栈都打印出来了（很多时候本地栈打印不出来，但是Java栈一般都能打印出来）。从中可以看到，Eclipse的虚拟机崩溃了。&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Java Threads: ( =&amp;gt; current thread )
-  0x0b4c1000 JavaThread &amp;quot;Worker-247&amp;quot; [_thread_blocked, id=25417, stack(0x741bc000,0x7420d000)]
-  0x0a300c00 JavaThread &amp;quot;Worker-246&amp;quot; [_thread_blocked, id=25235, stack(0x7d30c000,0x7d35d000)]
-... ...
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;线程信息。一目了然，不解释了。&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;VM state:not at safepoint (normal execution)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;虚拟机状态。包括：&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;not at a safepoint：正常运行状态；
-at safepoint：所有线程都因为虚拟机等待状态而阻塞，等待一个虚拟机操作完成；
-synchronizing：一个特殊的虚拟机操作，要求虚拟机内的其它线程保持等待状态。
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;VM Mutex/Monitor currently owned by a thread: None
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;虚拟机的Mutex和Monitor目前没有被线程持有。Mutex是虚拟机内部的锁，而Monitor则关联到了Java对象。&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Heap
- PSYoungGen      total 149056K, used 125317K [0xa9700000, 0xb41a0000, 0xb41a0000)
-  eden space 123520K, 95% used [0xa9700000,0xb0ac0de0,0xb0fa0000)
-  from space 25536K, 26% used [0xb28b0000,0xb2f50748,0xb41a0000)
-  to   space 25600K, 0% used [0xb0fa0000,0xb0fa0000,0xb28a0000)
- PSOldGen        total 261248K, used 239964K [0x941a0000, 0xa40c0000, 0xa9700000)
-  object space 261248K, 91% used [0x941a0000,0xa2bf7018,0xa40c0000)
- PSPermGen       total 163328K, used 130819K [0x841a0000, 0x8e120000, 0x941a0000)
-  object space 163328K, 80% used [0x841a0000,0x8c160c40,0x8e120000)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;堆信息。新生代、老生代、永久代。对JVM有了解的人应该都清楚，不解释了。&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Code Cache  [0xb4262000, 0xb5ac2000, 0xb7262000)
- total_blobs=5795 nmethods=5534 adapters=209 free_code_cache=25103616 largest_free_block=38336
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;代码缓存（Code Cache）。这是一块用于编译和保存本地代码的内存，注意是本地代码，它和PermGen（永久代）是不一样的，永久带是用来存放Java类定义的。&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Dynamic libraries:
-00101000-00122000 r-xp 00000000 08:01 3483560    /usr/lib/libjpeg.so.62.0.0
-00122000-00123000 rwxp 00020000 08:01 3483560    /usr/lib/libjpeg.so.62.0.0
-00125000-00130000 r-xp 00000000 08:01 9093202    /lib/libgcc_s-4.1.2-20080825.so.1
-00130000-00131000 rwxp 0000a000 08:01 9093202    /lib/libgcc_s-4.1.2-20080825.so.1
-... ...
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;内存映射。这些信息是虚拟机崩溃时的虚拟内存列表区域。在定位崩溃原因的时候，它可以告诉你哪些类库正在被使用，位置在哪里，还有堆栈和守护页信息。就以列表中第一条为例说明：&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;00101000-00122000：内存区域
-r-xp：权限，r/w/x/p/s分别表示读/写/执行/私有/共享
-00000000：文件内的偏移量
-08:01：文件位置的majorID和minorID
-3483560：索引节点号
-/usr/lib/libjpeg.so.62.0.0：文件位置
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;每一个lib都有两块虚拟内存区域——代码和数据，它们的权限不同，代码区域是r-xp；数据区域是rwxp。守护页（guard page）由权限为--xp和rwxp的一对组成。&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;VM Arguments:
-jvm_args: -Dosgi.requiredJavaVersion=1.5 -XX:MaxPermSize=256m -Xms40m -Xmx512m -Dorg.eclipse.swt.browser.XULRunnerPath=&amp;#39;&amp;#39;
-java_command: /.../eclipse/plugins/org.eclipse.equinox.launcher_1.2.0.v20110502.jar -os linux -ws gtk -arch x86 -showsplash -launcher /.../eclipse/eclipse -name Eclipse ...
-Launcher Type: SUN_STANDARD
-
-Environment Variables:
-PATH=...
-DISPLAY=:0.0
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;虚拟机参数和环境变量。&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Signal Handlers:
-SIGSEGV: [libjvm.so+0x726440], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
-SIGBUS: [libjvm.so+0x726440], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
-... ...
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;信号句柄。对于Linux下的信号机制，参阅wiki百科，&lt;a href=&quot;http://en.wikipedia.org/wiki/C_signal_handling&quot;&gt;链接&lt;/a&gt;。&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;OS:Red Hat Enterprise Linux Client release 5.4 (Tikanga)
-
-uname:Linux 2.6.18-164.el5 #1 SMP Tue Aug 18 15:51:54 EDT 2009 i686
-libc:glibc 2.5 NPTL 2.5 
-rlimit: STACK 10240k, CORE 0k, NPROC 65536, NOFILE 1024, AS infinity
-load average:1.78 1.58 1.54
-
-/proc/meminfo:
-...
-
-CPU:total 4 (4 cores per cpu, 1 threads per core) family 6 model 42 stepping 7, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3
-
-/proc/cpuinfo:
-...
-
-Memory: 4k page, physical 3631860k(155144k free), swap 5124724k(5056452k free)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h5&gt;系统信息。&lt;/h5&gt;
-
-&lt;h3&gt;&lt;a href=&quot;http://www.raychase.net/wp-content/uploads/2013/06/hs_err_pid16819.rar&quot;&gt;文中使用的hs&lt;em&gt;err&lt;/em&gt;pid文件在此下载&lt;/a&gt;&lt;/h3&gt;
-</content>
+触发致命异常的线程...</content>
  </entry>
  
  <entry>
-   <title>java core dump analysis</title>
+   <title>java core dump analysis></title>
    <link href="http://bboniao.com/jvm/2014-04/java-core-dump-analysis.html"/>
    <updated>2014-04-22T00:00:00+08:00</updated>
    <id>http://bboniao.com/jvm/2014-04/java-core-dump-analysis</id>
@@ -973,860 +118,362 @@ Memory: 4k page, physical 3631860k(155144k free), swap 5124724k(5056452k free)
  </entry>
  
  <entry>
-   <title>java cpu monitor</title>
+   <title>java cpu monitor></title>
    <link href="http://bboniao.com/jvm/2014-04/java-cpu-monitor.html"/>
    <updated>2014-04-16T00:00:00+08:00</updated>
    <id>http://bboniao.com/jvm/2014-04/java-cpu-monitor</id>
-   <content type="html">&lt;h3&gt;转自&lt;a href=&quot;http://www.javaarch.net/jiagoushi/55.htm&quot;&gt;java-cpu-monitor shell脚本&lt;/a&gt;&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;#!/bin/bash                                                                                                                           
+   <content type="html">转自java-cpu-monitor shell脚本
+#!/bin/bash                                                                                                                           
 
 threshold=${1-95}
 now=$(date &amp;#39;+%Y-%m-%d %H:%M:%S&amp;#39;)
 cache=()
 
 jps -q | xargs ps hH k -pcpu o pid,lwp,pcpu,args \
-  | awk &amp;quot;\$3 &amp;gt;= $threshold&amp;quot; | while read line; do
-
-  array=($(echo &amp;quot;$line&amp;quot;))
-  pid=${array[0]}
-  lwp=$(printf &amp;#39;%#x&amp;#39; ${array[1]})
-
-  if [ -z &amp;quot;${cache[$pid]}&amp;quot; ]; then
-    cache[$pid]=$(jstack $pid)
-  fi
-
-  echo &amp;quot;[$now] ${line}&amp;quot;
-  echo
-  echo &amp;quot;${cache[$pid]}&amp;quot; | sed -n &amp;quot;/nid=$lwp/,/^$/p&amp;quot;
-  echo
-
-done
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;threshold设置一下cpu的使用率&lt;/p&gt;
-
-&lt;!-- more --&gt;
-</content>
+  | awk &amp;quot;...</content>
  </entry>
  
  <entry>
-   <title>HBase在单Column和多Column情况下批量Put的性能对比分析</title>
+   <title>HBase在单Column和多Column情况下批量Put的性能对比分析></title>
    <link href="http://bboniao.com/hbase/2014-04/hbasecolumncolumnput.html"/>
    <updated>2014-04-16T00:00:00+08:00</updated>
    <id>http://bboniao.com/hbase/2014-04/hbasecolumncolumnput</id>
-   <content type="html">&lt;h3&gt;转自&lt;a href=&quot;http://blog.linezing.com/?p=2106&quot;&gt;量子恒道官方博客&lt;/a&gt;&lt;/h3&gt;
+   <content type="html">转自量子恒道官方博客
 
-&lt;p&gt;针对HBase在单column family单column qualifier和单column family多column qualifier两种场景下，分别批量Put写入时的性能对比情况，下面是结合HBase的源码来简单分析解释这一现象。&lt;/p&gt;
+针对HBase在单column family单column qualifier和单column family多column qualifier两种场景下，分别批量Put写入时的性能对比情况，下面是结合HBase的源码来简单分析解释这一现象。
 
-&lt;h3&gt;1. 测试结果&lt;/h3&gt;
+1. 测试结果
 
-&lt;p&gt;在客户端批量写入时，单列族单列模式和单列族多列模式的TPS和RPC次数相差很大，以客户端10个线程，开启WAL的两种模式下的测试数据为例，&lt;/p&gt;
+在客户端批量写入时，单列族单列模式和单列族多列模式的TPS和RPC次数相差很大，以客户端10个线程，开启WAL的两种模式下的测试数据为例，
 
-&lt;h5&gt;1)单列族单列模式下，TPS能够达到12403.87，实际RPC次数为53次；&lt;/h5&gt;
+1)单列族单列模式下，TPS能够达到12403.87，实际RPC次数为53次；
 
-&lt;h5&gt;2)单列族多列模式下，TPS只有1730.68，实际RPC次数为478次。&lt;/h5&gt;
+2)单列族多列模式下，TPS只有1730.68，实际RPC次数为478次。
 
-&lt;p&gt;二者TPS相差约7倍，RPC次数相差约9倍。详细的测试环境这里不再罗列，我们这里关心的只是在两种条件下的性能差别情况。&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;h3&gt;2. 粗略分析&lt;/h3&gt;
-
-&lt;p&gt;下面我们先从HBase存储原理层面“粗略”分析下为什么出现这个现象：&lt;/p&gt;
-
-&lt;h5&gt;HBase 的KeyValue类中自带的字段占用大小约为50~60 bytes左右（参考HBase源码org/apache/hadoop/hbase/KeyValue.java），那么客户端Put一行数据时（53 个字段，row key为64 bytes，value为751 bytes）：&lt;/h5&gt;
-
-&lt;h5&gt;1)开WAL，单column family单column qualifier，批量Put：(50~60) + 64 + 751 = 865~875 bytes；&lt;/h5&gt;
-
-&lt;h5&gt;2)开WAL，单column family多column qualifier，批量Put：((50~60) + 64) * 53 + 751 = 6793~7323 bytes。&lt;/h5&gt;
-
-&lt;p&gt;因 此，总体来看，后者实际传输的数据量是前者的：(6793~7323 bytes) / (865~875 bytes) = 7.85~8.36倍，与测试结果478 / 53 = 9.0倍基本相符（由于客户端write buffer大小一样，实际请求数的比例关系即代表了实际传输的数据量的比例关系）。&lt;/p&gt;
-
-&lt;h3&gt;3. 源码分析&lt;/h3&gt;
-
-&lt;p&gt;接下来我们通过对HBase的源码分析来进一步验证以上理论估算值：&lt;/p&gt;
-
-&lt;h5&gt;HBase客户端执行put操作后，会调用put.heapSize()累加当前客户端buffer中的数据，满足以下条件则调用flushCommits()将客户端数据提交到服务端：&lt;/h5&gt;
-
-&lt;h5&gt;1)每次put方法调用时可能传入的是一个List&lt;Put&gt;，此时每隔DOPUT&lt;em&gt;WB&lt;/em&gt;CHECK条（默认为10条），检查当前缓存数据是否超过writeBufferSize（测试中被设置为5MB），超过则强制执行刷新；&lt;/h5&gt;
-
-&lt;h5&gt;2)autoFlush被设置为true，此次put方法调用后执行一次刷新；&lt;/h5&gt;
-
-&lt;h5&gt;3)autoFlush被设置为false，但当前缓存数据已超过设定的writeBufferSize，则执行刷新。&lt;/h5&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;private void doPut(final List&amp;lt;Put&amp;gt; puts) throws IOException {
-    int n = 0;
-    for (Put put : puts) {
-        validatePut(put);
-        writeBuffer.add(put);
-        currentWriteBufferSize += put.heapSize();
-        // we need to periodically see if the writebuffer is full instead 
-        // of waiting until the end of the List
-        n++;
-        if (n % DOPUT_WB_CHECK == 0
-                &amp;amp;&amp;amp; currentWriteBufferSize &amp;gt; writeBufferSize) {
-            flushCommits();
-        }
-    }
-    if (autoFlush || currentWriteBufferSize &amp;gt; writeBufferSize) {
-        flushCommits();
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;由上述代码可见，通过put.heapSize()累加客户端的缓存数据，作为判断的依据；那么，我们可以按照测试数据的实际情况，编写代码生成Put对象后就能得到测试过程中的一行数据（由53个字段组成，共计731 bytes）实际占用的客户端缓存大小：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;import org.apache.hadoop.hbase.client.Put;
-import org.apache.hadoop.hbase.util.Bytes;
-
-public class PutHeapSize {
-    /**
-     * @param args
-     */
-    public static void main(String[] args) {
-        // single column Put size
-        byte[] rowKey = new byte[64];
-        byte[] value = new byte[751];
-        Put singleColumnPut = new Put(rowKey);
-        singleColumnPut.add(Bytes.toBytes(&amp;quot;t&amp;quot;), Bytes.toBytes(&amp;quot;col&amp;quot;), value);
-        System.out.println(&amp;quot;single column Put size: &amp;quot; + singleColumnPut.heapSize());
-
-        // multiple columns Put size
-        value = null;
-        Put multipleColumnsPut = new Put(rowKey);
-        for (int i = 0; i &amp;lt; 53; i++) {
-            multipleColumnsPut.add(Bytes.toBytes(&amp;quot;t&amp;quot;), Bytes.toBytes(&amp;quot;col&amp;quot; + i), value);
-        }
-        System.out.println(&amp;quot;multiple columns Put size: &amp;quot; + (multipleColumnsPut.heapSize() + 751));
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;程序输出结果如下：&lt;/p&gt;
-
-&lt;h5&gt;single column Put size: 1208&lt;/h5&gt;
-
-&lt;h5&gt;multiple columns Put size: 10575&lt;/h5&gt;
-
-&lt;p&gt;由运行结果可得到，9719/1192 = 8.75，与上述理论分析值（7.85~8.36倍）、实际测试结果值（9.0倍）十分接近，基本可以验证测试结果的准确性&lt;/p&gt;
-
-&lt;p&gt;如 果你还对put.heapSize()方法感兴趣，可以继续阅读其源码实现，你会发现对于一个put对象来说，其中KeyValue对象的大小最主要决定 了整个put对象的heapSize大小，为了进一步通过实例验证，下面的这段代码分别计算单column和多columns两种情况下一行数据的 KeyValue对象的heapSize大小：&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;import org.apache.hadoop.hbase.KeyValue;
-public class KeyValueHeapSize {
-    /**
-     * @param args
-     */
-    public static void main(String[] args) {
-
-        // single column KeyValue size
-        byte[] row = new byte[64]; // test row length
-        byte[] family = new byte[1]; // test family length
-        byte[] qualifier = new byte[4]; // test qualifier length
-        long timestamp = 123456L; // ts
-        byte[] value = new byte[751]; // test value length
-        KeyValue singleColumnKv = new KeyValue(row, family, qualifier, timestamp, value);
-        System.out.println(&amp;quot;single column KeyValue size: &amp;quot; + singleColumnKv.heapSize());
-
-        // multiple columns KeyValue size
-        value = null;
-        KeyValue multipleColumnsWithoutValueKv = new KeyValue(row, family, qualifier, timestamp, value);
-        System.out.println(&amp;quot;multiple columns KeyValue size: &amp;quot; + (multipleColumnsWithoutValueKv.heapSize() * 53 + 751));
-    }
-
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;程序输出结果如下：&lt;/p&gt;
-
-&lt;h5&gt;single column KeyValue size: 920&lt;/h5&gt;
-
-&lt;h5&gt;multiple columns KeyValue size: 10079&lt;/h5&gt;
-
-&lt;p&gt;与前面PutHeapSize程序的输出结果对比发现，KeyValue确实占据了整个Put对象的大部分heapSize空间，同时发现从KeyValue对象级别对比两种情况下的传出数据量情况：10079/920 = 10.9倍，也与实际测试值比较接近。&lt;/p&gt;
-
-&lt;h3&gt;4. 相关结论&lt;/h3&gt;
-
-&lt;p&gt;经过以上分析可以得出以下结论：&lt;/p&gt;
-
-&lt;h5&gt;1)在实际应用场景中，对于单column qualifier和多column qualifier两种情况，如果value长度越长，row key长度越短，字段数（column qualifier数）越少，前者和后者在实际传输数据量上会相差小些；反之则相差较大。&lt;/h5&gt;
-
-&lt;h5&gt;2)如果采用多column qualifier的方式存储，且客户端采取批量写入的方式，则可以根据实际情况，适当增大客户端的write buffer大小，以便能够提高客户端的写入吞吐量。&lt;/h5&gt;
-</content>
+二者T...</content>
  </entry>
  
  <entry>
-   <title>hbase delete put的陷阱</title>
+   <title>hbase delete put的陷阱></title>
    <link href="http://bboniao.com/hbase/2014-04/hbase-delete-put.html"/>
    <updated>2014-04-16T00:00:00+08:00</updated>
    <id>http://bboniao.com/hbase/2014-04/hbase-delete-put</id>
-   <content type="html">&lt;h3&gt;问题&lt;/h3&gt;
+   <content type="html">问题
 
-&lt;p&gt;删除数据之后,再插入,查询的时候怎么也找不到.删除和插入都是同一个rowkey,同一个列,同一个版本.&lt;/p&gt;
+删除数据之后,再插入,查询的时候怎么也找不到.删除和插入都是同一个rowkey,同一个列,同一个版本.
 
-&lt;h3&gt;原因&lt;/h3&gt;
+原因
 
-&lt;p&gt;如果rowkey/family/qulifier/timestamp都一样,多次删除和插入之后,获取哪个值取决于KeyValue.Type.Put之前是Delete就不会被插入了.&lt;/p&gt;
+如果rowkey/family/qulifier/timestamp都一样,多次删除和插入之后,获取哪个值取决于KeyValue.Type.Put之前是Delete就不会被插入了.
 
-&lt;!-- more --&gt;
 
-&lt;h3&gt;分析&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;KeyValue(byte[] row, int roffset, int rlength,  
+
+分析
+KeyValue(byte[] row, int roffset, int rlength,  
    byte[] family, int foffset, int flength, byte[] qualifier, int qoffset,  
-   int qlength, long timestamp, Type type, byte[] value, int voffset,  
-   int vlength)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;/images/keyvalue.jpg&quot; alt=&quot;image&quot;&gt;
-由代码和图片看出,除了rowkey/family/qulifier/timestamp之外还需要KeyValue.Type才能真正定位到value.想要delete之后还能put,就需要compact,最好major_compact,之后再put就没问题了&lt;/p&gt;
-</content>
+   int qlengt...</content>
  </entry>
  
  <entry>
-   <title>为什么要控制hbase cloumnFamily的数量</title>
+   <title>为什么要控制hbase cloumnFamily的数量></title>
    <link href="http://bboniao.com/hbase/2014-04/hbase-cloumnfamily.html"/>
    <updated>2014-04-16T00:00:00+08:00</updated>
    <id>http://bboniao.com/hbase/2014-04/hbase-cloumnfamily</id>
-   <content type="html">&lt;p&gt;设计Hbase schema,要尽量使用一个column family.原因主要是flush和compact机制造成的.&lt;/p&gt;
+   <content type="html">设计Hbase schema,要尽量使用一个column family.原因主要是flush和compact机制造成的.
 
-&lt;p&gt;flush和compact都是基于region级别的:当一个column family数据导入过多,发生flush,也会触发其他所有column family的(此时很小的memstore也会被触发的).而flush会生成很多storefile,紧接着就会触发compact.过多没必要的flush/compact会大大增加io的开销,影响hbase整体性能.&lt;/p&gt;
+flush和compact都是基于region级别的:当一个column family数据导入过多,发生flush,也会触发其他所有column family的(此时很小的memstore也会被触发的).而flush会生成很多storefile,紧接着就会触发compact.过多没必要的flush/compact会大大增加io的开销,影响hbase整体性能.
 
-&lt;!-- more --&gt;
+
 </content>
  </entry>
  
  <entry>
-   <title>memcache使用一致性hash,找出指向的节点</title>
+   <title>memcache使用一致性hash,找出指向的节点></title>
    <link href="http://bboniao.com/memcache/2014-04/memcachehash.html"/>
    <updated>2014-04-14T00:00:00+08:00</updated>
    <id>http://bboniao.com/memcache/2014-04/memcachehash</id>
-   <content type="html">&lt;h3&gt;代码如下&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;//地址列表
+   <content type="html">代码如下
+//地址列表
 String[] array = addrs.split(&amp;quot;;&amp;quot;);
 List&amp;lt;InetSocketAddress&amp;gt; isa = new ArrayList&amp;lt;InetSocketAddress&amp;gt;();
 for(int i = 0;i &amp;lt; array.length;i ++){
     String[] addr = array[i].split(&amp;quot;:&amp;quot;);
-    isa.add(new InetSocketAddress(addr[0], Integer.parseInt(addr[1])));
-}
-MemcachedClientBuilder builder = new XMemcachedClientBuilder(isa);
-//一致性hash
-builder.setSessionLocator(new KetamaMemcachedSessionLocator());
-builder.setOpTimeout(200);
-
-builder.build();
-String memcacheKey = &amp;quot;test&amp;quot;;
-InetSocketAddress i = builder.getSessionLocator().getSessionByKey(memcacheKey).getRemoteSocketAddress();
-System.out.println(i.getHostString());
-System.out.println(i.getPort());
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;!-- more --&gt;
-</content>
+    isa.add(new InetSocketAddress(addr[0], Integer.parseInt(addr[1])))...</content>
  </entry>
  
  <entry>
-   <title>A Better Log4j SMTPAppender</title>
+   <title>A Better Log4j SMTPAppender></title>
    <link href="http://bboniao.com/java/2014-04/a-better-log4j-smtpappender.html"/>
    <updated>2014-04-12T00:00:00+08:00</updated>
    <id>http://bboniao.com/java/2014-04/a-better-log4j-smtpappender</id>
-   <content type="html">&lt;h3&gt;log4j配置mail发送log,会有多少发多少,如下改动可以在指定时间内发送指定次数的log&lt;/h3&gt;
+   <content type="html">log4j配置mail发送log,会有多少发多少,如下改动可以在指定时间内发送指定次数的log
 
-&lt;h3&gt;java代码&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;package com.sohu.rc.util;
+java代码
+package com.sohu.rc.util;
 import org.apache.log4j.net.SMTPAppender;
 public class LimitedSMTPAppender extends SMTPAppender {
     private int limit = 10; // max at 10 mails ...
     private int cycleSeconds = 3600; // ... per hour
 
     public
-    LimitedSMTPAppender() {
-        this(new LimitedEvaluator());
-    }
-
-    public
-    LimitedSMTPAppender(TriggeringEventEvaluator evaluator) {
-        this.evaluator = evaluator;
-    }
-
-    public void setLimit(int limit) {
-        this.limit = limit;
-    }
-    public void setCycleSeconds(int cycleSeconds) {
-        this.cycleSeconds = cycleSeconds;
-    }
-    private int lastVisited;
-    private long lastCycle;
-    @Override
-    protected boolean checkEntryConditions() {
-        final long now = System.currentTimeMillis();
-        final long thisCycle = now - (now % (1000L * cycleSeconds));
-        if (lastCycle != thisCycle) {
-            lastCycle = thisCycle;
-            lastVisited = 0;
-        }
-        lastVisited++;
-        return super.checkEntryConditions() &amp;amp;&amp;amp; lastVisited &amp;lt;= limit;
-    }
-}
-class LimitedEvaluator implements TriggeringEventEvaluator {
-  public boolean isTriggeringEvent(LoggingEvent event) {
-    return event.getLevel().isGreaterOrEqual(Level.ERROR);
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;!-- more --&gt;
-
-&lt;h3&gt;log4j.properties的配置&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;log4j.rootLogger=info,mail
-log4j.threshhold=ALL
-
-log4j.appender.mail=com.sohu.rc.util.LimitedSMTPAppender
-log4j.appender.mail.limit=3
-log4j.appender.mail.cycleSeconds=60
-log4j.appender.mail.Threshold=ERROR
-log4j.appender.mail.BufferSize=32
-log4j.appender.mail.From = bboniao@gmail.com
-log4j.appender.mail.SMTPHost=10.11.132.229
-log4j.appender.mail.Subject=Rc_Strategy_Log4J_Message
-log4j.appender.mail.To= bboniao@163.com
-log4j.appender.mail.layout=org.apache.log4j.PatternLayout
-log4j.appender.mail.layout.ConversionPattern=[%-5p] %d(%r) --&amp;gt; [%t] %l: %m %x %n
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;hadoop/hbase配置&lt;/h3&gt;
-
-&lt;h5&gt;hadoop:打开bin/hadoop-daemon.sh,配置&lt;code&gt;HADOOP_ROOT_LOGGER&lt;/code&gt;&lt;/h5&gt;
-
-&lt;h5&gt;hbase:打开bin/hbase-daemon.sh,配置&lt;code&gt;HBASE_ROOT_LOGGER&lt;/code&gt;&lt;/h5&gt;
-
-&lt;h5&gt;否则log4j.properties中的&lt;code&gt;log4j.rootLogger&lt;/code&gt;不会生效&lt;/h5&gt;
-
-&lt;h5&gt;注意:&lt;code&gt;log4j.appender.mail.Threshold&lt;/code&gt;和&lt;code&gt;this.evaluator&lt;/code&gt;统一&lt;/h5&gt;
-
-&lt;h3&gt;&lt;a href=&quot;http://blog.cherouvim.com/a-better-smtpappender/&quot;&gt;参考链接&lt;/a&gt;&lt;/h3&gt;
-</content>
+ ...</content>
  </entry>
  
  <entry>
-   <title>Kill Zombie Process</title>
+   <title>Kill Zombie Process></title>
    <link href="http://bboniao.com/linux/2014-04/kill-zombie-process.html"/>
    <updated>2014-04-01T00:00:00+08:00</updated>
    <id>http://bboniao.com/linux/2014-04/kill-zombie-process</id>
-   <content type="html">&lt;h3&gt;查找僵尸进程&lt;/h3&gt;
+   <content type="html">查找僵尸进程
 
-&lt;p&gt;&lt;code&gt;ps aux |awk &amp;#39;{print $8 &amp;quot; &amp;quot; $2}&amp;#39; |grep -w Z&lt;/code&gt;&lt;/p&gt;
+ps aux |awk &amp;#39;{print $8 &amp;quot; &amp;quot; $2}&amp;#39; |grep -w Z
 
-&lt;h3&gt;查找此进程信息和父进程pid&lt;/h3&gt;
+查找此进程信息和父进程pid
 
-&lt;p&gt;&lt;code&gt;ps -ef |grep $pid&lt;/code&gt;&lt;/p&gt;
+ps -ef |grep $pid
 
-&lt;!-- more --&gt;
+
 </content>
  </entry>
  
  <entry>
-   <title>记录一次resin load过高的解决过程</title>
+   <title>记录一次resin load过高的解决过程></title>
    <link href="http://bboniao.com/java/2014-03/resin-load.html"/>
    <updated>2014-03-23T00:00:00+08:00</updated>
    <id>http://bboniao.com/java/2014-03/resin-load</id>
-   <content type="html">&lt;h5&gt;1.使用&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/0.2.6/housemd-0.2.6.zip&quot;&gt;housemd&lt;/a&gt;统计方法耗时,&lt;a href=&quot;https://github.com/CSUG/HouseMD/wiki/UserGuideCN&quot;&gt;中文说明&lt;/a&gt;&lt;/h5&gt;
+   <content type="html">1.使用housemd统计方法耗时,中文说明
 
-&lt;p&gt;&lt;code&gt;./housewd $jvm_pid&lt;/code&gt;&lt;/p&gt;
+./housewd $jvm_pid
 
-&lt;p&gt;&lt;code&gt;trace -d  -l 50000 -t 50000 ClassName&lt;/code&gt;&lt;/p&gt;
+trace -d  -l 50000 -t 50000 ClassName
 
-&lt;h5&gt;2.使用ss统计tcp信息,参照&lt;a href=&quot;http://www.ttlsa.com/linux-command/ss-replace-netstat/&quot;&gt;文章&lt;/a&gt;&lt;/h5&gt;
+2.使用ss统计tcp信息,参照文章
 
-&lt;p&gt;&lt;code&gt;ss -s&lt;/code&gt;&lt;/p&gt;
+ss -s
 
-&lt;p&gt;&lt;code&gt;ss -t -a | grep ESTAB&lt;/code&gt;&lt;/p&gt;
+ss -t -a | grep ESTAB
 
-&lt;!-- more --&gt;
 
-&lt;h5&gt;3.统计java各个线程的个数&lt;/h5&gt;
 
-&lt;p&gt;&lt;code&gt;jstack $jvm_pid | grep &amp;#39;nid=&amp;#39; | awk -F &amp;#39;-&amp;#39; &amp;#39;{print $1}&amp;#39; | awk &amp;#39;{++S[$0]} END {for (a in S) print S[a],a}&amp;#39; | sort -nr&lt;/code&gt;&lt;/p&gt;
+3.统计java各个线程的个数
 
-&lt;h5&gt;4.统计各个状态线程的个数&lt;/h5&gt;
-
-&lt;p&gt;&lt;code&gt;jstack $jvm_pid | grep java.lang.Thread.State | awk &amp;#39;{++S[$0]} END {for (a in S) print S[a],a}&amp;#39; | sort -nr&lt;/code&gt;&lt;/p&gt;
-
-&lt;h5&gt;5.查找哪些线程cpu使用过高&lt;/h5&gt;
-
-&lt;p&gt;&lt;code&gt;jstack $jvm_pid &amp;gt; jstack01 &amp;amp;&amp;amp; ps mp $jvm_pid -o THREAD,tid,time | sort -k2nr | awk &amp;#39;{printf(&amp;quot;%x&amp;quot;,$8)}{print &amp;quot; &amp;quot;,($2&amp;quot;%&amp;quot;),&amp;quot; &amp;quot;,$9}&amp;#39; | head -30&lt;/code&gt;&lt;/p&gt;
-</content>
+jstack $jvm_pid | grep &amp;#39;nid=&amp;#39; | awk -F &amp;#39;-&amp;#39; &amp;#39;{print $1}&amp;#39; | awk &amp;#39;{++S[$0]} END {for (a in S) print S[a],a}&amp;#39; | sort ...</content>
  </entry>
  
  <entry>
-   <title>jmeter使用</title>
+   <title>jmeter使用></title>
    <link href="http://bboniao.com/java/2014-03/jmeter.html"/>
    <updated>2014-03-15T00:00:00+08:00</updated>
    <id>http://bboniao.com/java/2014-03/jmeter</id>
-   <content type="html">&lt;h3&gt;1.pom.xml引入依赖&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;    &amp;lt;dependency&amp;gt;
+   <content type="html">1.pom.xml引入依赖
+    &amp;lt;dependency&amp;gt;
         &amp;lt;groupId&amp;gt;org.apache.jmeter&amp;lt;/groupId&amp;gt;
         &amp;lt;artifactId&amp;gt;ApacheJMeter_java&amp;lt;/artifactId&amp;gt;
         &amp;lt;version&amp;gt;${apache.jmeter.version}&amp;lt;/version&amp;gt;
     &amp;lt;/dependency&amp;gt;
 
     &amp;lt;dependency&amp;gt;
-        &amp;lt;groupId&amp;gt;org.apache.jmeter&amp;lt;/groupId&amp;gt;
-        &amp;lt;artifactId&amp;gt;ApacheJMeter_core&amp;lt;/artifactId&amp;gt;
-        &amp;lt;version&amp;gt;${apache.jmeter.version}&amp;lt;/version&amp;gt;
-    &amp;lt;/dependency&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;!-- more --&gt;
-
-&lt;h3&gt;2.实现接口&lt;code&gt;org.apache.jmeter.protocol.java.sampler.AbstractJavaSamplerClient&lt;/code&gt;&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;public class HbaseServiceLoadMeter extends AbstractJavaSamplerClient {
-
-    public  HTablePool majorHpool;
-    public  HTablePool mapHpool;
-
-    /**
-     * 初始化
-     */
-    @Override
-    public void setupTest(JavaSamplerContext context) {
-        Configuration majorConf = HBaseConfiguration.create();
-        majorConf.addResource(&amp;quot;hbase-site-92.xml&amp;quot;);
-        this.majorHpool = new HTablePool(majorConf, 512);
-
-        Configuration mapConf = HBaseConfiguration.create();
-        mapConf.addResource(&amp;quot;map-hbase-site.xml&amp;quot;);
-        this.mapHpool = new HTablePool(mapConf, 512);
-    }
-
-    /**
-     * 指定各种参数和默认值.可以在GUI中动态指定.
-     */
-    @Override
-    public Arguments getDefaultParameters() {
-        Arguments arguments = new Arguments();
-        arguments.addArgument(&amp;quot;p&amp;quot;, &amp;quot;&amp;quot;);
-        arguments.addArgument(&amp;quot;y&amp;quot;, &amp;quot;&amp;quot;);
-        arguments.addArgument(&amp;quot;u&amp;quot;, &amp;quot;&amp;quot;);
-        return arguments;
-    }
-
-    /**
-     * 测试代码调用逻辑
-     */
-    @Override
-    public SampleResult runTest(JavaSamplerContext context) {
-        SampleResult sr = new SampleResult();
-        // Start
-        sr.sampleStart();
-        try {
-            String y = context.getParameter(&amp;quot;y&amp;quot;);
-            String u = context.getParameter(&amp;quot;u&amp;quot;);
-            String p = context.getParameter(&amp;quot;p&amp;quot;);
-
-            Long ukey = getUkey(p, y, u);
-            sr.setSuccessful(getRcEntire(ukey));
-        } catch (Exception e) {
-            getLogger().error(e.getMessage(), e);
-            sr.setSuccessful(false);
-        } finally {
-            sr.sampleEnd();
-        }
-        return sr;
-    }
-
-    private boolean getRcEntire(Long ukey) {
-    }
-
-    private Long getUkey(String p, String y, String u) {
-
-    }
-
-    private Long getCommonUkey(String rowkey, String family) {
-
-    }
-
-    /**
-     * 测试结束清理方法,全局调用一次
-     *
-     */
-    @Override
-    public void teardownTest(JavaSamplerContext context) {
-        try {
-            this.majorHpool.close();
-            this.mapHpool.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;3.打成jar包,以及依赖的jar包放到jmeter安装目录下的&lt;code&gt;lib/ext&lt;/code&gt;&lt;/h3&gt;
-
-&lt;h3&gt;4.打开jmeter.新建&lt;code&gt;Test Plan&lt;/code&gt;&lt;/h3&gt;
-
-&lt;h3&gt;5.在&lt;code&gt;Test Plan&lt;/code&gt;下,新建&lt;code&gt;Thread Group&lt;/code&gt;,设置&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Number of Threads(users)
-Ramp-Up Period(in seconds)
-Loop Count
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;6.在&lt;code&gt;Thread Group&lt;/code&gt;下,新建&lt;code&gt;Java Request&lt;/code&gt;,设置&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;ClassName
-Send Parameters With the Request(接口AbstractJavaSamplerClient的getDefaultParameters方法定义的)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;7.在&lt;code&gt;Java Request&lt;/code&gt;下,新建&lt;code&gt;CSV Data Set Config&lt;/code&gt;,指定参数的输入文件,设置&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Filename
-File encoding
-Variable Names(comma-delimited)
-Delimiter(use&amp;#39;\t&amp;#39; for tab)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;8.在&lt;code&gt;Java Request&lt;/code&gt;下,新建&lt;code&gt;Aggregate Report&lt;/code&gt;,统计压测效果&lt;/h3&gt;
-
-&lt;h3&gt;9.&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/rc_entire_0.96.jmx/rc_entire_0.96.jmx&quot;&gt;配置文件样例&lt;/a&gt;&lt;/h3&gt;
-
-&lt;h3&gt;10.终端下,执行命令:&lt;code&gt;jmeter -n -t rc_entire_0.96.jmx -l log.jtl&lt;/code&gt;,rc&lt;em&gt;entire&lt;/em&gt;0.96.jmx是GUI配置后生成的,log.jtl是结果文件,使用GUI查看比较方便&lt;/h3&gt;
-
-&lt;h3&gt;11.&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/ifox.home.jmx/ifox.home.jmx&quot;&gt;HTTP配置文件样例&lt;/a&gt;&lt;/h3&gt;
-</content>
+        &amp;lt;groupId&amp;gt;org.a...</content>
  </entry>
  
  <entry>
-   <title>hadoop2和hbase0.96的配置</title>
+   <title>hadoop2和hbase0.96的配置></title>
    <link href="http://bboniao.com/hadoop/2014-03/hadoop2hbase096.html"/>
    <updated>2014-03-15T00:00:00+08:00</updated>
    <id>http://bboniao.com/hadoop/2014-03/hadoop2hbase096</id>
-   <content type="html">&lt;table&gt;&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;left&quot;&gt;集群&lt;/th&gt;
-&lt;th align=&quot;left&quot;&gt;hadoop&lt;/th&gt;
-&lt;th align=&quot;left&quot;&gt;hbase&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;资料库&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/tag/hadoop1.major.conf&quot;&gt;hadoop-1.0.3&lt;/a&gt;&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/tag/hbase92.major.conf&quot;&gt;hbase-0.92.1&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;标示库&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/tag/hadoop1.map.conf&quot;&gt;hadoop-1.0.3&lt;/a&gt;&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/tag/hbase92.map.conf&quot;&gt;hbase-0.92.1&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;测试库&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/tag/hadoop2.conf&quot;&gt;hadoop-2.2.0&lt;/a&gt;&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/tag/hbase96.conf&quot;&gt;hbase-0.96.1&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
+   <content type="html">
 
-&lt;!-- more --&gt;
+集群
+hadoop
+hbase
+
+
+
+资料库
+hadoop-1.0.3
+hbase-0.92.1
+
+
+标示库
+hadoop-1.0.3
+hbase-0.92.1
+
+
+测试库
+hadoop-2.2.0
+hbase-0.96.1
+
+
+
+
 </content>
  </entry>
  
  <entry>
-   <title>hadoop2 compile</title>
+   <title>hadoop2 compile></title>
    <link href="http://bboniao.com/hadoop/2014-03/hadoop2-compile.html"/>
    <updated>2014-03-15T00:00:00+08:00</updated>
    <id>http://bboniao.com/hadoop/2014-03/hadoop2-compile</id>
-   <content type="html">&lt;h3&gt;使用Maven 3.0&lt;/h3&gt;
+   <content type="html">使用Maven 3.0
 
-&lt;h3&gt;安装依赖的包:&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;yum install gcc-c++ cmake zlib-devel
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;安装protobuf&lt;/h3&gt;
+安装依赖的包:
+yum install gcc-c++ cmake zlib-devel
 
-&lt;h3&gt;编辑hadoop-common-project/hadoop-auth/pom.xml.添加&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;dependency&amp;gt;
+安装protobuf
+
+编辑hadoop-common-project/hadoop-auth/pom.xml.添加
+&amp;lt;dependency&amp;gt;
   &amp;lt;groupId&amp;gt;org.mortbay.jetty&amp;lt;/groupId&amp;gt;
   &amp;lt;artifactId&amp;gt;jetty-util&amp;lt;/artifactId&amp;gt;
   &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
 &amp;lt;/dependency&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;执行命令:&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;mvn package -Pdist,native -DskipTests -Dtar
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3&gt;编译好的tar在hadoop-common-project/hadoop-common/target&lt;/h3&gt;
 
-&lt;!-- more --&gt;
-</content>
+执行命令...</content>
  </entry>
  
  <entry>
-   <title>Linux小技巧</title>
+   <title>Linux小技巧></title>
    <link href="http://bboniao.com/linux/2014-03/linux-trip.html"/>
    <updated>2014-03-13T00:00:00+08:00</updated>
    <id>http://bboniao.com/linux/2014-03/linux-trip</id>
-   <content type="html">&lt;h3&gt;查找wio过高进程&lt;/h3&gt;
+   <content type="html">查找wio过高进程
 
-&lt;ol&gt;
-&lt;li&gt;/etc/init.d/syslog stop&lt;/li&gt;
-&lt;li&gt;echo 1 &amp;gt; /proc/sys/vm/block_dump&lt;/li&gt;
-&lt;li&gt;dmesg | egrep &amp;quot;READ|WRITE|dirtied&amp;quot; | egrep -o &amp;#39;([a-zA-Z]*)&amp;#39; | sort | uniq -c | sort -rn | head&lt;/li&gt;
-&lt;li&gt;echo 0 &amp;gt; /proc/sys/vm/block_dump&lt;/li&gt;
-&lt;li&gt;/etc/init.d/syslog start&lt;/li&gt;
-&lt;/ol&gt;
 
-&lt;!-- more --&gt;
+/etc/init.d/syslog stop
+echo 1 &amp;gt; /proc/sys/vm/block_dump
+dmesg | egrep &amp;quot;READ|WRITE|dirtied&amp;quot; | egrep -o &amp;#39;([a-zA-Z]*)&amp;#39; | sort | uniq -c | sort -rn | head
+echo 0 &amp;gt; /proc/sys/vm/block_dump
+/etc/init.d/syslog start
 
-&lt;h3&gt;Linux分析jvm的cpu性能瓶颈&lt;/h3&gt;
 
-&lt;ol&gt;
-&lt;li&gt;使用ps aux找到jvm的pid&lt;/li&gt;
-&lt;li&gt;执行top -H -p &amp;lt;pid&amp;gt;，可显示出该进程下的所有线程。找到占用cpu最多的子线程pid，并将其转换为16进制&lt;/li&gt;
-&lt;li&gt;jstack &amp;lt;pid&amp;gt; 查找&amp;quot;nid=16进制子pid&amp;quot;&lt;/li&gt;
-&lt;/ol&gt;
 
-&lt;h3&gt;memcache的启动参数&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;/opt/memcache/bin/memcached -d -f 1.1 -M -m 4096 -o slab_reassign slab_automove -u root -l 10.11.6.31 -p 12336 -c 1024 -P /opt/memcache/memcached.pid
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;table&gt;&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;left&quot;&gt;参数&lt;/th&gt;
-&lt;th align=&quot;left&quot;&gt;描述&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;-d&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;守护进程方式启动&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;-f&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;增长因子&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;-M&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;内存用光时报错&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;-m&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;使用内存大小,单位m&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;-o&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;子参数:slab&lt;em&gt;reassign,slab&lt;/em&gt;automove,cache就会以每10秒一次的频率进行重分配&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;-u&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;启动的用户&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;-l&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;绑定地址&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;-p&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;绑定端口&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;-c&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;连接数&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;-P&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;pid保存文件&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-</content>
+
+Linux分析jvm的cpu性能瓶颈
+
+
+使用ps aux找到jvm的pid
+执行top -H...</content>
  </entry>
  
  <entry>
-   <title>JVM常用的参数说明</title>
+   <title>JVM常用的参数说明></title>
    <link href="http://bboniao.com/jvm/2014-03/jvm-parameter.html"/>
    <updated>2014-03-13T00:00:00+08:00</updated>
    <id>http://bboniao.com/jvm/2014-03/jvm-parameter</id>
-   <content type="html">&lt;table&gt;&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;left&quot;&gt;参数&lt;/th&gt;
-&lt;th align=&quot;left&quot;&gt;描述&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;-Djava.io.tmpdir&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;指定目录,可以避免jps找不到pid&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;-XX:+PrintFlagsFinal&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;打印jvm参数的默认值&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;-XX:+PrintCommandLineFlags&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;打印与默认值不同的参数&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
+   <content type="html">
 
-&lt;!-- more --&gt;
+参数
+描述
+
+
+
+-Djava.io.tmpdir
+指定目录,可以避免jps找不到pid
+
+
+-XX:+PrintFlagsFinal
+打印jvm参数的默认值
+
+
+-XX:+PrintCommandLineFlags
+打印与默认值不同的参数
+
+
+
+
 </content>
  </entry>
  
  <entry>
-   <title>Java Mission Control</title>
+   <title>Java Mission Control></title>
    <link href="http://bboniao.com/jvm/2014-03/java-mission-control.html"/>
    <updated>2014-03-11T00:00:00+08:00</updated>
    <id>http://bboniao.com/jvm/2014-03/java-mission-control</id>
-   <content type="html">&lt;h3&gt;Mac上使用&lt;/h3&gt;
+   <content type="html">Mac上使用
 
-&lt;ol&gt;
-&lt;li&gt;下载&lt;code&gt;jdk7u40&lt;/code&gt;以后的版本,执行jmc.mac os上暂时用不了,但可以用方法2&lt;/li&gt;
-&lt;li&gt;使用eclipse:
-&lt;a href=&quot;http://archive.eclipse.org/eclipse/downloads/drops/R-3.8-201206081200/download.php?dropFile=eclipse-platform-3.8-macosx-cocoa-x86_64.tar.gz&quot;&gt;eclipse3.8&lt;/a&gt;
-使用其他平台jdk的jmc更新完插件,拷贝JAVA_HOME/lib/missioncontrol/plugins下的jar包到eclipse/plugins即可&lt;/li&gt;
-&lt;/ol&gt;
 
-&lt;h3&gt;启动Java Flight Recorder (JFR)&lt;/h3&gt;
+下载jdk7u40以后的版本,执行jmc.mac os上暂时用不了,但可以用方法2
+使用eclipse:
+eclipse3.8
+使用其他平台jdk的jmc更新完插件,拷贝JAVA_HOME/lib/missioncontrol/plugins下的jar包到eclipse/plugins即可
 
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;启动参数:&lt;/p&gt;
 
-&lt;p&gt;-Dcom.sun.management.jmxremote.port=7091 -Dcom.sun.management.jmxremote.rmi.port=7091 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false  -XX:+UnlockCommercialFeatures -XX:+FlightRecorder&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
+启动Java Flight Recorder (JFR)
 
-&lt;!-- more --&gt;
 
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;启动代理(5596是jvm的pid,jvm启动时必须添加-XX:+UnlockCommercialFeatures -XX:+FlightRecorder):&lt;/p&gt;
+启动参数:
 
-&lt;p&gt;jcmd 5596 ManagementAgent.start jmxremote.ssl=false jmxremote.port=7091 jmxremote.rmi.port=7091 jmxremote.authenticate=false jmxremote.autodiscovery=true &lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-</content>
+-Dcom.sun.management.jmxremote.port=7091 -Dcom.sun.management.jmxremote.rmi.port=7091 -Dcom.sun.manage...</content>
  </entry>
  
  <entry>
-   <title>jekyll使用七牛的CDN</title>
+   <title>jekyll使用七牛的CDN></title>
    <link href="http://bboniao.com/jekyll/2014-03/jekyllcdn.html"/>
    <updated>2014-03-09T00:00:00+08:00</updated>
    <id>http://bboniao.com/jekyll/2014-03/jekyllcdn</id>
-   <content type="html">&lt;h3&gt;注册七牛&lt;/h3&gt;
+   <content type="html">注册七牛
 
-&lt;p&gt;进入&lt;a href=&quot;https://portal.qiniu.com/&quot;&gt;七牛的用户界面&lt;/a&gt;,创建一个空间,访问控制选择公开,然后点击一键加速网站,填写你的网站地址&lt;/p&gt;
+进入七牛的用户界面,创建一个空间,访问控制选择公开,然后点击一键加速网站,填写你的网站地址
 
-&lt;h3&gt;修改_config.xml&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;safe: false
+修改_config.xml
+safe: false
 cdn_url : http://bboniao.qiniudn.com
 JB :
 ASSET_PATH : false
 IMAGE_PATH : false
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;!-- more --&gt;
 
-&lt;h3&gt;修改_includes/JB/setup,&lt;/h3&gt;
 
-&lt;p&gt;这样的好处本地不会使用cdn,而发布到githup上使用&lt;code&gt;site.cdn_url&lt;/code&gt;上的资源&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/qiniu-cdn-jekyll-code.png&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
+修改_includes/JB/setup,
 
-&lt;h3&gt;说明&lt;/h3&gt;
+这样的好处本地不会使用cdn,而发布到githup上使用site.cdn_url上的资源
 
-&lt;p&gt;/assets和/images下的资源会缓存到cdn,使用的时候用 {{ ASSET&lt;em&gt;PATH }} 和 {{ IMAGE&lt;/em&gt;PATH }} 来代替.更改缓存的内容时,需要到七牛后台界面的空间设置--高级设置--去刷新&lt;/p&gt;
-</content>
+
+
+说明
+
+/assets和/images下的资源会缓存到cdn,使用的时候用 {{ ASSETPATH }} 和 {{ IMAGE...</content>
  </entry>
  
  <entry>
-   <title>常用工具包收集</title>
+   <title>常用工具包收集></title>
    <link href="http://bboniao.com/tools/2014-03/tools.html"/>
    <updated>2014-03-07T00:00:00+08:00</updated>
    <id>http://bboniao.com/tools/2014-03/tools</id>
-   <content type="html">&lt;p&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/gcviewer-1.34-SNAPSHOT/gcviewer-1.34-SNAPSHOT.jar&quot;&gt;GC Log分析工具,支持G1.&lt;/a&gt;
-&lt;a href=&quot;https://github.com/chewiebug/GCViewer&quot;&gt;code地址&lt;/a&gt;&lt;/p&gt;
+   <content type="html">GC Log分析工具,支持G1.
+code地址
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/tdv1.1/tdv1.1.jar&quot;&gt;Thread Dump Viewer.&lt;/a&gt;
-&lt;a href=&quot;http://sourceforge.net/projects/tdv/&quot;&gt;code地址&lt;/a&gt;&lt;/p&gt;
+Thread Dump Viewer.
+code地址
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/tda2.2/tda.jar&quot;&gt;Thread Dump Analyzer.&lt;/a&gt;
-&lt;a href=&quot;http://sourceforge.net/projects/tdv/&quot;&gt;code地址&lt;/a&gt;&lt;/p&gt;
+Thread Dump Analyzer.
+code地址
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/gchisto/gchisto.jar&quot;&gt;GC Histogram Tool,不支持G1.&lt;/a&gt;
-&lt;a href=&quot;https://svn.java.net/svn/tda%7Esvn&quot;&gt;code地址&lt;/a&gt;&lt;/p&gt;
+GC Histogram Tool,不支持G1.
+code地址
 
-&lt;!-- more --&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/cmdline-jmxclient-0.10.3/cmdline-jmxclient-0.10.3.jar&quot;&gt;shell 调用jmx接口&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/0.2.6/housemd-0.2.6.zip&quot;&gt;Java进程运行时诊断和调试工具&lt;/a&gt;
-&lt;a href=&quot;https://github.com/CSUG/HouseMD&quot;&gt;code地址&lt;/a&gt;&lt;/p&gt;
+shell 调用jmx接口
+
+Java进程运行时诊断和调试工具
+code地址
 </content>
  </entry>
  
  <entry>
-   <title>G1(Garbage First)的使用</title>
+   <title>G1(Garbage First)的使用></title>
    <link href="http://bboniao.com/jvm/2014-03/g1garbage-first.html"/>
    <updated>2014-03-07T00:00:00+08:00</updated>
    <id>http://bboniao.com/jvm/2014-03/g1garbage-first</id>
-   <content type="html">&lt;h3&gt;为什么采用G1&lt;/h3&gt;
+   <content type="html">为什么采用G1
 
-&lt;p&gt;Hbase开启SLAB之后还是会产生很多碎片,导致Full GC.原因是BlockCache产生很多碎片,CMS对碎片无能为力.采用G1吞吐量与CMS相当&lt;/p&gt;
+Hbase开启SLAB之后还是会产生很多碎片,导致Full GC.原因是BlockCache产生很多碎片,CMS对碎片无能为力.采用G1吞吐量与CMS相当
 
-&lt;h3&gt;我的参数配置(g1和cms)&lt;/h3&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;-Xmx24g -Xms24g -XX:PermSize=96m -XX:MaxPermSize=96m -XX:+UseG1GC -XX:SurvivorRatio=6 -XX:MaxGCPauseMillis=400 -XX:G1ReservePercent=15  -XX:InitiatingHeapOccupancyPercent=40 -XX:ConcGCThreads=8
-
--Xmx24g -Xms24g -Xmn5g -XX:PermSize=96m -XX:MaxPermSize=96m -XX:SurvivorRatio=2 -XX:+UseConcMarkSweepGC -XX:CMSInitiatingOccupancyFraction=68 -XX:+UseCMSCompactAtFullCollection -XX:CMSFullGCsBeforeCompaction=0 -XX:+CMSConcurrentMTEnabled -XX:PretenureSizeThreshold=2097151 -XX:MaxTenuringThreshold=6 -XX:-OmitStackTraceInFastThrow -XX:+CMSScavengeBeforeRemark
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;ol&gt;
-&lt;li&gt;新生代和region大小没有指定,G1可以更好的自动分配资源.&lt;/li&gt;
-&lt;li&gt;提高MaxGCPauseMillis,实时性要求没有太严格,可以提高吞吐量&lt;/li&gt;
-&lt;li&gt;提高G1ReservePercent,降低InitiatingHeapOccupancyPercent,提高ConcGCThreads因为遇到内存不足而产生了Full GC&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;!-- more --&gt;
-
-&lt;h3&gt;G1常用参数&lt;/h3&gt;
-
-&lt;table&gt;&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;left&quot;&gt;参数&lt;/th&gt;
-&lt;th align=&quot;left&quot;&gt;描述&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;-XX:+UseG1GC&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;开启G1&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;-XX:MaxGCPauseMillis=n&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;设置GC暂停的最大时间,这只是目标,尽量达到,默认值是 200 毫秒,&lt;code&gt;过小影响吞吐量&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;-XX:InitiatingHeapOccupancyPercent=n&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;整个堆(而不是某个年代)使用量达到此值,便会触发并发GC周期.值为0则是连续触发,默认值为45&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;-XX:NewRatio=n&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;老年代与新生代的比值,默认值为2&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;-XX:SurvivorRatio=n&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;伊甸园代与生存代的比率,默认值为8&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;-XX:MaxTenuringThreshold=n&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;生存代存活的最大门限,默认值为15&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;-XX:ParallelGCThreads=n&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;设置垃圾回收器并行阶段的线程数,默认值与JVM运行的平台有关,&lt;code&gt;将 n 的值设置为逻辑处理器的数量&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;-XX:ConcGCThreads=n&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;设置并发垃圾回收器使用的线程数,默认值与JVM运行的平台有关&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;-XX:G1ReservePercent=n&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;设置剩余的内存量,减少跃迁失败的可能,默认值为10&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;left&quot;&gt;-XX:G1HeapRegionSize=n&lt;/td&gt;
-&lt;td align=&quot;left&quot;&gt;设置G1平分java堆而产生区域的大小,默认值可以提供最大的工效性.最小值为1M,最大为32M,最多划分1024个,&lt;code&gt;建议使用默认值&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-
-&lt;h3&gt;标记周期的各个阶段&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;初始标记阶段：&lt;/strong&gt;在此阶段，G1 GC 对根进行标记。该阶段与常规的 (&lt;code&gt;STW&lt;/code&gt;) 年轻代垃圾回收密切相关。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;根区域扫描阶段：&lt;/strong&gt;G1 GC 在初始标记的存活区扫描对老年代的引用，并标记被引用的对象。该阶段与应用程序（&lt;code&gt;非STW&lt;/code&gt;）同时运行，并且只有完成该阶段后，才能开始下一次 &lt;code&gt;STW&lt;/code&gt; 年轻代垃圾回收。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;并发标记阶段：&lt;/strong&gt;G1 GC 在整个堆中查找可访问的（存活的）对象。该阶段与应用程序同时运行，可以被 &lt;code&gt;STW&lt;/code&gt; 年轻代垃圾回收中断。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;重新标记阶段：&lt;/strong&gt;该阶段是 &lt;code&gt;STW&lt;/code&gt; 回收，帮助完成标记周期。G1 GC 清空 SATB 缓冲区，跟踪未被访问的存活对象，并执行引用处理。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;清理阶段：&lt;/strong&gt;在这个最后阶段，G1 GC 执行统计和 RSet 净化的 &lt;code&gt;STW&lt;/code&gt; 操作。在统计期间，G1 GC 会识别完全空闲的区域和可供进行混合垃圾回收的区域。清理阶段在将空白区域重置并返回到空闲列表时为部分并发。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3&gt;内存用尽造成Full GC&lt;/h3&gt;
-
-&lt;p&gt;查找&lt;code&gt;to-space exhausted&lt;/code&gt;和&lt;code&gt;to-space overflow&lt;/code&gt;,表示因内存不够产生Full GC&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;-XX:G1ReservePercent 增加预存内存量&lt;/li&gt;
-&lt;li&gt;-XX:InitiatingHeapOccupancyPercent 减少此值,提前启动标记周期&lt;/li&gt;
-&lt;li&gt; -XX:ConcGCThreads 增加并行标记线程的数目&lt;/li&gt;
-&lt;/ol&gt;
-</content>
+我的参数配置(g1和cms)
+-Xmx24g -Xms24g -XX:PermSize=96m -XX:MaxPermSize=96m -XX:+UseG1GC -XX:SurvivorRatio=6 -XX:MaxGCPauseMillis=400 -XX:G1ReservePercent=15  -XX:InitiatingHeapOccupancyPercent=40 -XX:ConcGCThreads=8
+...</content>
  </entry>
  
- 
+
 </feed>
