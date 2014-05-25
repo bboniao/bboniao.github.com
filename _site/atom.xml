@@ -4,12 +4,34 @@
  <title>My Blog</title>
  <link href="http://bboniao.com//atom.xml" rel="self"/>
  <link href="http://bboniao.com"/>
- <updated>2014-05-21T20:40:19+08:00</updated>
+ <updated>2014-05-25T12:27:58+08:00</updated>
  <id>http://bboniao.com</id>
  <author>
    <name>bboniao</name>
  </author>
 
+ 
+ <entry>
+   <title>HouseMD使用></title>
+   <link href="http://bboniao.com/jvm/2014-05/housemd.html"/>
+   <updated>2014-05-25T00:00:00+08:00</updated>
+   <id>http://bboniao.com/jvm/2014-05/housemd</id>
+   <content type="html">安装HouseMD
+
+下载housemd-0.2.6
+解压,进入目录,执行./housemd pid
+
+命令quit
+terminate the process.
+
+命令help
+display this infomation.
+
+quit         terminate the process.
+help         display this infomation.
+last         show exception stack trace of last error.
+trace        display or output infomation of method ...</content>
+ </entry>
  
  <entry>
    <title>Java Performance:The Definitive Guide Chapter 4></title>

@@ -177,6 +177,45 @@ var _hmt = _hmt || [];
 
 
 <div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/jvm/2014-05/housemd.html">HouseMD使用</a></h2>
+  
+    <h3>安装HouseMD</h3>
+
+<p>下载<a href="https://github.com/bboniao/bboniao.github.com/releases/download/0.2.6/housemd-0.2.6.zip">housemd-0.2.6</a>
+解压,进入目录,执行<code>./housemd pid</code></p>
+
+<h3>命令<code>quit</code></h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">terminate the process.
+</code></pre></div>
+<h3>命令<code>help</code></h3>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">display this infomation.
+
+quit         terminate the process.
+help         display this infomation.
+last         show exception stack trace of last error.
+trace        display or output infomation of method invocaton.
+loaded       display loaded classes information.
+env          display system env.
+inspect      display fields of a class.
+prop         display system properties.
+resources    list all source paths can loaded from every classloader by resource full name.
+</code></pre></div>
+
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 25 May 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/jvm/2014-05/housemd.html#comments"> Comments</a>
+    </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/jvm/2014-05/housemd.html"><span class="readmore">Read More &raquo; </span></a>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<div class="wrapper">
   <h2 class="h2 entry-title"><a href="/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-4.html">Java Performance:The Definitive Guide Chapter 4</a></h2>
   
     <h5>Tuning the Code Cache</h5>
@@ -306,31 +345,6 @@ var _hmt = _hmt || [];
   </div>
 </div>
 
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/jvm/2014-04/jvmhs_err_pidlog.html">JVM致命错误日志（hs_err_pid.log）解读</a></h2>
-  
-    <h3>淘宝的一个<a href="https://github.com/bboniao/bboniao.github.com/releases/download/javacrash/javacrash-120504004849-phpapp02.pptx">ppt</a></h3>
-
-<h3><a href="http://www.raychase.net/1459">转自《四火的唠叨》</a></h3>
-
-<h5>致命错误出现的时候，JVM生成了hs<em>err</em>pid<pid>.log这样的文件，其中往往包含了虚拟机崩溃原因的重要信息。因为经常遇到，在这篇文章里，我挑选了一个，并且逐段分析它包含的内容（文件可以在文章最后下载）。默认情况下文件是创建在工作目录下的（如果没权限创建的话JVM会尝试把文件写到/tmp这样的临时目录下面去），当然，文件格式和路径也可以通过参数指定，比如：</h5>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">java -XX:ErrorFile=/var/log/java/java_error%p.log
-</code></pre></div>
-
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 22 Apr 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/jvm/2014-04/jvmhs_err_pidlog.html#comments"> Comments</a>
-    </div>
-    
-    <a class="btn btn-default btn-sm pull-right" href="/jvm/2014-04/jvmhs_err_pidlog.html"><span class="readmore">Read More &raquo; </span></a>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-
 
 <!-- Pagination links -->
 <div class="pull-right">
@@ -362,7 +376,7 @@ var _hmt = _hmt || [];
   
      
     	<li><a href="/categories.html#jvm-ref">
-    		jvm <span>6</span>
+    		jvm <span>7</span>
     	</a></li>
      
     	<li><a href="/categories.html#tools-ref">
@@ -414,6 +428,8 @@ var _hmt = _hmt || [];
        <div class="category">
          <ul>
            
+           <li><a href="/jvm/2014-05/housemd.html">HouseMD使用</a></li>
+           
            <li><a href="/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-4.html">Java Performance:The Definitive Guide Chapter 4</a></li>
            
            <li><a href="/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-3.html">Java Performance:The Definitive Guide Chapter 3</a></li>
@@ -431,8 +447,6 @@ var _hmt = _hmt || [];
            <li><a href="/hbase/2014-04/hbasecolumncolumnput.html">HBase在单Column和多Column情况下批量Put的性能对比分析</a></li>
            
            <li><a href="/hbase/2014-04/hbase-delete-put.html">hbase delete put的陷阱</a></li>
-           
-           <li><a href="/hbase/2014-04/hbase-cloumnfamily.html">为什么要控制hbase cloumnFamily的数量</a></li>
            
          </ul>
        </div>

@@ -5,10 +5,330 @@
         <description>My Blog - bboniao</description>
         <link>http://bboniao.com</link>
         <link>http://bboniao.com</link>
-        <lastBuildDate>2014-05-21T20:40:19+08:00</lastBuildDate>
-        <pubDate>2014-05-21T20:40:19+08:00</pubDate>
+        <lastBuildDate>2014-05-25T12:27:58+08:00</lastBuildDate>
+        <pubDate>2014-05-25T12:27:58+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>HouseMD使用</title>
+                <description>&lt;h3&gt;安装HouseMD&lt;/h3&gt;
+
+&lt;p&gt;下载&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/0.2.6/housemd-0.2.6.zip&quot;&gt;housemd-0.2.6&lt;/a&gt;
+解压,进入目录,执行&lt;code&gt;./housemd pid&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3&gt;命令&lt;code&gt;quit&lt;/code&gt;&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;terminate the process.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;命令&lt;code&gt;help&lt;/code&gt;&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;display this infomation.
+
+quit         terminate the process.
+help         display this infomation.
+last         show exception stack trace of last error.
+trace        display or output infomation of method invocaton.
+loaded       display loaded classes information.
+env          display system env.
+inspect      display fields of a class.
+prop         display system properties.
+resources    list all source paths can loaded from every classloader by resource full name.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;!-- more --&gt;
+
+&lt;h3&gt;命令&lt;code&gt;last&lt;/code&gt;&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;show exception stack trace of last error.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;命令&lt;code&gt;trace&lt;/code&gt;&lt;/h3&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;display or output infomation of method invocaton.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;参数&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;说明&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;默认值&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;-p&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;package regex pattern for filtering.&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;.*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;-i&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;display trace statistics interval.&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;-t&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;limited trace seconds.&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;-l&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;limited limited times.&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;1000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;-d&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;enable append invocation detail&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;/tmp/trace/[pid]@[hostname]/detail&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;-s&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;enable append invocation calling stack&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;/tmp/trace/[pid]@[hostname]/stack&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h5&gt;&lt;code&gt;trace BlogServiceImpl&lt;/code&gt;&lt;/h5&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;方法全名&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;类加载器&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;调用次数&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;平均调用时间&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;所在类的实例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;com/sohu/tv/mobil/service/api/BlogServiceImpl.dealDirty(BlogRule, Map, String, Set, Set, boolean)&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;sun.misc.Launcher$AppClassLoader@6b9c18ae&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;1&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;120ms&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;com.sohu.tv.mobil.service.api.BlogServiceImpl@7b22e94&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;com/sohu/tv/mobil/service/api/BlogServiceImpl.doRecommend(BlogRule)&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;sun.misc.Launcher$AppClassLoader@6b9c18ae&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;1&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;197ms&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;com.sohu.tv.mobil.service.api.BlogServiceImpl@7b22e94&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;com/sohu/tv/mobil/service/api/BlogServiceImpl.filterResult(Set, BlogRule, String)&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;sun.misc.Launcher$AppClassLoader@6b9c18ae&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;1&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;9ms&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;com.sohu.tv.mobil.service.api.BlogServiceImpl@7b22e94&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;com/sohu/tv/mobil/service/api/BlogServiceImpl.getHisSet(BlogRule)&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;sun.misc.Launcher$AppClassLoader@6b9c18ae&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;1&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;1ms&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;com.sohu.tv.mobil.service.api.BlogServiceImpl@7b22e94&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;com/sohu/tv/mobil/service/api/BlogServiceImpl.recommend(BlogRule)&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;sun.misc.Launcher$AppClassLoader@6b9c18ae&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;1&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;203ms&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;com.sohu.tv.mobil.service.api.BlogServiceImpl@7b22e94&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h5&gt;&lt;code&gt;trace -d -s BlogServiceImpl.getHisSet&lt;/code&gt;&lt;/h5&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;方法全名&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;类加载器&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;调用次数&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;平均调用时间&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;所在类的实例&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;com/sohu/tv/mobil/service/api/BlogServiceImpl.getHisSet(BlogRule)&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;sun.misc.Launcher$AppClassLoader@6b9c18ae&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;1&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;&amp;lt;1ms&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;com.sohu.tv.mobil.service.api.BlogServiceImpl@7b22e94&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h5&gt;&lt;code&gt;vim /tmp/trace/20721@tc-5-45/detail&lt;/code&gt;&lt;/h5&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;时间&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;运行时间&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;线程&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;所在类的实例&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;方法全名&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;参数值&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;返回值&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;2014-05-25 12:04:15&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;0ms&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;[DubboServerHandler-10.11.5.45:20880-thread-1]&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;com.sohu.tv.mobil.service.api.BlogServiceImpl@7b22e94&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;com/sohu/tv/mobil/service/api/BlogServiceImpl.getHisSet&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;[RequestParam{map={title=null, size=0}} BlogRule{p=&amp;#39;guhaibo1983@chinaren.com&amp;#39;, u=&amp;#39;13947917484782695142&amp;#39;, y=&amp;#39;&amp;#39;, vid=&amp;#39;69108754&amp;#39;, ukey=-197269013769484523, ab=0, pid=&amp;#39;null&amp;#39;, channelId=0, catecode=&amp;#39;133104&amp;#39;}]&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;[69108754]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h5&gt;&lt;code&gt;vim /tmp/trace/20721@tc-5-45/stack&lt;/code&gt;&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;com/sohu/tv/mobil/service/api/BlogServiceImpl.getHisSet(Lcom/sohu/tv/mobil/entity/BlogRule;)Ljava/util/Set; call by thread [DubboServerHandler-10.11.5.45:20880-thread-1]
+        com.sohu.tv.mobil.service.api.BlogServiceImpl.doRecommend(BlogServiceImpl.java:115)
+        com.sohu.tv.mobil.service.api.BlogServiceImpl.recommend(BlogServiceImpl.java:84)
+        com.alibaba.dubbo.common.bytecode.Wrapper16.invokeMethod(Wrapper16.java)
+        com.alibaba.dubbo.rpc.proxy.javassist.JavassistProxyFactory$1.doInvoke(JavassistProxyFactory.java:46)
+        com.alibaba.dubbo.rpc.proxy.AbstractProxyInvoker.invoke(AbstractProxyInvoker.java:72)
+        com.alibaba.dubbo.rpc.protocol.InvokerWrapper.invoke(InvokerWrapper.java:53)
+        com.alibaba.dubbo.rpc.filter.ExceptionFilter.invoke(ExceptionFilter.java:64)
+        com.alibaba.dubbo.rpc.protocol.ProtocolFilterWrapper$1.invoke(ProtocolFilterWrapper.java:91)
+        com.alibaba.dubbo.rpc.filter.TimeoutFilter.invoke(TimeoutFilter.java:42)
+        com.alibaba.dubbo.rpc.protocol.ProtocolFilterWrapper$1.invoke(ProtocolFilterWrapper.java:91)
+        com.alibaba.dubbo.monitor.support.MonitorFilter.invoke(MonitorFilter.java:65)
+        com.alibaba.dubbo.rpc.protocol.ProtocolFilterWrapper$1.invoke(ProtocolFilterWrapper.java:91)
+        com.alibaba.dubbo.rpc.protocol.dubbo.filter.TraceFilter.invoke(TraceFilter.java:78)
+        com.alibaba.dubbo.rpc.protocol.ProtocolFilterWrapper$1.invoke(ProtocolFilterWrapper.java:91)
+        com.alibaba.dubbo.rpc.filter.ContextFilter.invoke(ContextFilter.java:60)
+        com.alibaba.dubbo.rpc.protocol.ProtocolFilterWrapper$1.invoke(ProtocolFilterWrapper.java:91)
+        com.alibaba.dubbo.rpc.filter.GenericFilter.invoke(GenericFilter.java:112)
+        com.alibaba.dubbo.rpc.protocol.ProtocolFilterWrapper$1.invoke(ProtocolFilterWrapper.java:91)
+        com.alibaba.dubbo.rpc.filter.ClassLoaderFilter.invoke(ClassLoaderFilter.java:38)
+        com.alibaba.dubbo.rpc.protocol.ProtocolFilterWrapper$1.invoke(ProtocolFilterWrapper.java:91)
+        com.alibaba.dubbo.rpc.filter.EchoFilter.invoke(EchoFilter.java:38)
+        com.alibaba.dubbo.rpc.protocol.ProtocolFilterWrapper$1.invoke(ProtocolFilterWrapper.java:91)
+        com.alibaba.dubbo.rpc.protocol.dubbo.DubboProtocol$1.reply(DubboProtocol.java:108)
+        com.alibaba.dubbo.remoting.exchange.support.header.HeaderExchangeHandler.handleRequest(HeaderExchangeHandler.java:84)
+        com.alibaba.dubbo.remoting.exchange.support.header.HeaderExchangeHandler.received(HeaderExchangeHandler.java:170)
+        com.alibaba.dubbo.remoting.transport.DecodeHandler.received(DecodeHandler.java:52)
+        com.alibaba.dubbo.remoting.transport.dispather.ChannelEventRunnable.run(ChannelEventRunnable.java:82)
+        java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+        java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+        java.lang.Thread.run(Thread.java:744)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;命令&lt;code&gt;loaded&lt;/code&gt;&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;display loaded classes information.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;&lt;code&gt;loaded  BlogServiceImpl&lt;/code&gt;&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;com.sohu.tv.mobil.service.api.BlogServiceImpl -&amp;gt; /opt/mobil/mobil-service-1.0-SNAPSHOT/lib/mobil-service-1.0-SNAPSHOT.jar
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;&lt;code&gt;loaded -h BlogServiceImpl&lt;/code&gt;&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;com.sohu.tv.mobil.service.api.BlogServiceImpl -&amp;gt; /opt/mobil/mobil-service-1.0-SNAPSHOT/lib/mobil-service-1.0-SNAPSHOT.jar
+    - sun.misc.Launcher$AppClassLoader@6b9c18ae
+        - sun.misc.Launcher$ExtClassLoader@55187eb3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;命令&lt;code&gt;env&lt;/code&gt;&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;display system env.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;&lt;code&gt;env -e .*&lt;/code&gt;&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;CLASSPATH          = ./:/opt/jdk/lib
+CVS_RSH            = ssh
+G_BROKEN_FILENAMES = 1
+HADOOP_HOME        = /opt/rc_test/hadoop
+HBASE_HOME         = /opt/rc_test/hbase
+HISTSIZE           = 1000
+HOME               = /root
+HOSTNAME           = tc-5-45
+INPUTRC            = /etc/inputrc
+JAVA_HOME          = /opt/jdk
+JETTY_HOME         = /opt/jetty
+LANG               = en_US.utf8
+LESSOPEN           = |/usr/bin/lesspipe.sh %s
+LOGNAME            = root
+LS_COLORS          = 
+MAIL               = /var/spool/mail/root
+MAVEN_HOME         = /opt/rc/apache-maven-2.2.1
+NLSPATH            = /usr/dt/lib/nls/msg/%L/%N.cat
+OLDPWD             = /opt/mobil/mobil-service-1.0-SNAPSHOT/bin
+PATH               = /usr/kerberos/sbin:/usr/kerberos/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/dell/srvadmin/bin:/opt/dell/srvadmin/sbin:/opt/rc/apache-maven-2.2.1/bin:/opt/jdk/bin:/opt/rc_test/hadoop/bin/:/root/bin:/opt/rc_test/hadoop/bin:/opt/rc_test/hbase/bin
+PWD                = /opt/mobil/mobil-service-1.0-SNAPSHOT
+SHELL              = /bin/bash
+SHLVL              = 2
+SSH_CLIENT         = 10.1.9.23 54407 22
+SSH_CONNECTION     = 10.1.9.23 54407 10.11.5.45 22
+SSH_TTY            = /dev/pts/1
+TERM               = xterm-256color
+USER               = root
+XFILESEARCHPATH    = /usr/dt/app-defaults/%L/Dt
+_                  = /usr/bin/nohup
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;命令&lt;code&gt;inspect&lt;/code&gt;&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;display fields of a class.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;参数&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;说明&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;默认值&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;-p&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;package regex pattern for filtering.&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;.*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;-i&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;display trace statistics interval.&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;-t&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;limited trace seconds.&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;-l&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;limited limited times.&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;1000&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h5&gt;&lt;code&gt;inspect BlogVideo.id&lt;/code&gt;&lt;/h5&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;字段&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;值&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;调用类实例的toString方法&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;类加载器&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;BlogVideo.vid&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;53173760&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;BlogVideo{vid=&amp;#39;53173760&amp;#39;, catecode=&amp;#39;900&amp;#39;, pid=&amp;#39;-1&amp;#39;, tvid=&amp;#39;null&amp;#39;, type=&amp;#39;my&amp;#39;, rcAlgorithm=&amp;#39;900670128&amp;#39;, infoType=&amp;#39;0&amp;#39;}&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;sun.misc.Launcher$AppClassLoader@6b9c18ae&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h5&gt;命令&lt;code&gt;prop&lt;/code&gt;&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;display system properties.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;&lt;code&gt;prop -e .*&lt;/code&gt;&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;awt.toolkit                               = sun.awt.X11.XToolkit
+com.sun.management.jmxremote              = 
+com.sun.management.jmxremote.authenticate = false
+com.sun.management.jmxremote.port         = 1099
+com.sun.management.jmxremote.ssl          = false
+com.tc.productkey.path                    = /opt/mobil/terracotta-license.key
+file.encoding                             = UTF-8
+file.encoding.pkg                         = sun.io
+file.separator                            = /
+java.awt.graphicsenv                      = sun.awt.X11GraphicsEnvironment
+java.awt.headless                         = true
+java.awt.printerjob                       = sun.print.PSPrinterJob
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;命令&lt;code&gt;resources&lt;/code&gt;&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;list all source paths can loaded from every classloader by resource full name.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;&lt;code&gt;resources dubbo.properties&lt;/code&gt;&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;file:/opt/mobil/mobil-service-1.0-SNAPSHOT/conf/dubbo.properties
+jar:file:/opt/mobil/mobil-service-1.0-SNAPSHOT/lib/mobil-service-1.0-SNAPSHOT.jar!/dubbo.properties
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+                <link>http://bboniao.com/jvm/2014-05/housemd.html</link>
+                <guid>http://bboniao.com/jvm/2014-05/housemd</guid>
+                <pubDate>2014-05-25T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>Java Performance:The Definitive Guide Chapter 4</title>
