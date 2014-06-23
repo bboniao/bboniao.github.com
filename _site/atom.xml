@@ -4,12 +4,30 @@
  <title>My Blog</title>
  <link href="http://bboniao.com//atom.xml" rel="self"/>
  <link href="http://bboniao.com"/>
- <updated>2014-05-25T12:27:58+08:00</updated>
+ <updated>2014-06-23T15:06:00+08:00</updated>
  <id>http://bboniao.com</id>
  <author>
    <name>bboniao</name>
  </author>
 
+ 
+ <entry>
+   <title>Java Concurrency Stress(jcstress)></title>
+   <link href="http://bboniao.com/openjdk/2014-06/java-concurrency-stressjcstress.html"/>
+   <updated>2014-06-23T00:00:00+08:00</updated>
+   <id>http://bboniao.com/openjdk/2014-06/java-concurrency-stressjcstress</id>
+   <content type="html">下载源代码:hg clone http://hg.openjdk.java.net/code-tools/jcstress/jcstress
+
+在tests-custom/pom.xml添加即将测试代码的依赖
+
+在tests-custom下编写测试代码
+
+在tests-custom下resources/org/openjdk/jcstress/desc下编写xml描述文件
+
+在源代码根目录,执行mvn clean install -pl tests-custom -am
+
+再执行 java -jar tests-custom/target/jcstress.jar -t &amp;#39;.*T...</content>
+ </entry>
  
  <entry>
    <title>HouseMD使用></title>

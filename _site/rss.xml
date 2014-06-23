@@ -5,10 +5,76 @@
         <description>My Blog - bboniao</description>
         <link>http://bboniao.com</link>
         <link>http://bboniao.com</link>
-        <lastBuildDate>2014-05-25T12:27:58+08:00</lastBuildDate>
-        <pubDate>2014-05-25T12:27:58+08:00</pubDate>
+        <lastBuildDate>2014-06-23T15:06:00+08:00</lastBuildDate>
+        <pubDate>2014-06-23T15:06:00+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>Java Concurrency Stress(jcstress)</title>
+                <description>&lt;h5&gt;下载源代码:hg clone http://hg.openjdk.java.net/code-tools/jcstress/jcstress&lt;/h5&gt;
+
+&lt;h5&gt;在tests-custom/pom.xml添加即将测试代码的依赖&lt;/h5&gt;
+
+&lt;h5&gt;在tests-custom下编写测试代码&lt;/h5&gt;
+
+&lt;h5&gt;在tests-custom下resources/org/openjdk/jcstress/desc下编写xml描述文件&lt;/h5&gt;
+
+&lt;h5&gt;在源代码根目录,执行&lt;code&gt;mvn clean install -pl tests-custom -am&lt;/code&gt;&lt;/h5&gt;
+
+&lt;h5&gt;再执行 &lt;code&gt;java -jar tests-custom/target/jcstress.jar -t &amp;#39;.*TreeMapUpdateTest.*&amp;#39;&lt;/code&gt;&lt;/h5&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h5&gt;java实例&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;@JCStressTest
+@State
+public class TreeMapUpdateTest {
+
+    private static final Random R = new Random();
+
+    private static final Map&amp;lt;String, String&amp;gt; CONCURRENT_MAP = new ConcurrentSkipListMap&amp;lt;String, String&amp;gt;();
+
+    @Actor
+    public void foreach(IntResult1 result) {
+        for (Map.Entry&amp;lt;String, String&amp;gt; e : CONCURRENT_MAP.entrySet()) {
+            result.r1 = 1;
+        }
+    }
+
+    @Actor
+    public void add2() {
+        CONCURRENT_MAP.put(String.valueOf(R.nextInt()), String.valueOf(R.nextInt()));
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;xml实例&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;testsuite&amp;gt;
+&amp;lt;test name=&amp;quot;com.sohu.tv.jcstress.test.TreeMapUpdateTest&amp;quot;&amp;gt;
+    &amp;lt;contributed-by&amp;gt;Michael Nitschinger&amp;lt;/contributed-by&amp;gt;
+    &amp;lt;description&amp;gt;
+        Tests the thread-safeness of the StringUtil class.
+    &amp;lt;/description&amp;gt;
+    &amp;lt;case&amp;gt;
+        &amp;lt;match&amp;gt;[1]&amp;lt;/match&amp;gt;
+        &amp;lt;expect&amp;gt;ACCEPTABLE&amp;lt;/expect&amp;gt;
+        &amp;lt;description&amp;gt;
+            Acceptable to see true.
+        &amp;lt;/description&amp;gt;
+    &amp;lt;/case&amp;gt;
+    &amp;lt;unmatched&amp;gt;
+        &amp;lt;expect&amp;gt;FORBIDDEN&amp;lt;/expect&amp;gt;
+        &amp;lt;description&amp;gt;
+            Other cases are not expected. -1 would mean an exception raised.
+        &amp;lt;/description&amp;gt;
+    &amp;lt;/unmatched&amp;gt;
+&amp;lt;/test&amp;gt;
+&amp;lt;/testsuite&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+                <link>http://bboniao.com/openjdk/2014-06/java-concurrency-stressjcstress.html</link>
+                <guid>http://bboniao.com/openjdk/2014-06/java-concurrency-stressjcstress</guid>
+                <pubDate>2014-06-23T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>HouseMD使用</title>
@@ -489,7 +555,7 @@ jar:file:/opt/mobil/mobil-service-1.0-SNAPSHOT/lib/mobil-service-1.0-SNAPSHOT.ja
 21:45:55     eth0    2.70    3.93   36.99   50.99   74.65   78.88  0.01   0.00
 21:45:55     eth1    0.23    0.00    4.00    0.00   60.00    0.00  0.00   0.00
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;!-- more  --&gt;
+&lt;!-- more --&gt;
 
 &lt;h5&gt;jcmd&lt;/h5&gt;
 
