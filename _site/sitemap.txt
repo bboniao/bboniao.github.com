@@ -11,7 +11,9 @@ http://bboniao.com/page2/index.html
 http://bboniao.com/page3/index.html
 http://bboniao.com/page4/index.html
 http://bboniao.com/page5/index.html
+http://bboniao.com/page6/index.html
 
+http://bboniao.com/openjdk/2014-06/java-object-layoutjol.html
 http://bboniao.com/openjdk/2014-06/java-concurrency-stressjcstress.html
 http://bboniao.com/jvm/2014-05/housemd.html
 http://bboniao.com/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-4.html

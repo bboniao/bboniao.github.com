@@ -133,6 +133,10 @@ var _hmt = _hmt || [];
       
     
   
+    
+      
+    
+  
 
 
 
@@ -175,6 +179,36 @@ var _hmt = _hmt || [];
     </div>
     <article>
 
+
+<div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/openjdk/2014-06/java-object-layoutjol.html">Java Object Layout(jol)</a></h2>
+  
+    <h5>下载源代码:</h5>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">hg clone http://hg.openjdk.java.net/code-tools/jol/ jol
+cd jol
+mvn clean install
+</code></pre></div>
+<h5>pom.xml添加依赖</h5>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&lt;dependency&gt;
+    &lt;groupId&gt;org.openjdk.jol&lt;/groupId&gt;
+    &lt;artifactId&gt;jol-core&lt;/artifactId&gt;
+    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre></div>
+
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 23 Jun 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/openjdk/2014-06/java-object-layoutjol.html#comments"> Comments</a>
+    </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/openjdk/2014-06/java-object-layoutjol.html"><span class="readmore">Read More &raquo; </span></a>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
 
 <div class="wrapper">
   <h2 class="h2 entry-title"><a href="/openjdk/2014-06/java-concurrency-stressjcstress.html">Java Concurrency Stress(jcstress)</a></h2>
@@ -339,40 +373,6 @@ resources    list all source paths can loaded from every classloader by resource
   </div>
 </div>
 
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/java%20performance:the%20definitive%20guide/2014-04/java-performancethe-definitive-guide-chapter-1-2.html">Java Performance:The Definitive Guide Chapter 1 2</a></h2>
-  
-    <h5>The Complete Performance Story</h5>
-
-<ol>
-<li>Write Better Algorithms</li>
-<li>Write Less Code</li>
-<li>Prematurely Optimize</li>
-<li>Look Elsewhere: The Database Is Always the Bottleneck</li>
-<li>Optimize for the Common Case
-
-<ul>
-<li>Optimize code by profiling it and focusing on the operations in the profile taking the most time</li>
-<li>Apply Occam&#39;s Razor to diagnosing performance problems</li>
-<li>Write simple algorithms for the most common operations in an application</li>
-</ul></li>
-</ol>
-
-
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 27 Apr 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/java%20performance:the%20definitive%20guide/2014-04/java-performancethe-definitive-guide-chapter-1-2.html#comments"> Comments</a>
-    </div>
-    
-    <a class="btn btn-default btn-sm pull-right" href="/java%20performance:the%20definitive%20guide/2014-04/java-performancethe-definitive-guide-chapter-1-2.html"><span class="readmore">Read More &raquo; </span></a>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-
 
 <!-- Pagination links -->
 <div class="pull-right">
@@ -380,10 +380,10 @@ resources    list all source paths can loaded from every classloader by resource
     <span><a class="btn btn-default btn-sm disabled" href="/">Home</a></span>
     <span><a class="btn btn-default btn-sm disabled">&laquo; Prev</a></span>
   
-  <span><a class="btn btn-default btn-sm disabled">Page: 1 of 5</a></span>
+  <span><a class="btn btn-default btn-sm disabled">Page: 1 of 6</a></span>
   
     <a class="btn btn-default btn-sm" href="/page2/">Next &raquo;</a>
-    <a class="btn btn-default btn-sm" href="/page5/">Last</a>
+    <a class="btn btn-default btn-sm" href="/page6/">Last</a>
   
 </div>
 
@@ -444,7 +444,7 @@ resources    list all source paths can loaded from every classloader by resource
     	</a></li>
      
     	<li><a href="/categories.html#openjdk-ref">
-    		openjdk <span>1</span>
+    		openjdk <span>2</span>
     	</a></li>
     
   
@@ -459,6 +459,8 @@ resources    list all source paths can loaded from every classloader by resource
        <h4>Recently Posts</h4>
        <div class="category">
          <ul>
+           
+           <li><a href="/openjdk/2014-06/java-object-layoutjol.html">Java Object Layout(jol)</a></li>
            
            <li><a href="/openjdk/2014-06/java-concurrency-stressjcstress.html">Java Concurrency Stress(jcstress)</a></li>
            
@@ -477,8 +479,6 @@ resources    list all source paths can loaded from every classloader by resource
            <li><a href="/jvm/2014-04/java-core-dump-analysis.html">java core dump analysis</a></li>
            
            <li><a href="/jvm/2014-04/java-cpu-monitor.html">java cpu monitor</a></li>
-           
-           <li><a href="/hbase/2014-04/hbasecolumncolumnput.html">HBase在单Column和多Column情况下批量Put的性能对比分析</a></li>
            
          </ul>
        </div>
