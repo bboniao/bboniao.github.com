@@ -4,12 +4,30 @@
  <title>My Blog</title>
  <link href="http://bboniao.com//atom.xml" rel="self"/>
  <link href="http://bboniao.com"/>
- <updated>2014-06-23T18:01:20+08:00</updated>
+ <updated>2014-06-24T21:44:36+08:00</updated>
  <id>http://bboniao.com</id>
  <author>
    <name>bboniao</name>
  </author>
 
+ 
+ <entry>
+   <title>Java Microbenchmarking Harness(jmh)></title>
+   <link href="http://bboniao.com/openjdk/2014-06/java-microbenchmarking-harnessjmh.html"/>
+   <updated>2014-06-24T00:00:00+08:00</updated>
+   <id>http://bboniao.com/openjdk/2014-06/java-microbenchmarking-harnessjmh</id>
+   <content type="html">下载源代码,并放到本地库中
+hg clone http://hg.openjdk.java.net/code-tools/jmh/ jmh
+cd jmh/
+mvn clean install -DskipTests
+
+创建项目
+mvn archetype:generate \
+      -DinteractiveMode=false \
+      -DarchetypeGroupId=org.openjdk.jmh \
+      -DarchetypeArtifactId=jmh-java-benchmark-archetype \
+      -DgroupId=org.samp...</content>
+ </entry>
  
  <entry>
    <title>Java Object Layout(jol)></title>

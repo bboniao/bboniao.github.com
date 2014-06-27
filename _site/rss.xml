@@ -5,10 +5,205 @@
         <description>My Blog - bboniao</description>
         <link>http://bboniao.com</link>
         <link>http://bboniao.com</link>
-        <lastBuildDate>2014-06-23T18:01:20+08:00</lastBuildDate>
-        <pubDate>2014-06-23T18:01:20+08:00</pubDate>
+        <lastBuildDate>2014-06-24T21:44:36+08:00</lastBuildDate>
+        <pubDate>2014-06-24T21:44:36+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>Java Microbenchmarking Harness(jmh)</title>
+                <description>&lt;h5&gt;下载源代码,并放到本地库中&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;hg clone http://hg.openjdk.java.net/code-tools/jmh/ jmh
+cd jmh/
+mvn clean install -DskipTests
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;创建项目&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;mvn archetype:generate \
+      -DinteractiveMode=false \
+      -DarchetypeGroupId=org.openjdk.jmh \
+      -DarchetypeArtifactId=jmh-java-benchmark-archetype \
+      -DgroupId=org.sample \
+      -DartifactId=test \
+      -Dversion=1.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;!-- more --&gt;
+
+&lt;h5&gt;或者把如下添加内容添加到pom.xml&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;&amp;lt;dependency&amp;gt;
+        &amp;lt;groupId&amp;gt;org.openjdk.jmh&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;jmh-core&amp;lt;/artifactId&amp;gt;
+        &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+    &amp;lt;/dependency&amp;gt;
+    &amp;lt;dependency&amp;gt;
+        &amp;lt;groupId&amp;gt;org.openjdk.jmh&amp;lt;/groupId&amp;gt;
+        &amp;lt;artifactId&amp;gt;jmh-generator-annprocess&amp;lt;/artifactId&amp;gt;
+        &amp;lt;version&amp;gt;1.0-SNAPSHOT&amp;lt;/version&amp;gt;
+        &amp;lt;scope&amp;gt;provided&amp;lt;/scope&amp;gt;
+    &amp;lt;/dependency&amp;gt;
+    &amp;lt;prerequisites&amp;gt;
+    &amp;lt;maven&amp;gt;3.0&amp;lt;/maven&amp;gt;
+&amp;lt;/prerequisites&amp;gt;
+
+&amp;lt;properties&amp;gt;
+    &amp;lt;project.build.sourceEncoding&amp;gt;UTF-8&amp;lt;/project.build.sourceEncoding&amp;gt;
+&amp;lt;/properties&amp;gt;
+
+&amp;lt;build&amp;gt;
+    &amp;lt;plugins&amp;gt;
+        &amp;lt;plugin&amp;gt;
+            &amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;maven-compiler-plugin&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;3.0&amp;lt;/version&amp;gt;
+            &amp;lt;configuration&amp;gt;
+                &amp;lt;compilerVersion&amp;gt;1.6&amp;lt;/compilerVersion&amp;gt;
+                &amp;lt;source&amp;gt;1.6&amp;lt;/source&amp;gt;
+                &amp;lt;target&amp;gt;1.6&amp;lt;/target&amp;gt;
+            &amp;lt;/configuration&amp;gt;
+        &amp;lt;/plugin&amp;gt;
+        &amp;lt;plugin&amp;gt;
+            &amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;maven-surefire-plugin&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;2.14.1&amp;lt;/version&amp;gt;
+            &amp;lt;configuration&amp;gt;
+                &amp;lt;forkMode&amp;gt;always&amp;lt;/forkMode&amp;gt;
+                &amp;lt;redirectTestOutputToFile&amp;gt;true&amp;lt;/redirectTestOutputToFile&amp;gt;
+            &amp;lt;/configuration&amp;gt;
+        &amp;lt;/plugin&amp;gt;
+        &amp;lt;plugin&amp;gt;
+            &amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
+            &amp;lt;artifactId&amp;gt;maven-shade-plugin&amp;lt;/artifactId&amp;gt;
+            &amp;lt;version&amp;gt;2.0&amp;lt;/version&amp;gt;
+            &amp;lt;executions&amp;gt;
+                &amp;lt;execution&amp;gt;
+                    &amp;lt;phase&amp;gt;package&amp;lt;/phase&amp;gt;
+                    &amp;lt;goals&amp;gt;
+                        &amp;lt;goal&amp;gt;shade&amp;lt;/goal&amp;gt;
+                    &amp;lt;/goals&amp;gt;
+                    &amp;lt;configuration&amp;gt;
+                        &amp;lt;finalName&amp;gt;benchmarks&amp;lt;/finalName&amp;gt;
+                        &amp;lt;transformers&amp;gt;
+                            &amp;lt;transformer
+                                    implementation=&amp;quot;org.apache.maven.plugins.shade.resource.ManifestResourceTransformer&amp;quot;&amp;gt;
+                                &amp;lt;mainClass&amp;gt;org.openjdk.jmh.Main&amp;lt;/mainClass&amp;gt;
+                            &amp;lt;/transformer&amp;gt;
+                        &amp;lt;/transformers&amp;gt;
+                    &amp;lt;/configuration&amp;gt;
+                &amp;lt;/execution&amp;gt;
+            &amp;lt;/executions&amp;gt;
+        &amp;lt;/plugin&amp;gt;
+
+    &amp;lt;/plugins&amp;gt;
+&amp;lt;/build&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;实例代码&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;@State(Scope.Benchmark)
+public class SplitWordTest {
+
+    private IKAnalyzer analyzer;
+
+    @State(Scope.Thread)
+    public static class Ids {
+        private List&amp;lt;String&amp;gt; ids;
+
+        @Setup
+        public void setup() {
+            ids = readTextList(&amp;quot;/Users/bboniao/Desktop/title&amp;quot;);
+
+        }
+    }
+
+    public static List&amp;lt;String&amp;gt; readTextList(String path) {
+        String read = &amp;quot;&amp;quot;;
+        BufferedReader br = null;
+        List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;String&amp;gt;();
+        try {
+            File file = new File(path);
+            FileReader fileread = new FileReader(file);
+            br = new BufferedReader(fileread);
+            while ((read = br.readLine()) != null) {
+                list.add(read);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (br != null) {
+                    br.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return list;
+    }
+
+    @Setup
+    public void init() {
+        analyzer = new IKAnalyzer();
+        analyzer.setUseSmart(true);
+        TokenStream tokenStream = analyzer.tokenStream(&amp;quot;content&amp;quot;, new StringReader(&amp;quot;test&amp;quot;));
+        tokenStream.addAttribute(CharTermAttribute.class);
+        List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;String&amp;gt;();
+        try {
+            while (tokenStream.incrementToken()) {
+                CharTermAttribute charTermAttribute = tokenStream.getAttribute(CharTermAttribute.class);
+                list.add(charTermAttribute.toString());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        list.clear();
+    }
+
+    @Benchmark
+    @BenchmarkMode({Mode.Throughput, Mode.AverageTime, Mode.SampleTime, Mode.SingleShotTime})
+    @OutputTimeUnit(TimeUnit.MILLISECONDS)
+    public List&amp;lt;List&amp;lt;String&amp;gt;&amp;gt; getAnalysisResult(Ids ids) throws IOException {
+        List&amp;lt;List&amp;lt;String&amp;gt;&amp;gt; list = new ArrayList&amp;lt;List&amp;lt;String&amp;gt;&amp;gt;(ids.ids.size());
+        for (String s : ids.ids) {
+            list.add(get(s));
+        }
+        return list;
+    }
+
+    private List&amp;lt;String&amp;gt; get(String keyWord) throws IOException {
+        TokenStream tokenStream = analyzer.tokenStream(&amp;quot;content&amp;quot;, new StringReader(keyWord));
+        tokenStream.addAttribute(CharTermAttribute.class);
+        List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;String&amp;gt;();
+        while (tokenStream.incrementToken()) {
+            CharTermAttribute charTermAttribute = tokenStream.getAttribute(CharTermAttribute.class);
+            list.add(charTermAttribute.toString());
+        }
+        return list;
+    }
+
+    public static void main(String[] args) throws RunnerException {
+        Options opt = new OptionsBuilder()
+                .include(&amp;quot;.*&amp;quot; + SplitWordTest.class.getSimpleName() + &amp;quot;.*&amp;quot;)
+                .warmupIterations(5)
+                .measurementIterations(5)
+                .forks(1)
+                .build();
+
+        new Runner(opt).run();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;执行如下命令&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;mvn clean package
+java  -jar target/benchmarks.jar -wi 3 -i 3 &amp;#39;.*SplitWordTest.*&amp;#39;     
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h5&gt;最后汇总结果&lt;/h5&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;text language-text&quot; data-lang=&quot;text&quot;&gt;Benchmark                                   Mode   Samples        Score  Score error    Units
+o.o.j.t.SplitWordTest.getAnalysisResult    thrpt        30        0.034        0.001   ops/ms
+o.o.j.t.SplitWordTest.getAnalysisResult     avgt        30       29.954        0.742    ms/op
+o.o.j.t.SplitWordTest.getAnalysisResult   sample      1109       30.195        0.306    ms/op
+o.o.j.t.SplitWordTest.getAnalysisResult       ss        30       89.442        8.043       ms
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+                <link>http://bboniao.com/openjdk/2014-06/java-microbenchmarking-harnessjmh.html</link>
+                <guid>http://bboniao.com/openjdk/2014-06/java-microbenchmarking-harnessjmh</guid>
+                <pubDate>2014-06-24T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>Java Object Layout(jol)</title>

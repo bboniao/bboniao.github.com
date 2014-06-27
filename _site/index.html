@@ -181,6 +181,38 @@ var _hmt = _hmt || [];
 
 
 <div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/openjdk/2014-06/java-microbenchmarking-harnessjmh.html">Java Microbenchmarking Harness(jmh)</a></h2>
+  
+    <h5>下载源代码,并放到本地库中</h5>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">hg clone http://hg.openjdk.java.net/code-tools/jmh/ jmh
+cd jmh/
+mvn clean install -DskipTests
+</code></pre></div>
+<h5>创建项目</h5>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">mvn archetype:generate \
+      -DinteractiveMode=false \
+      -DarchetypeGroupId=org.openjdk.jmh \
+      -DarchetypeArtifactId=jmh-java-benchmark-archetype \
+      -DgroupId=org.sample \
+      -DartifactId=test \
+      -Dversion=1.0
+</code></pre></div>
+
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 24 Jun 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/openjdk/2014-06/java-microbenchmarking-harnessjmh.html#comments"> Comments</a>
+    </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/openjdk/2014-06/java-microbenchmarking-harnessjmh.html"><span class="readmore">Read More &raquo; </span></a>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<div class="wrapper">
   <h2 class="h2 entry-title"><a href="/openjdk/2014-06/java-object-layoutjol.html">Java Object Layout(jol)</a></h2>
   
     <h5>下载源代码:</h5>
@@ -337,42 +369,6 @@ resources    list all source paths can loaded from every classloader by resource
   </div>
 </div>
 
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-3.html">Java Performance:The Definitive Guide Chapter 3</a></h2>
-  
-    <h5>Network Usage</h5>
-
-<p><a href="http://jaist.dl.sourceforge.net/project/nicstat/nicstat-src-1.95.tar.gz">nicstat</a></p>
-
-<p><code>nicstat 1</code></p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">    Time      Int   rKB/s   wKB/s   rPk/s   wPk/s    rAvs    wAvs %Util    Sat
-21:45:53       lo    1.45    1.45    8.54    8.54   174.0   174.0  0.00   0.00
-21:45:53     eth0   35.45   12.14   72.33   86.34   501.9   144.0  0.04   0.00
-21:45:53     eth1    0.43    0.36    6.01    1.05   73.54   354.8  0.00   0.00
-    Time      Int   rKB/s   wKB/s   rPk/s   wPk/s    rAvs    wAvs %Util    Sat
-21:45:54       lo    2.80    2.80   12.99   12.99   220.3   220.3  0.00   0.00
-21:45:54     eth0    1.35    1.78   20.99   21.99   66.00   82.86  0.00   0.00
-21:45:54     eth1    0.41    0.00    7.00    0.00   60.00    0.00  0.00   0.00
-    Time      Int   rKB/s   wKB/s   rPk/s   wPk/s    rAvs    wAvs %Util    Sat
-21:45:55       lo    0.30    0.30    6.00    6.00   50.67   50.67  0.00   0.00
-21:45:55     eth0    2.70    3.93   36.99   50.99   74.65   78.88  0.01   0.00
-21:45:55     eth1    0.23    0.00    4.00    0.00   60.00    0.00  0.00   0.00
-</code></pre></div>
-
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 15 May 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-3.html#comments"> Comments</a>
-    </div>
-    
-    <a class="btn btn-default btn-sm pull-right" href="/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-3.html"><span class="readmore">Read More &raquo; </span></a>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-
 
 <!-- Pagination links -->
 <div class="pull-right">
@@ -444,7 +440,7 @@ resources    list all source paths can loaded from every classloader by resource
     	</a></li>
      
     	<li><a href="/categories.html#openjdk-ref">
-    		openjdk <span>2</span>
+    		openjdk <span>3</span>
     	</a></li>
     
   
@@ -459,6 +455,8 @@ resources    list all source paths can loaded from every classloader by resource
        <h4>Recently Posts</h4>
        <div class="category">
          <ul>
+           
+           <li><a href="/openjdk/2014-06/java-microbenchmarking-harnessjmh.html">Java Microbenchmarking Harness(jmh)</a></li>
            
            <li><a href="/openjdk/2014-06/java-object-layoutjol.html">Java Object Layout(jol)</a></li>
            
@@ -477,8 +475,6 @@ resources    list all source paths can loaded from every classloader by resource
            <li><a href="/jvm/2014-04/jvmhs_err_pidlog.html">JVM致命错误日志（hs_err_pid.log）解读</a></li>
            
            <li><a href="/jvm/2014-04/java-core-dump-analysis.html">java core dump analysis</a></li>
-           
-           <li><a href="/jvm/2014-04/java-cpu-monitor.html">java cpu monitor</a></li>
            
          </ul>
        </div>
