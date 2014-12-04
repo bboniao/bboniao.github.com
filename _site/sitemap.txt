@@ -12,7 +12,12 @@ http://bboniao.com/page3/index.html
 http://bboniao.com/page4/index.html
 http://bboniao.com/page5/index.html
 http://bboniao.com/page6/index.html
+http://bboniao.com/page7/index.html
 
+http://bboniao.com/hbase/2014-11/stochasticloadbalancer.html
+http://bboniao.com/hbase/2014-11/hbase-performance-tuning.html
+http://bboniao.com/hbase/2014-11/hbase-create-table.html
+http://bboniao.com/hbase/2014-11/hbase-batch-get.html
 http://bboniao.com/openjdk/2014-06/java-microbenchmarking-harnessjmh.html
 http://bboniao.com/openjdk/2014-06/java-object-layoutjol.html
 http://bboniao.com/openjdk/2014-06/java-concurrency-stressjcstress.html

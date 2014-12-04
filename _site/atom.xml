@@ -4,12 +4,166 @@
  <title>My Blog</title>
  <link href="http://bboniao.com//atom.xml" rel="self"/>
  <link href="http://bboniao.com"/>
- <updated>2014-06-24T21:44:36+08:00</updated>
+ <updated>2014-11-12T14:27:16+08:00</updated>
  <id>http://bboniao.com</id>
  <author>
    <name>bboniao</name>
  </author>
 
+ 
+ <entry>
+   <title>StochasticLoadBalancer></title>
+   <link href="http://bboniao.com/hbase/2014-11/stochasticloadbalancer.html"/>
+   <updated>2014-11-11T00:00:00+08:00</updated>
+   <id>http://bboniao.com/hbase/2014-11/stochasticloadbalancer</id>
+   <content type="html">均衡影响的因素
+
+
+
+权重
+name(xml配置)
+默认值
+
+
+
+region数量
+hbase.master.balancer.stochastic.regionCountCost
+500
+
+
+region迁移的数量
+hbase.master.balancer.stochastic.moveCost
+100
+
+
+每个regiion server, region数量的倾斜度
+hbase.master.balancer.stochastic.tableSkewCost
+35
+
+
+根据StoreFile的本地程度
+hbase.master.balancer.stochastic.localit...</content>
+ </entry>
+ 
+ <entry>
+   <title>HBase Performance Tuning></title>
+   <link href="http://bboniao.com/hbase/2014-11/hbase-performance-tuning.html"/>
+   <updated>2014-11-11T00:00:00+08:00</updated>
+   <id>http://bboniao.com/hbase/2014-11/hbase-performance-tuning</id>
+   <content type="html">
+关闭swap
+nohup swapoff -a &amp;gt; /dev/null &amp;amp;
+echo 0 &amp;gt; /proc/sys/vm/swappiness
+修改/etc/sysctl.conf，新增vm.swappiness = 0
+减少full gc, 采用BucketCache
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>hbase create table></title>
+   <link href="http://bboniao.com/hbase/2014-11/hbase-create-table.html"/>
+   <updated>2014-11-11T00:00:00+08:00</updated>
+   <id>http://bboniao.com/hbase/2014-11/hbase-create-table</id>
+   <content type="html">HTableDescriptor
+
+
+
+方法
+作用
+
+
+
+setCompactionEnabled
+Compaction的开关, 默认开启
+
+
+setDurability
+设置wal的存储模型, 默认同SYNC_WAL
+
+
+setMaxFileSize
+设置split触发的最大文件大小, 默认为-1, 采用全局配置
+
+
+setMemStoreFlushSize
+设置memstore的flush大小, 默认为-1, 采用全局配置
+
+
+setReadOnly
+设置该表只读, 默认为false
+
+
+
+
+
+HColumnDescriptor
+
+
+
+方法
+作用
+
+
+
+setBlockCacheEn...</content>
+ </entry>
+ 
+ <entry>
+   <title>Hbase Batch Get></title>
+   <link href="http://bboniao.com/hbase/2014-11/hbase-batch-get.html"/>
+   <updated>2014-11-10T00:00:00+08:00</updated>
+   <id>http://bboniao.com/hbase/2014-11/hbase-batch-get</id>
+   <content type="html">
+
+实现
+描述
+分组
+运行时间(ms)
+丢失率
+avg
+min
+max
+stddev
+qps
+
+
+
+AsyncHbaseBatchGetServiceImpl
+采用asynchbase和CountDownLatch
+1
+7070
+0.01%
+1
+0
+332
+10.66
+610
+
+
+AsyncJdkBatchGetServiceImpl
+采用Future, 父子线程处理
+5
+12055
+0%
+1
+0
+277
+13.64
+594
+
+
+DeferredBatchGetServiceImpl
+Deferred和CountDownLatch
+5
+50096
+0%
+5
+0
+505
+49.84
+410...</content>
+ </entry>
  
  <entry>
    <title>Java Microbenchmarking Harness(jmh)></title>

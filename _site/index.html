@@ -137,6 +137,10 @@ var _hmt = _hmt || [];
       
     
   
+    
+      
+    
+  
 
 
 
@@ -181,6 +185,276 @@ var _hmt = _hmt || [];
 
 
 <div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/hbase/2014-11/stochasticloadbalancer.html">StochasticLoadBalancer</a></h2>
+  
+    <h5>均衡影响的因素</h5>
+
+<table><thead>
+<tr>
+<th align="left">权重</th>
+<th align="left">name(xml配置)</th>
+<th align="left">默认值</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">region数量</td>
+<td align="left">hbase.master.balancer.stochastic.regionCountCost</td>
+<td align="left">500</td>
+</tr>
+<tr>
+<td align="left">region迁移的数量</td>
+<td align="left">hbase.master.balancer.stochastic.moveCost</td>
+<td align="left">100</td>
+</tr>
+<tr>
+<td align="left">每个regiion server, region数量的倾斜度</td>
+<td align="left">hbase.master.balancer.stochastic.tableSkewCost</td>
+<td align="left">35</td>
+</tr>
+<tr>
+<td align="left">根据StoreFile的本地程度</td>
+<td align="left">hbase.master.balancer.stochastic.localityCost</td>
+<td align="left">25</td>
+</tr>
+<tr>
+<td align="left">StoreFile的大小</td>
+<td align="left">hbase.master.balancer.stochastic.storefileSizeCost</td>
+<td align="left">5</td>
+</tr>
+<tr>
+<td align="left">memstore的大小</td>
+<td align="left">hbase.master.balancer.stochastic.memstoreSizeCost</td>
+<td align="left">5</td>
+</tr>
+<tr>
+<td align="left">写请求</td>
+<td align="left">hbase.master.balancer.stochastic.writeRequestCost</td>
+<td align="left">5</td>
+</tr>
+<tr>
+<td align="left">读请求</td>
+<td align="left">hbase.master.balancer.stochastic.readRequestCost</td>
+<td align="left">5</td>
+</tr>
+</tbody></table>
+
+
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 11 Nov 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/hbase/2014-11/stochasticloadbalancer.html#comments"> Comments</a>
+    </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/hbase/2014-11/stochasticloadbalancer.html"><span class="readmore">Read More &raquo; </span></a>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/hbase/2014-11/hbase-performance-tuning.html">HBase Performance Tuning</a></h2>
+  
+    
+关闭swap
+nohup swapoff -a &gt; /dev/null &amp;
+echo 0 &gt; /proc/sys/vm/swappiness
+修改/etc/sysctl.conf，新增vm.swappiness = 0
+减少full gc, 采用BucketCache
+
+
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 11 Nov 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/hbase/2014-11/hbase-performance-tuning.html#comments"> Comments</a>
+    </div>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/hbase/2014-11/hbase-create-table.html">hbase create table</a></h2>
+  
+    <h5>HTableDescriptor</h5>
+
+<table><thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">作用</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">setCompactionEnabled</td>
+<td align="left">Compaction的开关, 默认开启</td>
+</tr>
+<tr>
+<td align="left">setDurability</td>
+<td align="left">设置wal的存储模型, 默认同SYNC_WAL</td>
+</tr>
+<tr>
+<td align="left">setMaxFileSize</td>
+<td align="left">设置split触发的最大文件大小, 默认为-1, 采用全局配置</td>
+</tr>
+<tr>
+<td align="left">setMemStoreFlushSize</td>
+<td align="left">设置memstore的flush大小, 默认为-1, 采用全局配置</td>
+</tr>
+<tr>
+<td align="left">setReadOnly</td>
+<td align="left">设置该表只读, 默认为false</td>
+</tr>
+</tbody></table>
+
+
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 11 Nov 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/hbase/2014-11/hbase-create-table.html#comments"> Comments</a>
+    </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/hbase/2014-11/hbase-create-table.html"><span class="readmore">Read More &raquo; </span></a>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <h2 class="h2 entry-title"><a href="/hbase/2014-11/hbase-batch-get.html">Hbase Batch Get</a></h2>
+  
+    <table><thead>
+<tr>
+<th align="left">实现</th>
+<th align="left">描述</th>
+<th align="left">分组</th>
+<th align="left">运行时间(ms)</th>
+<th align="left">丢失率</th>
+<th align="left">avg</th>
+<th align="left">min</th>
+<th align="left">max</th>
+<th align="left">stddev</th>
+<th align="left">qps</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="left">AsyncHbaseBatchGetServiceImpl</td>
+<td align="left">采用asynchbase和CountDownLatch</td>
+<td align="left">1</td>
+<td align="left">7070</td>
+<td align="left">0.01%</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">332</td>
+<td align="left">10.66</td>
+<td align="left">610</td>
+</tr>
+<tr>
+<td align="left">AsyncJdkBatchGetServiceImpl</td>
+<td align="left">采用Future, 父子线程处理</td>
+<td align="left">5</td>
+<td align="left">12055</td>
+<td align="left">0%</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">277</td>
+<td align="left">13.64</td>
+<td align="left">594</td>
+</tr>
+<tr>
+<td align="left">DeferredBatchGetServiceImpl</td>
+<td align="left">Deferred和CountDownLatch</td>
+<td align="left">5</td>
+<td align="left">50096</td>
+<td align="left">0%</td>
+<td align="left">5</td>
+<td align="left">0</td>
+<td align="left">505</td>
+<td align="left">49.84</td>
+<td align="left">410</td>
+</tr>
+<tr>
+<td align="left">HystrixBatchGetServiceImpl</td>
+<td align="left">采用Hystrix的Request Collapsing</td>
+<td align="left">1</td>
+<td align="left">154824</td>
+<td align="left">0%</td>
+<td align="left">15</td>
+<td align="left">0</td>
+<td align="left">2086</td>
+<td align="left">154.34</td>
+<td align="left">218</td>
+</tr>
+<tr>
+<td align="left">NativeBatchGetServiceImpl</td>
+<td align="left">原生batch get, 内部实现采用AsyncProcess</td>
+<td align="left">1</td>
+<td align="left">386787</td>
+<td align="left">0%</td>
+<td align="left">41</td>
+<td align="left">0</td>
+<td align="left">13605</td>
+<td align="left">446.93</td>
+<td align="left">102</td>
+</tr>
+<tr>
+<td align="left">AsyncJdkBatchGetServiceImplV1</td>
+<td align="left">采用CountDownLatch</td>
+<td align="left">5</td>
+<td align="left">49698</td>
+<td align="left">0%</td>
+<td align="left">5</td>
+<td align="left">0</td>
+<td align="left">502</td>
+<td align="left">49.84</td>
+<td align="left">406</td>
+</tr>
+<tr>
+<td align="left">AsyncJdkBatchGetServiceImplV2</td>
+<td align="left">采用Future, 父子线程处理, 没有分组</td>
+<td align="left">1</td>
+<td align="left">10075</td>
+<td align="left">0%</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">330</td>
+<td align="left">10.87</td>
+<td align="left">605</td>
+</tr>
+<tr>
+<td align="left">NativeGetServiceImpl</td>
+<td align="left">原生get</td>
+<td align="left">1</td>
+<td align="left">112326</td>
+<td align="left">0%</td>
+<td align="left">11</td>
+<td align="left">0</td>
+<td align="left">2047</td>
+<td align="left">111.07</td>
+<td align="left">265</td>
+</tr>
+</tbody></table>
+
+
+  
+
+  <div class="status">
+    <div class="col-md-6 date visible-lg visible-md">
+      <span class="glyphicon glyphicon-time"></span> 10 Nov 2014
+      <span class="glyphicon glyphicon-comment"></span><a href="/hbase/2014-11/hbase-batch-get.html#comments"> Comments</a>
+    </div>
+    
+    <a class="btn btn-default btn-sm pull-right" href="/hbase/2014-11/hbase-batch-get.html"><span class="readmore">Read More &raquo; </span></a>
+    
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+<div class="wrapper">
   <h2 class="h2 entry-title"><a href="/openjdk/2014-06/java-microbenchmarking-harnessjmh.html">Java Microbenchmarking Harness(jmh)</a></h2>
   
     <h5>下载源代码,并放到本地库中</h5>
@@ -212,163 +486,6 @@ mvn clean install -DskipTests
   </div>
 </div>
 
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/openjdk/2014-06/java-object-layoutjol.html">Java Object Layout(jol)</a></h2>
-  
-    <h5>下载源代码:</h5>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">hg clone http://hg.openjdk.java.net/code-tools/jol/ jol
-cd jol
-mvn clean install
-</code></pre></div>
-<h5>pom.xml添加依赖</h5>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">&lt;dependency&gt;
-    &lt;groupId&gt;org.openjdk.jol&lt;/groupId&gt;
-    &lt;artifactId&gt;jol-core&lt;/artifactId&gt;
-    &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre></div>
-
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 23 Jun 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/openjdk/2014-06/java-object-layoutjol.html#comments"> Comments</a>
-    </div>
-    
-    <a class="btn btn-default btn-sm pull-right" href="/openjdk/2014-06/java-object-layoutjol.html"><span class="readmore">Read More &raquo; </span></a>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/openjdk/2014-06/java-concurrency-stressjcstress.html">Java Concurrency Stress(jcstress)</a></h2>
-  
-    <h5>下载源代码:hg clone http://hg.openjdk.java.net/code-tools/jcstress/jcstress</h5>
-
-<h5>在tests-custom/pom.xml添加即将测试代码的依赖</h5>
-
-<h5>在tests-custom下编写测试代码</h5>
-
-<h5>在tests-custom下resources/org/openjdk/jcstress/desc下编写xml描述文件</h5>
-
-<h5>在源代码根目录,执行<code>mvn clean install -pl tests-custom -am</code></h5>
-
-<h5>再执行 <code>java -jar tests-custom/target/jcstress.jar -t &#39;.*TreeMapUpdateTest.*&#39;</code></h5>
-
-
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 23 Jun 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/openjdk/2014-06/java-concurrency-stressjcstress.html#comments"> Comments</a>
-    </div>
-    
-    <a class="btn btn-default btn-sm pull-right" href="/openjdk/2014-06/java-concurrency-stressjcstress.html"><span class="readmore">Read More &raquo; </span></a>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/jvm/2014-05/housemd.html">HouseMD使用</a></h2>
-  
-    <h3>安装HouseMD</h3>
-
-<p>下载<a href="https://github.com/bboniao/bboniao.github.com/releases/download/0.2.6/housemd-0.2.6.zip">housemd-0.2.6</a>
-解压,进入目录,执行<code>./housemd pid</code></p>
-
-<h3>命令<code>quit</code></h3>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">terminate the process.
-</code></pre></div>
-<h3>命令<code>help</code></h3>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">display this infomation.
-
-quit         terminate the process.
-help         display this infomation.
-last         show exception stack trace of last error.
-trace        display or output infomation of method invocaton.
-loaded       display loaded classes information.
-env          display system env.
-inspect      display fields of a class.
-prop         display system properties.
-resources    list all source paths can loaded from every classloader by resource full name.
-</code></pre></div>
-
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 25 May 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/jvm/2014-05/housemd.html#comments"> Comments</a>
-    </div>
-    
-    <a class="btn btn-default btn-sm pull-right" href="/jvm/2014-05/housemd.html"><span class="readmore">Read More &raquo; </span></a>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-
-<div class="wrapper">
-  <h2 class="h2 entry-title"><a href="/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-4.html">Java Performance:The Definitive Guide Chapter 4</a></h2>
-  
-    <h5>Tuning the Code Cache</h5>
-
-<p><code>-XX:ReservedCodeCacheSize=N</code>,<code>-XX:InitialCodeCacheSize=N</code>,调整code cache size的大小.查看方式:jmc--MBean Server--Memory--Active Memory Pools--Code Cache和jconsole--Memory--Chart--Memory pool &quot;Code Cache&quot;</p>
-
-<table><thead>
-<tr>
-<th align="left">jvm类型</th>
-<th align="left">默认code cache size</th>
-</tr>
-</thead><tbody>
-<tr>
-<td align="left">32-bit client,Java 8</td>
-<td align="left">32MB</td>
-</tr>
-<tr>
-<td align="left">32-bit server with tiered compilation, Java 8</td>
-<td align="left">240MB</td>
-</tr>
-<tr>
-<td align="left">64-bit server with tiered compilation, Java 8</td>
-<td align="left">240MB</td>
-</tr>
-<tr>
-<td align="left">32-bit client, Java 7</td>
-<td align="left">32MB</td>
-</tr>
-<tr>
-<td align="left">32-bit server, Java 7</td>
-<td align="left">32MB</td>
-</tr>
-<tr>
-<td align="left">64-bit server, Java 7</td>
-<td align="left">48MB</td>
-</tr>
-<tr>
-<td align="left">64-bit server with tiered compilation, Java 7</td>
-<td align="left">96MB</td>
-</tr>
-</tbody></table>
-
-
-  
-
-  <div class="status">
-    <div class="col-md-6 date visible-lg visible-md">
-      <span class="glyphicon glyphicon-time"></span> 17 May 2014
-      <span class="glyphicon glyphicon-comment"></span><a href="/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-4.html#comments"> Comments</a>
-    </div>
-    
-    <a class="btn btn-default btn-sm pull-right" href="/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-4.html"><span class="readmore">Read More &raquo; </span></a>
-    
-    <div class="clearfix"></div>
-  </div>
-</div>
-
 
 <!-- Pagination links -->
 <div class="pull-right">
@@ -376,10 +493,10 @@ resources    list all source paths can loaded from every classloader by resource
     <span><a class="btn btn-default btn-sm disabled" href="/">Home</a></span>
     <span><a class="btn btn-default btn-sm disabled">&laquo; Prev</a></span>
   
-  <span><a class="btn btn-default btn-sm disabled">Page: 1 of 6</a></span>
+  <span><a class="btn btn-default btn-sm disabled">Page: 1 of 7</a></span>
   
     <a class="btn btn-default btn-sm" href="/page2/">Next &raquo;</a>
-    <a class="btn btn-default btn-sm" href="/page6/">Last</a>
+    <a class="btn btn-default btn-sm" href="/page7/">Last</a>
   
 </div>
 
@@ -428,7 +545,7 @@ resources    list all source paths can loaded from every classloader by resource
     	</a></li>
      
     	<li><a href="/categories.html#hbase-ref">
-    		hbase <span>3</span>
+    		hbase <span>7</span>
     	</a></li>
      
     	<li><a href="/categories.html#system performance enterprise and the cloud-ref">
@@ -456,6 +573,14 @@ resources    list all source paths can loaded from every classloader by resource
        <div class="category">
          <ul>
            
+           <li><a href="/hbase/2014-11/stochasticloadbalancer.html">StochasticLoadBalancer</a></li>
+           
+           <li><a href="/hbase/2014-11/hbase-performance-tuning.html">HBase Performance Tuning</a></li>
+           
+           <li><a href="/hbase/2014-11/hbase-create-table.html">hbase create table</a></li>
+           
+           <li><a href="/hbase/2014-11/hbase-batch-get.html">Hbase Batch Get</a></li>
+           
            <li><a href="/openjdk/2014-06/java-microbenchmarking-harnessjmh.html">Java Microbenchmarking Harness(jmh)</a></li>
            
            <li><a href="/openjdk/2014-06/java-object-layoutjol.html">Java Object Layout(jol)</a></li>
@@ -467,14 +592,6 @@ resources    list all source paths can loaded from every classloader by resource
            <li><a href="/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-4.html">Java Performance:The Definitive Guide Chapter 4</a></li>
            
            <li><a href="/java%20performance:the%20definitive%20guide/2014-05/java-performancethe-definitive-guide-chapter-3.html">Java Performance:The Definitive Guide Chapter 3</a></li>
-           
-           <li><a href="/java%20performance:the%20definitive%20guide/2014-04/java-performancethe-definitive-guide-chapter-1-2.html">Java Performance:The Definitive Guide Chapter 1 2</a></li>
-           
-           <li><a href="/system%20performance%20enterprise%20and%20the%20cloud/2014-04/system-performance-enterprise-and-the-cloud-chapter-1.html">System Performance Enterprise and the Cloud Chapter 1-2</a></li>
-           
-           <li><a href="/jvm/2014-04/jvmhs_err_pidlog.html">JVM致命错误日志（hs_err_pid.log）解读</a></li>
-           
-           <li><a href="/jvm/2014-04/java-core-dump-analysis.html">java core dump analysis</a></li>
            
          </ul>
        </div>

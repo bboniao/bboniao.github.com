@@ -5,10 +5,407 @@
         <description>My Blog - bboniao</description>
         <link>http://bboniao.com</link>
         <link>http://bboniao.com</link>
-        <lastBuildDate>2014-06-24T21:44:36+08:00</lastBuildDate>
-        <pubDate>2014-06-24T21:44:36+08:00</pubDate>
+        <lastBuildDate>2014-11-12T14:27:16+08:00</lastBuildDate>
+        <pubDate>2014-11-12T14:27:16+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>StochasticLoadBalancer</title>
+                <description>&lt;h5&gt;均衡影响的因素&lt;/h5&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;权重&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;name(xml配置)&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;默认值&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;region数量&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;hbase.master.balancer.stochastic.regionCountCost&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;500&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;region迁移的数量&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;hbase.master.balancer.stochastic.moveCost&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;100&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;每个regiion server, region数量的倾斜度&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;hbase.master.balancer.stochastic.tableSkewCost&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;35&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;根据StoreFile的本地程度&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;hbase.master.balancer.stochastic.localityCost&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;25&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;StoreFile的大小&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;hbase.master.balancer.stochastic.storefileSizeCost&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;memstore的大小&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;hbase.master.balancer.stochastic.memstoreSizeCost&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;写请求&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;hbase.master.balancer.stochastic.writeRequestCost&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;读请求&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;hbase.master.balancer.stochastic.readRequestCost&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h5&gt;说明&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;基于表的均衡&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h5&gt;&lt;a href=&quot;http://www.cnblogs.com/cenyuhai/p/3650943.html&quot;&gt;参考&lt;/a&gt;&lt;/h5&gt;
+</description>
+                <link>http://bboniao.com/hbase/2014-11/stochasticloadbalancer.html</link>
+                <guid>http://bboniao.com/hbase/2014-11/stochasticloadbalancer</guid>
+                <pubDate>2014-11-11T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>HBase Performance Tuning</title>
+                <description>&lt;ol&gt;
+&lt;li&gt;关闭swap
+&lt;code&gt;nohup swapoff -a &amp;gt; /dev/null &amp;amp;&lt;/code&gt;
+&lt;code&gt;echo 0 &amp;gt; /proc/sys/vm/swappiness&lt;/code&gt;
+修改/etc/sysctl.conf，新增vm.swappiness = 0&lt;/li&gt;
+&lt;li&gt;减少full gc, 采用BucketCache&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+                <link>http://bboniao.com/hbase/2014-11/hbase-performance-tuning.html</link>
+                <guid>http://bboniao.com/hbase/2014-11/hbase-performance-tuning</guid>
+                <pubDate>2014-11-11T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>hbase create table</title>
+                <description>&lt;h5&gt;HTableDescriptor&lt;/h5&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;方法&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setCompactionEnabled&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;Compaction的开关, 默认开启&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setDurability&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;设置wal的存储模型, 默认同SYNC_WAL&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setMaxFileSize&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;设置split触发的最大文件大小, 默认为-1, 采用全局配置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setMemStoreFlushSize&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;设置memstore的flush大小, 默认为-1, 采用全局配置&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setReadOnly&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;设置该表只读, 默认为false&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h5&gt;HColumnDescriptor&lt;/h5&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;方法&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setBlockCacheEnabled&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;开启blogcache, 默认为为true&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setBlocksize&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;谁知blogsize的大小, 默认为65536&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setBloomFilterType&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;bloomfilter的类型, 默认为row&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setCacheBloomsOnWrite&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;在写的时候, 缓存bloomfilter block, 默认为false&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setCacheDataOnWrite&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;是否在写的时候cache data block, 默认false&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setCacheIndexesOnWrite&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;是否在写的时候缓存index blocks, 默认false&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setCompactionCompressionType&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;compaction时压缩方式, 默认没有&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setCompressionType&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;数据压缩方式, 默认没有&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setCompressTags&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;是否使用DataBlockEncoding, 如果DataBlockEncoding没有设置将不会起作用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setDataBlockEncoding&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;在cache中block数据的编码算法, 默认没有. 查询没有优化, 只是降低内存使用, 提高cpu使用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setEncryptionKey&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;加密的key&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setEncryptionType&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;加密的方式, 可以为&amp;quot;AES&amp;quot;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setEvictBlocksOnClose&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;是否在关闭的时候, 剔除block cache, 默认为false&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setInMemory&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;整个表的数据是否保存到内存, 重启后丢失, 默认为false&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setKeepDeletedCells&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;是否保留删除的数据, 默认false&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setMaxVersions&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;存储的版本数, 默认为1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setMinVersions&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;ttl到期后, 保留数据的版本数, 默认为0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setPrefetchBlocksOnOpen&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;在开启的时候, 是否预先缓存block, 默认为false&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setScope&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;设置是否可以复制; 默认值为0, 不能, 1可以&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;setTimeToLive&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;数据存活时间, 默认Integer最大值, 单位秒&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+</description>
+                <link>http://bboniao.com/hbase/2014-11/hbase-create-table.html</link>
+                <guid>http://bboniao.com/hbase/2014-11/hbase-create-table</guid>
+                <pubDate>2014-11-11T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>Hbase Batch Get</title>
+                <description>&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;实现&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;描述&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;分组&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;运行时间(ms)&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;丢失率&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;avg&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;min&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;max&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;stddev&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;qps&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;AsyncHbaseBatchGetServiceImpl&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;采用asynchbase和CountDownLatch&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;1&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;7070&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;0.01%&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;1&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;0&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;332&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;10.66&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;610&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;AsyncJdkBatchGetServiceImpl&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;采用Future, 父子线程处理&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;5&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;12055&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;0%&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;1&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;0&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;277&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;13.64&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;594&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;DeferredBatchGetServiceImpl&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;Deferred和CountDownLatch&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;5&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;50096&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;0%&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;5&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;0&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;505&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;49.84&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;410&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;HystrixBatchGetServiceImpl&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;采用Hystrix的Request Collapsing&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;1&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;154824&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;0%&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;15&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;0&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;2086&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;154.34&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;218&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;NativeBatchGetServiceImpl&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;原生batch get, 内部实现采用AsyncProcess&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;1&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;386787&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;0%&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;41&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;0&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;13605&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;446.93&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;102&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;AsyncJdkBatchGetServiceImplV1&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;采用CountDownLatch&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;5&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;49698&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;0%&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;5&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;0&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;502&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;49.84&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;406&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;AsyncJdkBatchGetServiceImplV2&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;采用Future, 父子线程处理, 没有分组&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;1&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;10075&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;0%&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;1&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;0&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;330&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;10.87&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;605&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;NativeGetServiceImpl&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;原生get&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;1&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;112326&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;0%&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;11&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;0&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;2047&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;111.07&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;265&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h5&gt;说明&lt;/h5&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&amp;quot;运行时间&amp;quot;为单线程10000个请求, 额外有100个请求用于预热; &amp;quot;qps&amp;quot;,&amp;quot;avg&amp;quot;,&amp;quot;min,&amp;quot;max&amp;quot;,&amp;quot;stddev&amp;quot;都是jmeter测试的数据&lt;/li&gt;
+&lt;li&gt;每次批量get, 抓取100条&lt;/li&gt;
+&lt;li&gt;分组的意思是, 每个线程有多少个请求采用原生batch get. 避免线程池爆满&lt;/li&gt;
+&lt;li&gt;异步操作的timeout时间为500ms&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h5&gt;总结, 性能从高到低&lt;/h5&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;实现&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;时间&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;AsyncHbaseBatchGetServiceImpl&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;7070&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;性能最高; 单个异步请求, 线程池不会跑满; 内部有个多个请求合并的流程, 直接节省线程使用; 不依赖hbase和hadoop代码, 兼容性俱佳. 但会有一些结果丢失&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;AsyncJdkBatchGetServiceImplV2&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;10075&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;相比AsyncJdkBatchGetServiceImpl, 性能提高, 是因为没有分组, 采用原生get. 很容易跑满线程池&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;AsyncJdkBatchGetServiceImpl&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;12055&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;推荐使用.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;AsyncJdkBatchGetServiceImplV1&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;49698&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;采用CountDownLatch,然后每5个批量操作&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;DeferredBatchGetServiceImpl&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;50096&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;主要是为了了解Deferred的性能如何, 与AsyncJdkBatchGetServiceImplV1基本一致&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;NativeGetServiceImpl&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;112326&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;原生get, 没有做批量处理&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;HystrixBatchGetServiceImpl&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;154824&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;单次请求, Hystrix底层进行合并&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;NativeBatchGetServiceImpl&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;386787&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;原生batch get&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h5&gt;&lt;a href=&quot;https://github.com/bboniao/bboniao.github.com/releases/download/hbase-client.jmx/hbase-client.jmx&quot;&gt;jmeter配置文件&lt;/a&gt;&lt;/h5&gt;
+
+&lt;h5&gt;&lt;a href=&quot;https://github.com/bboniao/hbase&quot;&gt;源代码&lt;/a&gt;&lt;/h5&gt;
+</description>
+                <link>http://bboniao.com/hbase/2014-11/hbase-batch-get.html</link>
+                <guid>http://bboniao.com/hbase/2014-11/hbase-batch-get</guid>
+                <pubDate>2014-11-10T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>Java Microbenchmarking Harness(jmh)</title>
